@@ -6,6 +6,12 @@ Room::Room()
 	this->item = 0;
 }
 
+Room::Room(int status, int item)
+{
+	this->status = status;
+	this->item = item;
+}
+
 Room::~Room()
 {
 }

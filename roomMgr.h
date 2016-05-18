@@ -1,5 +1,6 @@
 #pragma once
 
+#include <new.h>
 #include "room.h"
 #include "common.h"
 
@@ -10,13 +11,5 @@ public:
 	~RoomMgr();
 
 private:
-	Room r[BOARD_WD][BOARD_HT];
+	Room r[BOARD_WD + 2][BOARD_HT + 2];
 };
-
-RoomMgr::RoomMgr()
-{
-}
-
-RoomMgr::~RoomMgr()
-{
-}
