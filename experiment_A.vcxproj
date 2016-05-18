@@ -149,15 +149,15 @@
     <ClCompile Include="consoleUtil.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="player.cpp" />
-    <ClCompile Include="room.cpp" />
-    <ClCompile Include="roomMgr.cpp" />
+    <ClCompile Include="field_room.cpp" />
+    <ClCompile Include="field.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h" />
     <ClInclude Include="consoleUtil.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="room.h" />
-    <ClInclude Include="roomMgr.h" />
+    <ClInclude Include="field_room.h" />
+    <ClInclude Include="field.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
