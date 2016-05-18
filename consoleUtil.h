@@ -29,3 +29,4 @@ void setColor(int col);
 void setColor(int fg, int bg);
 //	カーソル位置指定 for Windows Console
 void setCursorPos(int x, int y);
+//template <class X> void setFgBgColor(X input);

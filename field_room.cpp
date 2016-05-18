@@ -15,3 +15,8 @@ FieldRoom::FieldRoom(int status, int item)
 FieldRoom::~FieldRoom()
 {
 }
+
+int FieldRoom::field_room_get_status()
+{
+	return this->status;
+}
