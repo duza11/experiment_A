@@ -12,7 +12,7 @@ ItemFloor::~ItemFloor()
 int ItemFloor::item_floor_main()
 {
 	while (1) {
-		for (bool moved = true;;)
+		for (bool moved = true;this->clear_flag != true;)
 		{
 			if (moved)
 			{
@@ -48,6 +48,7 @@ int ItemFloor::item_floor_main()
 					break;
 				}
 			}
+			this->clear_flag = f.field_clear_check();
 		}
 		setColor(COL_WHITE, COL_BLACK);
 		cout << "Try again ? [y/n]   ";

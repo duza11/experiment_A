@@ -18,6 +18,7 @@ public:
 	void field_update(pair<int, int> p_pos, pair<int, int>np_pos);
 	void field_print_line(int y, bool printVal);
 	void field_print();
+	bool field_clear_check();
 
 private:
 	FieldRoom fr[BOARD_WD + 2][BOARD_HT + 2];

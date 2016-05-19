@@ -24,9 +24,9 @@ Field::~Field()
 
 void Field::field_update(pair<int, int> p_pos, pair<int, int>np_pos)
 {
-	for (int x = 1; x < BOARD_WD + 1; x++)
+	for (int x = 1; x <= BOARD_WD; x++)
 	{
-		for (int y = 1; y < BOARD_HT + 1; y++)
+		for (int y = 1; y <= BOARD_HT; y++)
 		{
 			if (x == p_pos.first && y == p_pos.second)
 			{
@@ -75,4 +75,15 @@ void Field::field_print()
 		field_print_line(y, true);
 		field_print_line(y, false);
 	}
+}
+
+bool Field::field_clear_check()
+{
+	for (int x = 1; x <= BOARD_WD; x++)
+	{
+		if (fr[x][1].field_room_get_status() == 'P') {
+			return true;
+		}
+	}
+	return false;
 }

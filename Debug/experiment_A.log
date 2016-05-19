@@ -1,10 +1,2 @@
-﻿  typing.cpp
-  field.cpp
-  field_room.cpp
-  player.cpp
-  main.cpp
-  item_floor.cpp
-  consoleUtil.cpp
-  コードを生成中...
-  LINK : 前回のインクリメンタル リンクで C:\Users\admin\Source\Repos\experiment_A\Debug\experiment_A.exe が見つからなかったか、ビルドされませんでした。フル リンクを行います。
-  experiment_A.vcxproj -> C:\Users\admin\Source\Repos\experiment_A\Debug\experiment_A.exe
+﻿  field.cpp
+  experiment_A.vcxproj -> C:\Users\Adm\Source\Repos\experiment_A\Debug\experiment_A.exe

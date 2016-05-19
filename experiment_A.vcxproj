@@ -152,6 +152,8 @@
     <ClCompile Include="player.cpp" />
     <ClCompile Include="field_room.cpp" />
     <ClCompile Include="field.cpp" />
+    <ClCompile Include="quiz.cpp" />
+    <ClCompile Include="quiz_floor.cpp" />
     <ClCompile Include="typing.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +163,8 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="field_room.h" />
     <ClInclude Include="field.h" />
+    <ClInclude Include="quiz.h" />
+    <ClInclude Include="quiz_floor.h" />
     <ClInclude Include="typing.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
