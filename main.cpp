@@ -7,6 +7,7 @@
 #include <time.h>			//	time
 #include <string>
 #include "item_floor.h"
+#include "typing.h"
 #include "common.h"
 
 int	g_score = 0;
@@ -18,5 +19,7 @@ int main()
 {
 	ItemFloor itf;
 	itf.item_floor_main();
+	Typing t;
+	t.typing_main();
 	return 0;
 }
