@@ -15,6 +15,7 @@ class Field
 public:
 	Field();
 	~Field();
+	void field_update(pair<int, int> p_pos, pair<int, int>np_pos);
 	void field_print_line(int y, bool printVal);
 	void field_print();
 

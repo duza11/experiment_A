@@ -16,6 +16,11 @@ FieldRoom::~FieldRoom()
 {
 }
 
+void FieldRoom::field_room_update(int status)
+{
+	this->status = status;
+}
+
 int FieldRoom::field_room_get_status()
 {
 	return this->status;
