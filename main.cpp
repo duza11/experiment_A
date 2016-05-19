@@ -9,7 +9,8 @@
 #include <iostream>
 #include <sstream>      // std::ostringstream
 #include <string>
-#include "Player.h"
+#include "player.h"
+#include "field.h"
 #include "consoleUtil.h"
 #include "common.h"
 
@@ -31,21 +32,6 @@ std::string tostr(int v)
 	return os.str();
 }
 //----------------------------------------------------------------------
-template <class X> void setFgBgColor(X input)
-{
-	int fg = COL_WHITE;
-	int bg = COL_BLACK;
-	switch (input) {
-	case 0:		bg = COL_LIGHT_GRAY;	break;
-	case 1:		bg = COL_DARK_YELLOW;	break;
-	case 2:		bg = COL_DARK_CYAN;	break;
-	case 3:		bg = COL_DARK_GREEN;	break;
-	case 'P':	bg = COL_DARK_BLUE;	break;
-	case 'N':	bg = COL_BLACK; break;
-	}
-
-	setColor(fg, bg);
-}
 
 void	init_board()
 {
@@ -113,16 +99,16 @@ bool isMovable()
 }
 int main()
 {
+	Field f;
 	Player p;
-	while (1) {
-		g_score = 0;
-		init_board();
-		for (bool moved = true;;) {
+	while(1) {
+		for (bool moved = true;;)
+		{
 			if (moved)
 			{
-				p.player_set_pos(g_board);
+				f.field_update(p.player_get_pos(), p.player_get_next_pos());
 			}
-			print_board();
+			f.field_print();
 			if (!isMovable())
 			{
 				break;
@@ -131,10 +117,13 @@ int main()
 			cout << "Type ©¨     ";
 			int c = _getch();
 			//cout << c << "\n";
-			if (c == 'q') break;
+			if (c == 'q')
+			{
+				break;
+			}
 			if (c == ' ')
 			{
-				p.player_move_front(g_board);
+				p.player_move_front();
 			}
 			if (c == KEY_ARROW)
 			{
@@ -142,10 +131,10 @@ int main()
 				//cout << c << "\n";
 				switch (c) {
 				case KEY_LEFT:
-					p.player_move_left(g_board);
+					p.player_move_left();
 					break;
 				case KEY_RIGHT:
-					p.player_move_right(g_board);
+					p.player_move_right();
 					break;
 				}
 			}

@@ -2,10 +2,10 @@
 
 Player::Player()
 {
-	this->x = PLAYER_X;
-	this->y = PLAYER_Y;
-	this->next_x = PLAYER_NEXT_X;
-	this->next_y = PLAYER_NEXT_Y;
+	this->p_pos.first = PLAYER_X;
+	this->p_pos.second = PLAYER_Y;
+	this->np_pos.first = PLAYER_NEXT_X;
+	this->np_pos.second = PLAYER_NEXT_Y;
 }
 
 Player::~Player()
@@ -13,50 +13,43 @@ Player::~Player()
 
 }
 
-void Player::player_set_pos(int (&g_board)[BOARD_ARY_WD][BOARD_ARY_HT])
+pair<int, int> Player::player_get_pos()
 {
-	g_board[this->x][this->y] = 'P';
-	g_board[this->next_x][this->next_y] = 'N';
+	return this->p_pos;
 }
 
-void Player::player_move_right(int(&g_board)[BOARD_ARY_WD][BOARD_ARY_HT])
+pair<int, int> Player::player_get_next_pos()
 {
-	if (this->next_x == PLAYER_MAX_X)
+	return this->np_pos;
+}
+
+void Player::player_move_right()
+{
+	if (this->np_pos.first == PLAYER_MAX_X)
 	{
-		swap(g_board[this->next_x][this->next_y], g_board[PLAYER_MIN_X][this->next_y]);
-		this->next_x = PLAYER_MIN_X;
+		this->np_pos.first = PLAYER_MIN_X;
 	}
 	else
 	{
-		swap(g_board[this->next_x][this->next_y], g_board[this->next_x + 1][this->next_y]);
-		this->next_x++;
+		this->np_pos.first++;
 	}
 }
 
-void Player::player_move_left(int(&g_board)[BOARD_ARY_WD][BOARD_ARY_HT])
+void Player::player_move_left()
 {
-	if (this->next_x == PLAYER_MIN_X)
+	if (this->np_pos.first == PLAYER_MIN_X)
 	{
-		swap(g_board[this->next_x][this->next_y], g_board[PLAYER_MAX_X][this->next_y]);
-		this->next_x = PLAYER_MAX_X;
+		this->np_pos.first = PLAYER_MAX_X;
 	}
 	else
 	{
-		swap(g_board[this->next_x][this->next_y], g_board[this->next_x - 1][this->next_y]);
-		this->next_x--;
+		this->np_pos.first--;
 	}
 }
 
-void Player::player_move_front(int(&g_board)[BOARD_ARY_WD][BOARD_ARY_HT])
+void Player::player_move_front()
 {
-	swap(g_board[this->next_x][this->next_y], g_board[PLAYER_X][this->next_y - 1]);
-	swap(g_board[this->x][this->y], g_board[this->next_x][this->next_y]);
-	this->x = this->next_x;
-	this->y = this->next_y;
-	this->next_x = PLAYER_X;
-	this->next_y--;
-
-	if (this->y == PLAYER_MAX_Y) {
-		
-	}
+	this->p_pos.first = this->np_pos.first;
+	this->p_pos.second = this->np_pos.second;
+	this->np_pos.second--;
 }
