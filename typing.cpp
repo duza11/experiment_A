@@ -8,15 +8,10 @@ Typing::~Typing()
 {
 }
 
-int Typing::typing_main()
+int Typing::typing_main(string word)
 {
-	int key = 0;
-	int score = 0;
-	int mistake = 0;
-	string word = "A lie can make it half way around the world before the truth has time to put its boots on.";
-	string input;
+	this->word = word;
 	auto itr = word.begin();
-
 	while (1)
 	{
 		system("cls");
@@ -56,7 +51,7 @@ int Typing::typing_main()
 	system("cls");
 	cout << "結果\n";
 	cout << "得点" << score << "点　ミス" << mistake << "回\n";
-	cout << "おしまい";
+	cout << "おしまい\n";
 
 	return 0;
 }

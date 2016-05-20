@@ -18,12 +18,11 @@ int ItemFloor::item_floor_main()
 			{
 				f.field_update(p.player_get_pos(), p.player_get_next_pos());
 				f.field_print();
+				setColor(COL_WHITE, COL_BLACK);
+				cout << "Type ©¨     ";
 				moved = false;
 			}
-			setColor(COL_WHITE, COL_BLACK);
-			cout << "Type ©¨     ";
 			int c = _getch();
-			//cout << c << "\n";
 			if (c == 'q')
 			{
 				break;
@@ -36,7 +35,6 @@ int ItemFloor::item_floor_main()
 			else if (c == KEY_ARROW)
 			{
 				int c = _getch();
-				//cout << c << "\n";
 				switch (c) {
 				case KEY_LEFT:
 					p.player_move_left();
@@ -50,20 +48,7 @@ int ItemFloor::item_floor_main()
 			}
 			this->clear_flag = f.field_clear_check();
 		}
-		setColor(COL_WHITE, COL_BLACK);
-		cout << "Try again ? [y/n]   ";
-		int c;
-		for (;;) {
-			c = _getch();
-			if (c == KEY_ARROW)
-				_getch();
-			if (c == 'y' || c == 'Y' ||
-				c == 'n' || c == 'N')
-			{
-				break;
-			}
-		}
-		if (c != 'y' && c != 'Y') break;
+		break;
 	}
 	return 0;
 }

@@ -13,8 +13,12 @@ class Typing
 public:
 	Typing();
 	~Typing();
-	int typing_main();
+	int typing_main(string word);
 
 private:
-
+	int key = 0;
+	int score = 0;
+	int mistake = 0;
+	string word;
+	string input;
 };

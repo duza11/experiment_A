@@ -1,6 +1,15 @@
 #pragma once
 
+#include <vector>
 #include "typing.h"
+#include "quiz.h"
+
+#include<fstream>
+#include<iostream>
+#include<string>
+#include<sstream> //•¶šƒXƒgƒŠ[ƒ€
+
+using namespace std;
 
 class QuizFloor
 {
@@ -10,5 +19,5 @@ public:
 	int quiz_floor_main();
 
 private:
-	Typing t;
+	vector<Quiz> qz_array;
 };

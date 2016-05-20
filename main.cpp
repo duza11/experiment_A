@@ -6,6 +6,7 @@
 
 int main()
 {
+	system("cls");
 	ItemFloor itf;
 	itf.item_floor_main();
 	QuizFloor qf;
