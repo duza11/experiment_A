@@ -59,11 +59,12 @@ int QuizFloor::quiz_floor_main()
 	{
 		Typing t;
 		t.typing_main((*itr).quiz_get_tp_str());
+		cout << endl << endl << (*itr).quiz_get_qz() << endl;
 		for (int i = 0; i < QZ_OPT_SIZE; i++)
 		{
 			cout << (*itr).quiz_get_qz_opt(i) << " " << (*itr).quiz_get_ans_type(i) << endl;
 		}
-		Sleep(1000);
+		Sleep(2000);
 		system("cls");
 	}
 	return 0;
