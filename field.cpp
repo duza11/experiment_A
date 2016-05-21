@@ -67,8 +67,6 @@ void Field::field_print_line(int y, bool printVal)
 void Field::field_print()
 {
 	setCursorPos(0, 0);
-	setColor(COL_WHITE, COL_BLACK);
-	cout << "SCORE: " << 0 << "        \n\n";
 	for (int y = 1; y < BOARD_HT + 1; y++)
 	{
 		field_print_line(y, false);

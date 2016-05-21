@@ -48,3 +48,8 @@ void setCursorPos(int x, int y)
 	pos.Y = y;
 	SetConsoleCursorPosition(hCons, pos);
 }
+
+void borderString(string str, int size)
+{
+
+}

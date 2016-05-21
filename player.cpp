@@ -25,26 +25,12 @@ pair<int, int> Player::player_get_next_pos()
 
 void Player::player_move_right()
 {
-	if (this->np_pos.first == PLAYER_MAX_X)
-	{
-		this->np_pos.first = PLAYER_MIN_X;
-	}
-	else
-	{
-		this->np_pos.first++;
-	}
+	this->np_pos.first = (this->np_pos.first % PLAYER_MAX_X) + 1;
 }
 
 void Player::player_move_left()
 {
-	if (this->np_pos.first == PLAYER_MIN_X)
-	{
-		this->np_pos.first = PLAYER_MAX_X;
-	}
-	else
-	{
-		this->np_pos.first--;
-	}
+	this->np_pos.first = (this->np_pos.first + PLAYER_MAX_X - 2) % PLAYER_MAX_X + 1;
 }
 
 void Player::player_move_front()
@@ -52,4 +38,7 @@ void Player::player_move_front()
 	this->p_pos.first = this->np_pos.first;
 	this->p_pos.second = this->np_pos.second;
 	this->np_pos.second--;
+	if (this->np_pos.second == 1) {
+		np_pos.first = BOARD_ARY_WD / 2;
+	}
 }

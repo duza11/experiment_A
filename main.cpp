@@ -11,6 +11,6 @@ int main()
 	itf.item_floor_main();
 	QuizFloor qf;
 	qf.quiz_floor_main();
-
+	system("cls");
 	return 0;
 }

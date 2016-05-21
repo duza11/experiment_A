@@ -1,6 +1,9 @@
 #pragma once
 
 #include <Windows.h>
+#include <string>
+
+using namespace std;
 
 //		色定義
 #define		COL_BLACK	0x00
@@ -24,11 +27,22 @@
 #define		COL_GREEN_MASK	0x02
 #define		COL_BLUE_MASK	0x01
 
-//	文字色指定 for Windows Console
+#define	KEY_ARROW 0xe0
+#define	KEY_UP 0x48
+#define	KEY_LEFT 0x4b
+#define	KEY_RIGHT 0x4d
+#define	KEY_DOWN 0x50
+#define KEY_SPACE 0x20
+
+// 文字色指定 for Windows Console
 void setColor(int col);
+// 文字色と背景色指定
 void setColor(int fg, int bg);
-//	カーソル位置指定 for Windows Console
+// カーソル位置指定 for Windows Console
 void setCursorPos(int x, int y);
+// 罫線つきの文字列
+void borderString(string str, int size);
+
 template <class X> void setFgBgColor(X input)
 {
 	int fg = COL_WHITE;

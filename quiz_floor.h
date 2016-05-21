@@ -2,7 +2,7 @@
 
 #include <vector>
 #include "typing.h"
-#include "quiz.h"
+#include "quiz_maker.h"
 
 #include<fstream>
 #include<iostream>
@@ -20,4 +20,5 @@ public:
 
 private:
 	vector<Quiz> qz_array;
+	QuizMaker qm;
 };

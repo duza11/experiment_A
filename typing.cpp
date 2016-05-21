@@ -12,7 +12,7 @@ int Typing::typing_main(string word)
 {
 	this->word = word;
 	auto itr = word.begin();
-	while (1)
+	while (true)
 	{
 		system("cls");
 		cout << "得点" << score << "点　ミス" << mistake << "回\n\n";
@@ -49,9 +49,6 @@ int Typing::typing_main(string word)
 	}
 
 	system("cls");
-	cout << "結果\n";
-	cout << "得点" << score << "点　ミス" << mistake << "回\n";
-	cout << "おしまい\n";
 
 	return 0;
 }
