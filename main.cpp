@@ -27,18 +27,18 @@ int main()
 	time(&old);
 	while (time_limit > 0 && !clear_flag)
 	{
+		time(&now);
+		if (old != now)
+		{
+			time_limit -= (now - old);
+			time_moved_flag = true;
+		}
 		if (time_moved_flag)
 		{
 			time(&old);
 			setCursorPos(60, 0);
 			cout << "Žc‚èŽžŠÔF" << time_limit / 60 << "•ª" << time_limit % 60 << "•b";
 			time_moved_flag = false;
-		}
-		time(&now);
-		if (old != now)
-		{
-			time_limit -= (now - old);
-			time_moved_flag = true;
 		}
 		if (now_qf < qf_size)
 		{
