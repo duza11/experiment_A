@@ -53,20 +53,21 @@ QuizFloor::~QuizFloor()
 {
 }
 
-vector<Quiz>::iterator QuizFloor::Quiz_floor_get_q_itr()
-{
-	return qz_array.begin();
-}
 
 int QuizFloor::quiz_floor_main()
 {
-	switch (qf_status)
+	if (itr < qz_array.end())
 	{
-		for (auto itr = qz_array.begin(); itr < qz_array.end(); itr++)
+		switch (qf_status)
 		{
-			Typing t;
-			t.typing_main((*itr).quiz_get_tp_str());
+		case 0:
+		{
+			itr += t.typing_main((*itr).quiz_get_tp_str());
+			break;
+		}
+		case 1:
 			qm.quiz_maker_main(*itr);
+			break;
 		}
 	}
 	return 0;

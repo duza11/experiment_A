@@ -8,15 +8,18 @@ QuizMaker::~QuizMaker()
 {
 }
 
-void QuizMaker::quiz_maker_main(Quiz & q)
+void QuizMaker::quiz_maker_init(Quiz & q)
 {
 	this->selected_ans = 0;
 	this->clear_flag = false;
 	moved = true;
 
 	cout << q.quiz_get_qz();
-	
-	while (!clear_flag)
+}
+
+bool QuizMaker::quiz_maker_main(Quiz & q)
+{
+	if (!clear_flag)
 	{
 		if (moved)
 		{
@@ -50,5 +53,10 @@ void QuizMaker::quiz_maker_main(Quiz & q)
 				this->moved = true;
 			}
 		}
+		return 0;
+	}
+	else
+	{
+		return 1;
 	}
 }

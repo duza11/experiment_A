@@ -12,7 +12,8 @@ class QuizMaker
 public:
 	QuizMaker();
 	~QuizMaker();
-	void quiz_maker_main(Quiz & q);
+	void quiz_maker_init(Quiz & q);
+	bool quiz_maker_main(Quiz & q);
 
 private:
 	bool moved;
