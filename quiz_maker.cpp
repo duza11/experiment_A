@@ -12,8 +12,11 @@ void QuizMaker::quiz_maker_main(Quiz & q)
 {
 	this->selected_ans = 0;
 	this->clear_flag = false;
+	moved = true;
+
 	cout << q.quiz_get_qz();
-	for (moved = 1; !clear_flag;)
+	
+	while (!clear_flag)
 	{
 		if (moved)
 		{

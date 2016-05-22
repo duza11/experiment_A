@@ -11,11 +11,12 @@ Typing::~Typing()
 int Typing::typing_main(string word)
 {
 	this->word = word;
+	this->input.clear();
 	auto itr = word.begin();
 	while (true)
 	{
 		system("cls");
-		cout << "得点" << score << "点　ミス" << mistake << "回\n\n";
+		cout << "ミス" << mistake << "回\n\n";
 		cout << word << "\n";
 		cout << input;
 		setColor(COL_WHITE, COL_CYAN);

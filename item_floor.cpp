@@ -4,9 +4,9 @@ ItemFloor::ItemFloor()
 {
 	this->clear_flag = false;
 	this->movable_flag = true;
-	setCursorPos(60, 0);
+	setCursorPos(60, 2);
 	cout << "ˆÚ“®F[©][¨]";
-	setCursorPos(60, 1);
+	setCursorPos(60, 3);
 	cout << "‘I‘ðF[SPACE]";
 	setCursorPos(0, 0);
 }

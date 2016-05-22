@@ -51,5 +51,6 @@ void setCursorPos(int x, int y)
 
 void borderString(string str, int size)
 {
-
+	
 }
+

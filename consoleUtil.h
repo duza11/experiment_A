@@ -2,6 +2,8 @@
 
 #include <Windows.h>
 #include <string>
+#include <time.h>
+#include <iostream>
 
 using namespace std;
 
@@ -42,6 +44,7 @@ void setColor(int fg, int bg);
 void setCursorPos(int x, int y);
 // Œrü‚Â‚«‚Ì•¶š—ñ
 void borderString(string str, int size);
+
 
 template <class X> void setFgBgColor(X input)
 {
