@@ -3,7 +3,7 @@
 QuizFloor::QuizFloor()
 {
 	//ƒtƒ@ƒCƒ‹‚Ì“Ç‚Ýž‚Ý
-	ifstream ifs("../csv/quiz.csv");
+	ifstream ifs("csv/quiz.csv");
 	if (!ifs) {
 		return;
 	}
@@ -47,6 +47,7 @@ QuizFloor::QuizFloor()
 		}
 		qz_array.push_back(q);
 	}
+	this->itr = qz_array.begin();
 }
 
 QuizFloor::~QuizFloor()
@@ -58,17 +59,35 @@ int QuizFloor::quiz_floor_main()
 {
 	if (itr < qz_array.end())
 	{
-		switch (qf_status)
+		switch (this->qf_status)
 		{
 		case 0:
 		{
-			itr += t.typing_main((*itr).quiz_get_tp_str());
+			if (this->qz_init_flag)
+			{
+				t.typing_init((*itr).quiz_get_tp_str());
+				this->qz_init_flag = false;
+			}
+			this->qf_status = t.typing_main();
 			break;
 		}
 		case 1:
-			qm.quiz_maker_main(*itr);
+			if (this->qm_init_flag)
+			{
+				qm.quiz_maker_init(*itr);
+				this->qm_init_flag = false;
+			}
+			this->qf_status = qm.quiz_maker_main(*itr);
+			break;
+		case 2:
+			this->itr++;
+			this->qf_status = 0;
+			this->qz_init_flag = true;
+			this->qm_init_flag = true;
+			return 1;
 			break;
 		}
+		
 	}
 	return 0;
 }

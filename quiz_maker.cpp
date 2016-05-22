@@ -12,16 +12,17 @@ void QuizMaker::quiz_maker_init(Quiz & q)
 {
 	this->selected_ans = 0;
 	this->clear_flag = false;
-	moved = true;
+	this->moved = true;
 
+	setCursorPos(0, 0);
 	cout << q.quiz_get_qz();
 }
 
-bool QuizMaker::quiz_maker_main(Quiz & q)
+int QuizMaker::quiz_maker_main(Quiz & q)
 {
 	if (!clear_flag)
 	{
-		if (moved)
+		if (this->moved)
 		{
 			setCursorPos(0, QZ_START_Y);
 			for (int i = 0; i < QZ_OPT_SIZE; i++) {
@@ -29,7 +30,7 @@ bool QuizMaker::quiz_maker_main(Quiz & q)
 			}
 			setCursorPos(0, QZ_START_Y + this->selected_ans);
 			cout << ">\r";
-			moved = false;
+			this->moved = false;
 		}
 		if (_kbhit())
 		{
@@ -53,10 +54,11 @@ bool QuizMaker::quiz_maker_main(Quiz & q)
 				this->moved = true;
 			}
 		}
-		return 0;
+		return 1;
 	}
 	else
 	{
-		return 1;
+		system("cls");
+		return 2;
 	}
 }

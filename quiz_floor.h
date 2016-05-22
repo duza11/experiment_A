@@ -3,6 +3,7 @@
 #include <vector>
 #include "typing.h"
 #include "quiz_maker.h"
+#include <new.h>
 
 #include<fstream>
 #include<iostream>
@@ -19,6 +20,8 @@ public:
 	int quiz_floor_main();
 
 private:
+	bool qz_init_flag = true;
+	bool qm_init_flag = true;
 	int qf_status = 0;
 	vector<Quiz> qz_array;
 	vector<Quiz>::iterator itr;

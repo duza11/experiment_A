@@ -8,48 +8,55 @@ Typing::~Typing()
 {
 }
 
-int Typing::typing_main(string word)
+void Typing::typing_init(string word)
 {
+	this->mistake = 0;
 	this->word = word;
 	this->input.clear();
-	auto itr = word.begin();
-	while (true)
+	this->itr = this->word.begin();
+	this->moved = true;
+}
+
+int Typing::typing_main()
+{
+	if (!this->clear_flag)
 	{
-		system("cls");
-		cout << "ミス" << mistake << "回\n\n";
-		cout << word << "\n";
-		cout << input;
-		setColor(COL_WHITE, COL_CYAN);
-		cout << " \n";
-		setColor(COL_WHITE, COL_BLACK);
-		while (itr != word.end())
+		if (moved)
+		{
+			setCursorPos(0, 0);
+			cout << "ミス" << mistake << "回\n\n";
+			cout << word << "\n";
+			cout << input;
+			setColor(COL_WHITE, COL_CYAN);
+			cout << " \n";
+			setColor(COL_WHITE, COL_BLACK);
+			moved = false;
+		}
+		if (this->itr != this->word.end())
 		{
 			if (_kbhit())
 			{
 				key = _getch();
 				if (key == 0 || key == 224)key = _getch();
 				{
-					if (key == (int)*itr)
+					if (key == (int)*this->itr)
 					{
-						score++;
-						input.push_back(*itr);
-						itr++;
+						this->input.push_back(*this->itr);
+						this->itr++;
 					}
 					else
 					{
-						mistake++;
+						this->mistake++;
 					}
-					break;
+					this->moved = true;
 				}
 			}
+			return 0;
 		}
-		if (itr == word.end())
+		else
 		{
-			break;
+			system("cls");
+			return 1;
 		}
 	}
-
-	system("cls");
-
-	return 0;
 }

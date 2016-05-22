@@ -55,6 +55,7 @@ int ItemFloor::item_floor_main()
 			}
 			this->clear_flag = f.field_clear_check();
 		}
+		system("cls");
 		break;
 	}
 	return 0;

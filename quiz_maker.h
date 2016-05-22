@@ -13,10 +13,10 @@ public:
 	QuizMaker();
 	~QuizMaker();
 	void quiz_maker_init(Quiz & q);
-	bool quiz_maker_main(Quiz & q);
+	int quiz_maker_main(Quiz & q);
 
 private:
 	bool moved;
 	int selected_ans;
-	bool clear_flag;
+	int clear_flag;
 };
