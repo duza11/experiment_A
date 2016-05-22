@@ -156,6 +156,7 @@
     <ClCompile Include="quiz.cpp" />
     <ClCompile Include="quiz_floor.cpp" />
     <ClCompile Include="quiz_maker.cpp" />
+    <ClCompile Include="timer.cpp" />
     <ClCompile Include="typing.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +170,7 @@
     <ClInclude Include="quiz.h" />
     <ClInclude Include="quiz_floor.h" />
     <ClInclude Include="quiz_maker.h" />
+    <ClInclude Include="timer.h" />
     <ClInclude Include="typing.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

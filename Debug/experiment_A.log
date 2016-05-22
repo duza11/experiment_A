@@ -1,3 +1,4 @@
 ﻿  main.cpp
-c:\users\adm\source\repos\experiment_a\main.cpp(33): warning C4244: '-=': 'time_t' から 'int' への変換です。データが失われる可能性があります。
+c:\users\adm\source\repos\experiment_a\timer.h(21): warning C4244: '-=': 'time_t' から 'int' への変換です。データが失われる可能性があります。
+c:\users\adm\source\repos\experiment_a\main.cpp(15): warning C4101: 'now': ローカル変数は 1 度も使われていません。
   experiment_A.vcxproj -> C:\Users\Adm\Source\Repos\experiment_A\Debug\experiment_A.exe

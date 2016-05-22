@@ -1,5 +1,7 @@
 #pragma once
 
+#include <time.h>
+
 #define WALL -1							// 番人
 #define BOARD_WD 3						// ボード幅
 #define BOARD_HT 7						// ボード高さ
@@ -14,3 +16,6 @@
 #define PLAYER_MAX_X BOARD_WD			// プレイヤーのX座標の最大値
 #define PLAYER_MIN_X 1					// プレイヤーのX座標の最小値
 #define PLAYER_MAX_Y BOARD_HT			// プレイヤーのY座標の最大値
+
+#define TIME 600
+#define QZ_FLOOR_SIZE 7

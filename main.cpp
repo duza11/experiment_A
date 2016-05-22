@@ -3,9 +3,7 @@
 #include "item_floor.h"
 #include "quiz_floor.h"
 #include "common.h"
-
-#define TIME 600
-#define QZ_FLOOR_SIZE 7
+#include "timer.h"
 
 int main()
 {
@@ -25,6 +23,9 @@ int main()
 
 	itf.item_floor_main();
 	time(&old);
+
+	_getch();
+	/*
 	while (time_limit > 0 && !clear_flag)
 	{
 		time(&now);
@@ -61,6 +62,6 @@ int main()
 		cout << "GAME OVER";
 	}
 	_getch();
-
+	*/
 	return 0;
 }
