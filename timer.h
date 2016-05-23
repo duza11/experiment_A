@@ -17,8 +17,11 @@ public:
 		time(&now);
 		if (old != now)
 		{
-			time(&old);
-			time_limit -= (now - old);
+			if (timer_flag)
+			{
+				time_limit -= (now - old);
+			}
+			old = now;
 			time_moved_flag = true;
 		}
 		if (time_moved_flag)
@@ -30,11 +33,28 @@ public:
 		return (time_limit > 0);
 	}
 
+	void timer_penalty(int pen_time)
+	{
+		time_limit -= pen_time;
+		time_moved_flag = true;
+	}
+
+	void timer_switch(bool timer_flag)
+	{
+		this->timer_flag = timer_flag;
+	}
+
+	void timer_reprint()
+	{
+		this->time_moved_flag = true;
+	}
+
 private:
 	Timer()
 	{
 		time_limit = TIME;
 		time_moved_flag = true;
+		timer_flag = true;
 		time(&old);
 		time(&now);
 	}
@@ -43,6 +63,7 @@ private:
 
 	static Timer* timer;
 	int time_limit;
+	bool timer_flag = true;
 	time_t old, now;
 	int time_moved_flag;
 };

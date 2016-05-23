@@ -1,4 +1,5 @@
-﻿  main.cpp
-c:\users\adm\source\repos\experiment_a\timer.h(21): warning C4244: '-=': 'time_t' から 'int' への変換です。データが失われる可能性があります。
-c:\users\adm\source\repos\experiment_a\main.cpp(15): warning C4101: 'now': ローカル変数は 1 度も使われていません。
-  experiment_A.vcxproj -> C:\Users\Adm\Source\Repos\experiment_A\Debug\experiment_A.exe
+﻿  quiz_floor.cpp
+c:\users\admin\source\repos\experiment_a\timer.h(22): warning C4244: '-=': 'time_t' から 'int' への変換です。データが失われる可能性があります。
+c:\users\admin\source\repos\experiment_a\quiz_floor.cpp(42): warning C4244: '初期化中': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\users\admin\source\repos\experiment_a\quiz_floor.cpp(43): warning C4800: 'int': ブール値を 'true' または 'false' に強制的に設定します (警告の処理)
+  experiment_A.vcxproj -> C:\Users\admin\Source\Repos\experiment_A\Debug\experiment_A.exe

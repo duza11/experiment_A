@@ -23,5 +23,4 @@ private:
 	bool clear_flag = false;
 	string word;
 	string input;
-	string::iterator itr;
 };

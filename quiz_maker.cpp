@@ -1,4 +1,5 @@
 #include "quiz_maker.h"
+#include "timer.h"
 
 QuizMaker::QuizMaker()
 {
@@ -20,7 +21,7 @@ void QuizMaker::quiz_maker_init(Quiz & q)
 
 int QuizMaker::quiz_maker_main(Quiz & q)
 {
-	if (!clear_flag)
+	while (Timer::get_instance().timer_check() && !clear_flag)
 	{
 		if (this->moved)
 		{
@@ -39,6 +40,11 @@ int QuizMaker::quiz_maker_main(Quiz & q)
 			{
 				this->clear_flag = q.quiz_get_ans_type(this->selected_ans);
 				this->moved = true;
+				if (!this->clear_flag)
+				{
+					Timer::get_instance().timer_penalty(30);
+				}
+				
 			}
 			else if (c == KEY_ARROW)
 			{
@@ -54,11 +60,8 @@ int QuizMaker::quiz_maker_main(Quiz & q)
 				this->moved = true;
 			}
 		}
-		return 1;
 	}
-	else
-	{
-		system("cls");
-		return 2;
-	}
+	system("cls");
+	Timer::get_instance().timer_reprint();
+	return 0;
 }

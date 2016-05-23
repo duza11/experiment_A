@@ -1,4 +1,5 @@
 #include "quiz_floor.h"
+#include "timer.h"
 
 QuizFloor::QuizFloor()
 {
@@ -57,37 +58,14 @@ QuizFloor::~QuizFloor()
 
 int QuizFloor::quiz_floor_main()
 {
-	if (itr < qz_array.end())
+	for (auto itr = qz_array.begin(); itr < qz_array.begin() + QZ_FLOOR_SIZE; itr++)
 	{
-		switch (this->qf_status)
-		{
-		case 0:
-		{
-			if (this->qz_init_flag)
-			{
-				t.typing_init((*itr).quiz_get_tp_str());
-				this->qz_init_flag = false;
-			}
-			this->qf_status = t.typing_main();
-			break;
-		}
-		case 1:
-			if (this->qm_init_flag)
-			{
-				qm.quiz_maker_init(*itr);
-				this->qm_init_flag = false;
-			}
-			this->qf_status = qm.quiz_maker_main(*itr);
-			break;
-		case 2:
-			this->itr++;
-			this->qf_status = 0;
-			this->qz_init_flag = true;
-			this->qm_init_flag = true;
-			return 1;
-			break;
-		}
-		
+		if (!Timer::get_instance().timer_check()) break;
+		t.typing_init((*itr).quiz_get_tp_str());
+		t.typing_main();
+
+		qm.quiz_maker_init(*itr);
+		qm.quiz_maker_main(*itr);
 	}
 	return 0;
 }
