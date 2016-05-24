@@ -7,6 +7,7 @@
 #include "consoleUtil.h"
 #include "field_room.h"
 #include "common.h"
+#include "item.h"
 
 using namespace std;
 

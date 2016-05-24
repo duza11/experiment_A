@@ -23,6 +23,7 @@ int QuizMaker::quiz_maker_main(Quiz & q)
 {
 	while (Timer::get_instance().timer_check() && !clear_flag)
 	{
+		//Item::get_instance().use_item(eItem_harf, &q);
 		if (this->moved)
 		{
 			setCursorPos(0, QZ_START_Y);
@@ -65,6 +66,7 @@ int QuizMaker::quiz_maker_main(Quiz & q)
 	system("cls");
 	Timer::get_instance().timer_switch(true);
 	Timer::get_instance().timer_reprint();
+	Item::get_instance().use_flag_reset();
 	return 0;
 }
 

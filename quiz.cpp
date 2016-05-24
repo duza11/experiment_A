@@ -32,6 +32,11 @@ void Quiz::quiz_set_ans_type(int index, bool ans_type)
 	this->ans_type[index] = ans_type;
 }
 
+void Quiz::quiz_set_answered_flag(int index, bool answered_flag)
+{
+	this->answered_flag[index] = answered_flag;
+}
+
 string Quiz::quiz_get_tp_str()
 {
 	return this->tp_str;

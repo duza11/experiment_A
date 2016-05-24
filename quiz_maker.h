@@ -4,6 +4,7 @@
 #include <iostream>
 #include "quiz.h"
 #include "consoleUtil.h"
+#include "item.h"
 
 #define QZ_START_Y 4
 
