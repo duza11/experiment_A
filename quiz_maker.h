@@ -14,6 +14,7 @@ public:
 	~QuizMaker();
 	void quiz_maker_init(Quiz & q);
 	int quiz_maker_main(Quiz & q);
+	void quiz_maker_set_color(Quiz & q, int index);
 
 private:
 	bool moved;

@@ -4,7 +4,7 @@ Quiz::Quiz()
 {
 	for (int i = 0; i < QZ_OPT_SIZE; i++)
 	{
-		this->qz_opt_flag[i] = true;
+		this->answered_flag[i] = false;
 	}
 }
 
@@ -49,5 +49,23 @@ string Quiz::quiz_get_qz_opt(int index)
 
 bool Quiz::quiz_get_ans_type(int index)
 {
+	return this->ans_type[index];
+}
+
+bool Quiz::quiz_get_answered_flag(int index)
+{
+	return this->answered_flag[index];
+}
+
+bool Quiz::quiz_ans_check(int index)
+{
+	if (!this->answered_flag[index])
+	{
+		if (!this->ans_type[index])
+		{
+			Timer::get_instance().timer_penalty(30);
+		}
+		this->answered_flag[index] = true;
+	}
 	return this->ans_type[index];
 }

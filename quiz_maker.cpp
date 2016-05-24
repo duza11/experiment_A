@@ -27,7 +27,9 @@ int QuizMaker::quiz_maker_main(Quiz & q)
 		{
 			setCursorPos(0, QZ_START_Y);
 			for (int i = 0; i < QZ_OPT_SIZE; i++) {
-				cout << " " << q.quiz_get_qz_opt(i) << "\n";
+				quiz_maker_set_color(q, i);
+				cout << " " << (char)('A' + i) << "." << q.quiz_get_qz_opt(i) << "\n";
+				setColor(COL_WHITE, COL_BLACK);
 			}
 			setCursorPos(0, QZ_START_Y + this->selected_ans);
 			cout << ">\r";
@@ -38,13 +40,12 @@ int QuizMaker::quiz_maker_main(Quiz & q)
 			int c = _getch();
 			if (c == KEY_SPACE)
 			{
-				this->clear_flag = q.quiz_get_ans_type(this->selected_ans);
-				this->moved = true;
-				if (!this->clear_flag)
+				if (!q.quiz_get_answered_flag(this->selected_ans))
 				{
-					Timer::get_instance().timer_penalty(30);
+					q.quiz_get_ans_type(this->selected_ans);
 				}
-				
+				this->clear_flag = q.quiz_ans_check(this->selected_ans);
+				this->moved = true;
 			}
 			else if (c == KEY_ARROW)
 			{
@@ -64,4 +65,16 @@ int QuizMaker::quiz_maker_main(Quiz & q)
 	system("cls");
 	Timer::get_instance().timer_reprint();
 	return 0;
+}
+
+void QuizMaker::quiz_maker_set_color(Quiz & q, int index)
+{
+	if (q.quiz_get_answered_flag(index))
+	{
+		setColor(COL_GRAY, COL_BLACK);
+	}
+	else
+	{
+		setColor(COL_WHITE, COL_BLACK);
+	}
 }
