@@ -12,7 +12,7 @@ Field::Field()
 			}
 			else {
 				//g_board[x][y] = 0;
-				new(fr + x) FieldRoom(0, 0);
+				new(fr + x) FieldRoom(0, x - 2);
 			}
 		}
 	}
@@ -30,6 +30,11 @@ void Field::field_update(pair<int, int> p_pos, pair<int, int>np_pos)
 		{
 			if (x == p_pos.first && y == p_pos.second)
 			{
+				if (fr[x][y].field_room_get_item_flag())
+				{
+					Item::get_instance().get_item(fr[x][y].field_room_get_item());
+					fr[x][y].field_room_set_item_flag(false);
+				}
 				fr[x][y].field_room_update('P');
 			}
 			else if (x == np_pos.first && y == np_pos.second)

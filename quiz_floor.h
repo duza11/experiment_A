@@ -1,9 +1,10 @@
 #pragma once
 
 #include <vector>
+#include <new.h>
 #include "typing.h"
 #include "quiz_maker.h"
-#include <new.h>
+#include "common.h"
 
 #include<fstream>
 #include<iostream>
