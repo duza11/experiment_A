@@ -1,3 +1,2 @@
-﻿  quiz_maker.cpp
-c:\users\admin\source\repos\experiment_a\timer.h(22): warning C4244: '-=': 'time_t' から 'int' への変換です。データが失われる可能性があります。
+﻿  menu_mode.cpp
   experiment_A.vcxproj -> C:\Users\admin\Source\Repos\experiment_A\Debug\experiment_A.exe

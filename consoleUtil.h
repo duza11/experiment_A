@@ -35,6 +35,7 @@ using namespace std;
 #define	KEY_RIGHT 0x4d
 #define	KEY_DOWN 0x50
 #define KEY_SPACE 0x20
+#define KEY_BACK 0x08
 
 // •¶šFw’è for Windows Console
 void setColor(int col);
