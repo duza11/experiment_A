@@ -14,7 +14,7 @@ class IModeChanger
 public:
 	IModeChanger();
 	virtual ~IModeChanger() = 0;
-	virtual void change_mode() = 0;
+	virtual void change_mode(eMode next_mode) = 0;
 
 private:
 

@@ -156,6 +156,7 @@
     <ClCompile Include="i_mode_changer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menu_mode.cpp" />
+    <ClCompile Include="text_box.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="field_room.cpp" />
     <ClCompile Include="field.cpp" />
@@ -176,6 +177,7 @@
     <ClInclude Include="item_mode.h" />
     <ClInclude Include="i_mode_changer.h" />
     <ClInclude Include="menu_mode.h" />
+    <ClInclude Include="text_box.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="field_room.h" />
     <ClInclude Include="field.h" />

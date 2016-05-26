@@ -39,7 +39,7 @@ QuizFloor::QuizFloor()
 				}
 				else
 				{
-					int temp = stof(token);
+					int temp = stoi(token);
 					q.quiz_set_ans_type(optCnt % QZ_OPT_SIZE, temp);
 					optCnt++;
 				}

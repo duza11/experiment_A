@@ -1,7 +1,5 @@
 #pragma once
 
-#include <time.h>
-
 #define WALL -1							// 番人
 #define BOARD_WD 3						// ボード幅
 #define BOARD_HT 7						// ボード高さ

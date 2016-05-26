@@ -4,15 +4,8 @@ class AnswerMode
 {
 public:
 	AnswerMode();
+	~AnswerMode();
 
 private:
 
 };
-
-AnswerMode::AnswerMode()
-{
-}
-
-AnswerMode::~AnswerMode()
-{
-}

@@ -22,7 +22,7 @@ Field::~Field()
 {
 }
 
-void Field::field_update(pair<int, int> p_pos, pair<int, int>np_pos)
+void Field::field_update(pair<int, int> p_pos, pair<int, int> np_pos)
 {
 	for (int x = 1; x <= BOARD_WD; x++)
 	{

@@ -18,5 +18,5 @@ protected:
 	IModeChanger* m_mode_changer;
 
 private:
-	
+	int now_select = 0;
 };

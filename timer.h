@@ -19,7 +19,7 @@ public:
 		{
 			if (timer_flag)
 			{
-				time_limit -= (now - old);
+				time_limit -= (int)(now - old);
 			}
 			old = now;
 			time_moved_flag = true;

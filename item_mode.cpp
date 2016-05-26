@@ -11,7 +11,7 @@ void ItemMode::init()
 
 void ItemMode::finit()
 {
-
+	tb->finitialize();
 }
 
 void ItemMode::update()
@@ -24,12 +24,18 @@ void ItemMode::update()
 			switch (now_select)
 			{
 			case eItem_harf:
+				Item::get_instance().use_item(eItem_harf);
 				break;
 			case eItem_time:
+				Item::get_instance().use_item(eItem_time);
 				break;
 			}
 		}
-		if (c == KEY_ARROW)
+		else if (c == KEY_BACK)
+		{
+			m_mode_changer->change_mode(eMode_Menu);
+		}
+		else if (c == KEY_ARROW)
 		{
 			c = _getch();
 			if (c == KEY_UP)
@@ -46,5 +52,10 @@ void ItemMode::update()
 
 void ItemMode::print()
 {
-
+	tb->print();
+	tb->print();
+	setCursorPos(this->pos.first, this->pos.second);
+	cout << " アイテム1";
+	setCursorPos(this->pos.first, this->pos.second + 1);
+	cout << " アイテム2";
 }
