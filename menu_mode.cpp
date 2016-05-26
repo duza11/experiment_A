@@ -4,8 +4,8 @@ MenuMode::MenuMode(IModeChanger* changer) : BaseMode(changer)
 {
 	this->pos.first = MENU_OPT_X;
 	this->pos.second = MENU_OPT_Y;
-	this->pos.first = MENU_BOX_X;
-	this->pos.second = MENU_BOX_Y;
+	this->box_pos.first = MENU_BOX_X;
+	this->box_pos.second = MENU_BOX_Y;
 	tb = new TextBox(box_pos, MENU_BOX_WD, MENU_BOX_HT);
 }
 
@@ -52,10 +52,11 @@ void MenuMode::update()
 
 void MenuMode::print()
 {
-	
 	tb->print();
 	setCursorPos(this->pos.first, this->pos.second);
 	cout << " ‰ð“š";
 	setCursorPos(this->pos.first, this->pos.second + 1);
 	cout << " ƒAƒCƒeƒ€";
+	setCursorPos(this->pos.first, this->pos.second + now_select);
+	cout << ">";
 }

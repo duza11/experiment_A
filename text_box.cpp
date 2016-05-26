@@ -4,7 +4,7 @@ TextBox::TextBox()
 {
 }
 
-TextBox::TextBox(pair<int, int> pos, int box_ht, int box_wd)
+TextBox::TextBox(pair<int, int> pos, int box_wd, int box_ht)
 {
 	this->pos = pos;
 	this->box_wd = box_wd;

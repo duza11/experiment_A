@@ -11,6 +11,7 @@ QuizMaker::~QuizMaker()
 
 void QuizMaker::quiz_maker_init(Quiz & q)
 {
+	bm = (BaseMode*) new MenuMode(this);
 	this->selected_ans = 0;
 	this->clear_flag = false;
 	this->moved = true;
@@ -23,8 +24,28 @@ int QuizMaker::quiz_maker_main(Quiz & q)
 {
 	while (Timer::get_instance().timer_check() && !clear_flag)
 	{
-		//Item::get_instance().use_item(eItem_harf, &q);
-		if (this->moved)
+
+		if (m_next_mode != eMode_None)
+		{
+			bm->finit();
+			delete bm;
+			switch (m_next_mode)
+			{
+			case eMode_Menu:
+				bm = (BaseMode*) new MenuMode(this);
+				break;
+			case eMode_Item:
+				bm = (BaseMode*) new ItemMode(this);
+				break;
+			case eMode_Answer:
+				bm = (BaseMode*) new AnswerMode(this, &q);
+				break;
+			}
+			m_next_mode = eMode_None;
+		}
+		bm->update();
+		bm->print();
+		/*if (this->moved)
 		{
 			setCursorPos(0, QZ_START_Y);
 			for (int i = 0; i < QZ_OPT_SIZE; i++) {
@@ -61,7 +82,7 @@ int QuizMaker::quiz_maker_main(Quiz & q)
 				}
 				this->moved = true;
 			}
-		}
+		}*/
 	}
 	system("cls");
 	Timer::get_instance().timer_switch(true);
@@ -70,7 +91,12 @@ int QuizMaker::quiz_maker_main(Quiz & q)
 	return 0;
 }
 
-void QuizMaker::quiz_maker_set_color(Quiz & q, int index)
+void QuizMaker::change_mode(eMode next_mode)
+{
+	m_next_mode = next_mode;
+}
+
+/*void QuizMaker::quiz_maker_set_color(Quiz & q, int index)
 {
 	if (q.quiz_get_answered_flag(index))
 	{
@@ -80,4 +106,4 @@ void QuizMaker::quiz_maker_set_color(Quiz & q, int index)
 	{
 		setColor(COL_WHITE, COL_BLACK);
 	}
-}
+}*/

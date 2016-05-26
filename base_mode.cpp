@@ -5,6 +5,11 @@ BaseMode::BaseMode(IModeChanger* changer)
 	m_mode_changer = changer;
 }
 
+BaseMode::BaseMode(IModeChanger* changer, Quiz* q)
+{
+
+}
+
 BaseMode::~BaseMode()
 {
 }
