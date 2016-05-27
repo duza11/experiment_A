@@ -6,7 +6,7 @@ ItemFloor::ItemFloor()
 	this->movable_flag = true;
 	setColor(COL_WHITE);
 	setCursorPos(60, 2);
-	cout << "移動：[←][→]";
+	cout << "移動 ：[←][→]";
 	setCursorPos(60, 3);
 	cout << "選択：[SPACE]";
 	setCursorPos(0, 0);

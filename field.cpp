@@ -18,6 +18,11 @@ Field::Field()
 				new(&fr[x][y]) FieldRoom(0, x - 2);
 			}
 		}
+		for (int i = 0; i < BOARD_WD; i++)
+		{
+			int rnum = (rand() % BOARD_ARY_WD) + 1;
+			int temp = fr[i][x].field_room_get_item();
+		}
 	}
 }
 
