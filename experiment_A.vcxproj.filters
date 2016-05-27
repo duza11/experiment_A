@@ -66,10 +66,10 @@
     <ClCompile Include="base_mode.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="i_mode_changer.cpp">
+    <ClCompile Include="text_box.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="text_box.cpp">
+    <ClCompile Include="i_quiz_maker_changer.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -125,10 +125,10 @@
     <ClInclude Include="item_mode.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="i_mode_changer.h">
+    <ClInclude Include="text_box.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="text_box.h">
+    <ClInclude Include="i_quiz_maker_changer.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>

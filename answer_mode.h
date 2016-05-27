@@ -13,10 +13,10 @@
 class AnswerMode : BaseMode
 {
 public:
-	AnswerMode(IModeChanger* changer, Quiz* q);
+	AnswerMode(IQuizMakerChanger* changer, Quiz* q);
 	void init() override;
 	void finit() override;
-	void update() override;
+	bool update() override;
 	void print() override;
 
 private:

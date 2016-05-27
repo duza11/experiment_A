@@ -1,6 +1,6 @@
 #include "menu_mode.h"
 
-MenuMode::MenuMode(IModeChanger* changer) : BaseMode(changer)
+MenuMode::MenuMode(IQuizMakerChanger* changer) : BaseMode(changer)
 {
 	this->pos.first = MENU_OPT_X;
 	this->pos.second = MENU_OPT_Y;
@@ -18,7 +18,7 @@ void MenuMode::finit()
 	delete tb;
 }
 
-void MenuMode::update()
+bool MenuMode::update()
 {
 	if (_kbhit())
 	{
@@ -28,10 +28,10 @@ void MenuMode::update()
 			switch (now_select)
 			{
 			case eMenu_Asnwer:
-				m_mode_changer->change_mode(eMode_Answer);
+				m_qm_changer->change_mode(eMode_Answer);
 				break;
 			case eMenu_Item:
-				m_mode_changer->change_mode(eMode_Item);
+				m_qm_changer->change_mode(eMode_Item);
 				break;
 			}
 		}
@@ -40,14 +40,16 @@ void MenuMode::update()
 			c = _getch();
 			if (c == KEY_UP)
 			{
-				now_select = (now_select + 1) % eMenu_Num;
+				now_select = (now_select + eMenu_Num - 1) % eMenu_Num;
 			}
 			else if (c == KEY_DOWN)
 			{
-				now_select = (now_select + eMenu_Num - 1) % eMenu_Num;
+				now_select = (now_select + 1) % eMenu_Num;
 			}
 		}
+		return true;
 	}
+	return false;
 }
 
 void MenuMode::print()

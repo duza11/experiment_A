@@ -71,7 +71,7 @@ private:
 
 	void use_time()
 	{
-
+		Timer::get_instance().timer_switch(false);
 	}
 
 	random_device rnd;

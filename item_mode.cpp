@@ -1,7 +1,9 @@
 #include "item_mode.h"
 
-ItemMode::ItemMode(IModeChanger* changer) : BaseMode(changer)
+ItemMode::ItemMode(IQuizMakerChanger* changer, Quiz* q) : BaseMode(changer, q)
 {
+	m_qm_changer = changer;
+	this->q = q;
 	this->pos.first = ITEM_OPT_X;
 	this->pos.second = ITEM_OPT_Y;
 	this->box_pos.first =  ITEM_BOX_X;
@@ -20,7 +22,7 @@ void ItemMode::finit()
 	delete tb;
 }
 
-void ItemMode::update()
+bool ItemMode::update()
 {
 	if (_kbhit())
 	{
@@ -30,7 +32,7 @@ void ItemMode::update()
 			switch (now_select)
 			{
 			case eItem_harf:
-				Item::get_instance().use_item(eItem_harf);
+				Item::get_instance().use_item(eItem_harf, q);
 				break;
 			case eItem_time:
 				Item::get_instance().use_item(eItem_time);
@@ -39,21 +41,23 @@ void ItemMode::update()
 		}
 		else if (c == KEY_BACK)
 		{
-			m_mode_changer->change_mode(eMode_Menu);
+			m_qm_changer->change_mode(eMode_Menu);
 		}
 		else if (c == KEY_ARROW)
 		{
 			c = _getch();
 			if (c == KEY_UP)
 			{
-				now_select = (now_select + 1) % eItem_length;
+				now_select = (now_select + eItem_length - 1) % eItem_length;
 			}
 			else if (c == KEY_DOWN)
 			{
-				now_select = (now_select + eItem_length - 1) % eItem_length;
+				now_select = (now_select + 1) % eItem_length;
 			}
 		}
+		return true;
 	}
+	return false;
 }
 
 void ItemMode::print()

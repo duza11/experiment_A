@@ -14,10 +14,10 @@
 class ItemMode : BaseMode
 {
 public:
-	ItemMode(IModeChanger* changer);
+	ItemMode(IQuizMakerChanger* changer, Quiz* q);
 	void init() override;
 	void finit() override;
-	void update() override;
+	bool update() override;
 	void print() override;
 
 private:
@@ -25,4 +25,5 @@ private:
 	pair<int, int> pos;
 	pair<int, int> box_pos;
 	TextBox *tb;
+	Quiz *q;
 };

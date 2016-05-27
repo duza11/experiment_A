@@ -21,10 +21,10 @@ typedef enum
 class MenuMode : public BaseMode
 {
 public:
-	MenuMode(IModeChanger* changer);
+	MenuMode(IQuizMakerChanger* changer);
 	void init() override;
 	void finit() override;
-	void update() override;
+	bool update() override;
 	void print() override;
 
 private:

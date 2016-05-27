@@ -1,23 +1,23 @@
 #pragma once
 
 #include <conio.h>
-#include "i_mode_changer.h"
+#include "i_quiz_maker_changer.h"
 #include "consoleUtil.h"
 #include "quiz.h"
 
 class BaseMode
 {
 public:
-	BaseMode(IModeChanger* changer);
-	BaseMode(IModeChanger* changer, Quiz* q);
+	BaseMode(IQuizMakerChanger* changer);
+	BaseMode(IQuizMakerChanger* changer, Quiz* q);
 	virtual ~BaseMode();
 	virtual void init();
 	virtual void finit();
-	virtual void update();
+	virtual bool update();
 	virtual void print();
 
 protected:
-	IModeChanger* m_mode_changer;
+	IQuizMakerChanger* m_qm_changer;
 
 private:
 	int now_select = 0;
