@@ -16,6 +16,7 @@ public:
 
 	void get_item(int selected_item) {
 		this->avail_item[selected_item]++;
+		cout << item_name[selected_item] << "を手に入れた";
 	}
 
 	void use_item(int selected_item, ...) {
@@ -52,6 +53,8 @@ private:
 			avail_item[i] = 0;
 			use_flag[i] = false;
 		}
+		item_name[eItem_harf] = "アイテム1";
+		item_name[eItem_time] = "アイテム2";
 	}
 	Item(const Item & item) {}
 	~Item() {}
@@ -75,7 +78,7 @@ private:
 	}
 
 	random_device rnd;
-	static Item* item;
 	int avail_item[eItem_length];
 	int use_flag[eItem_length];
+	string item_name[eItem_length];
 };

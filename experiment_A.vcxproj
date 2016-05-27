@@ -150,7 +150,6 @@
     <ClCompile Include="base_mode.cpp" />
     <ClCompile Include="consoleUtil.cpp" />
     <ClCompile Include="game_mgr.cpp" />
-    <ClCompile Include="item.cpp" />
     <ClCompile Include="item_floor.cpp" />
     <ClCompile Include="item_mode.cpp" />
     <ClCompile Include="i_quiz_maker_changer.cpp" />
@@ -163,7 +162,6 @@
     <ClCompile Include="quiz.cpp" />
     <ClCompile Include="quiz_floor.cpp" />
     <ClCompile Include="quiz_maker.cpp" />
-    <ClCompile Include="timer.cpp" />
     <ClCompile Include="typing.cpp" />
   </ItemGroup>
   <ItemGroup>

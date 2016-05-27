@@ -4,15 +4,18 @@ Field::Field()
 {
 	for (int x = 0; x < BOARD_ARY_WD; ++x) {
 		for (int y = 0; y < BOARD_ARY_HT; ++y) {
-			if (x == 0 || x == BOARD_WD + 1 ||
-				y == 0 || y == BOARD_HT + 1)
+			if (x == 0 || x == BOARD_WD + 1 || y == 0 || y == BOARD_HT + 1)
 			{
 				//g_board[x][y] = WALL;
-				new(fr + x) FieldRoom(WALL, 0);
+				new(&fr[x][y]) FieldRoom(WALL, -1);
 			}
-			else {
-				//g_board[x][y] = 0;
-				new(fr + x) FieldRoom(0, x - 2);
+			else if (y == 1 || y == BOARD_HT)
+			{
+				new(&fr[x][y]) FieldRoom(0, -1);
+			}
+			else
+			{
+				new(&fr[x][y]) FieldRoom(0, x - 2);
 			}
 		}
 	}

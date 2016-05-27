@@ -22,5 +22,5 @@ public:
 	bool field_clear_check();
 
 private:
-	FieldRoom fr[BOARD_WD + 2][BOARD_HT + 2];
+	FieldRoom fr[BOARD_ARY_WD][BOARD_ARY_HT];
 };

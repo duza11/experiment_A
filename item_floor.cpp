@@ -4,6 +4,7 @@ ItemFloor::ItemFloor()
 {
 	this->clear_flag = false;
 	this->movable_flag = true;
+	setColor(COL_WHITE);
 	setCursorPos(60, 2);
 	cout << "ˆÚ“®F[©][¨]";
 	setCursorPos(60, 3);

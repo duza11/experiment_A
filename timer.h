@@ -61,7 +61,6 @@ private:
 	Timer(const Timer & t) {}
 	~Timer() {}
 
-	static Timer* timer;
 	int time_limit;
 	bool timer_flag = true;
 	time_t old, now;
