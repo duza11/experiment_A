@@ -2,26 +2,24 @@
 
 Field::Field()
 {
-	for (int x = 0; x < BOARD_ARY_WD; ++x) {
-		for (int y = 0; y < BOARD_ARY_HT; ++y) {
-			if (x == 0 || x == BOARD_WD + 1 || y == 0 || y == BOARD_HT + 1)
+	for (int x = 0; x < BOARD_WD; ++x) {
+		for (int y = 0; y < BOARD_HT; ++y) {
+			if ((x == 0 || x == BOARD_WD - 1) && (y == 0 || y == BOARD_HT - 1))
 			{
 				//g_board[x][y] = WALL;
-				new(&fr[x][y]) FieldRoom(WALL, -1);
+				room[x][y].room_status = WALL;
+				room[x][y].item_status = -1;
 			}
-			else if (y == 1 || y == BOARD_HT)
+			else if (y == 0 || y == BOARD_HT - 1)
 			{
-				new(&fr[x][y]) FieldRoom(0, -1);
+				room[x][y].room_status = 0;
+				room[x][y].item_status = -1;
 			}
 			else
 			{
-				new(&fr[x][y]) FieldRoom(0, x - 2);
+				room[x][y].room_status = 0;
+				room[x][y].item_status = x - 1;
 			}
-		}
-		for (int i = 0; i < BOARD_WD; i++)
-		{
-			int rnum = (rand() % BOARD_ARY_WD) + 1;
-			int temp = fr[i][x].field_room_get_item();
 		}
 	}
 }
@@ -32,26 +30,26 @@ Field::~Field()
 
 void Field::field_update(pair<int, int> p_pos, pair<int, int> np_pos)
 {
-	for (int x = 1; x <= BOARD_WD; x++)
+	for (int x = 0; x < BOARD_WD; x++)
 	{
-		for (int y = 1; y <= BOARD_HT; y++)
+		for (int y = 0; y < BOARD_HT; y++)
 		{
 			if (x == p_pos.first && y == p_pos.second)
 			{
-				if (fr[x][y].field_room_get_item_flag())
+				if (room[x][y].item_get_flag == false)
 				{
-					Item::get_instance().get_item(fr[x][y].field_room_get_item());
-					fr[x][y].field_room_set_item_flag(false);
+					Item::get_instance().get_item(room[x][y].item_status);
+					room[x][y].item_get_flag == true;
 				}
-				fr[x][y].field_room_update('P');
+				room[x][y].room_status = 'P';
 			}
 			else if (x == np_pos.first && y == np_pos.second)
 			{
-				fr[x][y].field_room_update('N');
+				room[x][y].room_status = 'N';
 			}
 			else
 			{
-				fr[x][y].field_room_update(0);
+				room[x][y].room_status = 0;
 			}
 		}
 	}
@@ -59,8 +57,8 @@ void Field::field_update(pair<int, int> p_pos, pair<int, int> np_pos)
 
 void Field::field_print_line(int y, bool printVal)
 {
-	for (int x = 1; x <= BOARD_WD; ++x) {
-		int v = fr[x][y].field_room_get_status();
+	for (int x = 0; x < BOARD_WD; x++) {
+		int v = room[x][y].room_status;
 		//setColor(fgColor(v), bgColor(v));
 		setFgBgColor(v);
 		string str(CELL_WIDTH, ' ');
@@ -80,7 +78,7 @@ void Field::field_print_line(int y, bool printVal)
 void Field::field_print()
 {
 	setCursorPos(0, 0);
-	for (int y = 1; y < BOARD_HT + 1; y++)
+	for (int y = 0; y < BOARD_HT; y++)
 	{
 		field_print_line(y, false);
 		field_print_line(y, true);
@@ -90,9 +88,9 @@ void Field::field_print()
 
 bool Field::field_clear_check()
 {
-	for (int x = 1; x <= BOARD_WD; x++)
+	for (int x = 0; x < BOARD_WD; x++)
 	{
-		if (fr[x][1].field_room_get_status() == 'P') {
+		if (room[x][0].room_status == 'P') {
 			return true;
 		}
 	}

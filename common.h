@@ -7,8 +7,8 @@
 #define BOARD_ARY_HT (BOARD_HT + 2)		// ボード用配列の2次元目の要素数
 #define CELL_WIDTH 8					// セル表示幅
 
-#define PLAYER_X ((BOARD_WD + 1) / 2)	// プレイヤーの初期X座標
-#define PLAYER_Y BOARD_HT				// プレイヤーの初期Y座標
+#define PLAYER_X (BOARD_WD / 2)	// プレイヤーの初期X座標
+#define PLAYER_Y BOARD_HT - 1				// プレイヤーの初期Y座標
 #define PLAYER_NEXT_X PLAYER_X			// プレイヤーの次の初期X座標
 #define PLAYER_NEXT_Y (PLAYER_Y - 1)	// プレイヤーの次の初期Y座標
 #define PLAYER_MAX_X BOARD_WD			// プレイヤーのX座標の最大値

@@ -5,7 +5,6 @@
 #include <sstream>      // std::ostringstream
 #include <string>
 #include "consoleUtil.h"
-#include "field_room.h"
 #include "common.h"
 #include "item.h"
 
@@ -22,5 +21,11 @@ public:
 	bool field_clear_check();
 
 private:
-	FieldRoom fr[BOARD_ARY_WD][BOARD_ARY_HT];
+	typedef struct
+	{
+		int room_status;
+		int item_status;
+		int item_get_flag;
+	} Room;
+	Room room[BOARD_WD][BOARD_HT];
 };

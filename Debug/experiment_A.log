@@ -1,7 +1,10 @@
 ﻿  field.cpp
+c:\users\adm\source\repos\experiment_a\field.cpp(42): warning C4805: '==': 演算中の 'int' 型と 'bool' 型の混用は安全ではありません
+c:\users\adm\source\repos\experiment_a\field.cpp(42): warning C4553: '==': 演算子にプログラム上の作用がありません。'=' を意図しましたか?
   コードを生成中...
-  スキップ中... (関連する変更は検出されませんでした)
+  コンパイル中...
   player.cpp
   main.cpp
   item_floor.cpp
-  experiment_A.vcxproj -> C:\Users\admin\Source\Repos\experiment_A\Debug\experiment_A.exe
+  コードを生成中...
+  experiment_A.vcxproj -> C:\Users\Adm\Source\Repos\experiment_A\Debug\experiment_A.exe
