@@ -13,11 +13,10 @@
 class AnswerMode : BaseMode
 {
 public:
-	AnswerMode(IQuizMakerChanger* changer, Quiz* q);
-	void init() override;
-	void finit() override;
-	bool update() override;
-	void print() override;
+	AnswerMode(IQuizFloor* changer, Quiz* q);
+	void Finitialize() override;
+	bool Update() override;
+	void Print() override;
 
 private:
 	int now_select = 0;

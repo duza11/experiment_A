@@ -12,7 +12,6 @@ QuizMaker::~QuizMaker()
 void QuizMaker::quiz_maker_init(Quiz & q)
 {
 	bm = (BaseMode*) new MenuMode(this);
-	this->selected_ans = 0;
 	this->clear_flag = false;
 	this->moved = true;
 
@@ -69,33 +68,6 @@ int QuizMaker::quiz_maker_main(Quiz & q)
 	{
 		quiz_maker_update(q);
 		quiz_maker_print(q);
-		/*
-		if (_kbhit())
-		{
-			int c = _getch();
-			if (c == KEY_SPACE)
-			{
-				if (!q.quiz_get_answered_flag(this->selected_ans))
-				{
-					q.quiz_get_ans_type(this->selected_ans);
-				}
-				this->clear_flag = q.quiz_ans_check(this->selected_ans);
-				this->moved = true;
-			}
-			else if (c == KEY_ARROW)
-			{
-				c = _getch();
-				if (c == KEY_UP)
-				{
-					this->selected_ans = (this->selected_ans + QZ_OPT_SIZE - 1) % QZ_OPT_SIZE;
-				}
-				else if (c == KEY_DOWN)
-				{
-					this->selected_ans = (this->selected_ans + 1) % QZ_OPT_SIZE;
-				}
-				this->moved = true;
-			}
-		}*/
 	}
 	system("cls");
 	Timer::get_instance().timer_switch(true);
@@ -104,7 +76,7 @@ int QuizMaker::quiz_maker_main(Quiz & q)
 	return 0;
 }
 
-void QuizMaker::change_mode(eMode next_mode)
+void QuizMaker::SwitchMenu(eMode next_mode)
 {
 	m_next_mode = next_mode;
 }

@@ -8,16 +8,15 @@
 class BaseMode
 {
 public:
-	BaseMode(IQuizMakerChanger* changer);
-	BaseMode(IQuizMakerChanger* changer, Quiz* q);
+	BaseMode(IQuizFloor* changer);
+	BaseMode(IQuizFloor* changer, Quiz* q);
 	virtual ~BaseMode();
-	virtual void init();
-	virtual void finit();
-	virtual bool update();
-	virtual void print();
+	virtual void Finitialize();
+	virtual bool Update();
+	virtual void Print();
 
 protected:
-	IQuizMakerChanger* m_qm_changer;
+	IQuizFloor* iqf_;
 
 private:
 	int now_select = 0;

@@ -1,6 +1,6 @@
 #include "answer_mode.h"
 
-AnswerMode::AnswerMode(IQuizMakerChanger* changer, Quiz* q) : BaseMode(changer, q)
+AnswerMode::AnswerMode(IQuizFloor* changer, Quiz* q) : BaseMode(changer, q)
 {
 	m_qm_changer = changer;
 	this->q = q;
@@ -11,29 +11,24 @@ AnswerMode::AnswerMode(IQuizMakerChanger* changer, Quiz* q) : BaseMode(changer, 
 	tb = new TextBox(box_pos, ANSWER_BOX_WD, ANSWER_BOX_HT);
 }
 
-void AnswerMode::init()
-{
-
-}
-
-void AnswerMode::finit()
+void AnswerMode::Finitialize()
 {
 	tb->finitialize();
 	delete tb;
 }
 
-bool AnswerMode::update()
+bool AnswerMode::Update()
 {
 	if (_kbhit())
 	{
 		int c = _getch();
 		if (c == KEY_SPACE)
 		{
-			m_qm_changer->change_clear_flag(q->quiz_ans_check(now_select));
+			iqf_->CheckAnswer(q->answer_type);
 		}
 		else if (c == KEY_BACK)
 		{
-			m_qm_changer->change_mode(eMode_Menu);
+			iqf_->SwitchMenu(kBaseMenu);
 		}
 		else if (c == KEY_ARROW)
 		{
@@ -52,7 +47,7 @@ bool AnswerMode::update()
 	return false;
 }
 
-void AnswerMode::print()
+void AnswerMode::print ()
 {
 	tb->print();
 	for (int i = 0; i < QZ_OPT_SIZE; i++)

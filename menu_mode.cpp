@@ -1,6 +1,6 @@
 #include "menu_mode.h"
 
-MenuMode::MenuMode(IQuizMakerChanger* changer) : BaseMode(changer)
+MenuMode::MenuMode(IQuizFloor* changer) : BaseMode(changer)
 {
 	this->pos.first = MENU_OPT_X;
 	this->pos.second = MENU_OPT_Y;
@@ -28,10 +28,10 @@ bool MenuMode::update()
 			switch (now_select)
 			{
 			case eMenu_Asnwer:
-				m_qm_changer->change_mode(eMode_Answer);
+				m_qm_changer->SwitchMenu(eMode_Answer);
 				break;
 			case eMenu_Item:
-				m_qm_changer->change_mode(eMode_Item);
+				m_qm_changer->SwitchMenu(eMode_Item);
 				break;
 			}
 		}

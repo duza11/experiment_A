@@ -157,7 +157,6 @@
     <ClCompile Include="menu_mode.cpp" />
     <ClCompile Include="text_box.cpp" />
     <ClCompile Include="player.cpp" />
-    <ClCompile Include="field.cpp" />
     <ClCompile Include="quiz.cpp" />
     <ClCompile Include="quiz_floor.cpp" />
     <ClCompile Include="quiz_maker.cpp" />
@@ -176,7 +175,6 @@
     <ClInclude Include="menu_mode.h" />
     <ClInclude Include="text_box.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="field.h" />
     <ClInclude Include="quiz.h" />
     <ClInclude Include="quiz_floor.h" />
     <ClInclude Include="quiz_maker.h" />

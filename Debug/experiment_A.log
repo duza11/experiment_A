@@ -1,10 +1,202 @@
-﻿  field.cpp
-c:\users\adm\source\repos\experiment_a\field.cpp(42): warning C4805: '==': 演算中の 'int' 型と 'bool' 型の混用は安全ではありません
-c:\users\adm\source\repos\experiment_a\field.cpp(42): warning C4553: '==': 演算子にプログラム上の作用がありません。'=' を意図しましたか?
-  コードを生成中...
-  コンパイル中...
+﻿  quiz_maker.cpp
+c:\users\adm\source\repos\experiment_a\item.h(28): error C2065: 'Quiz': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\item.h(28): error C2065: 'q': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\item.h(28): error C2059: 構文エラー: ')'
+c:\users\adm\source\repos\experiment_a\item.h(29): error C2065: 'q': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\item.h(29): error C3861: 'use_harf': 識別子が見つかりませんでした
+c:\users\adm\source\repos\experiment_a\base_mode.h(12): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\base_mode.h(12): error C2535: 'BaseMode::BaseMode(IQuizMakerChanger *)': メンバー関数は、既に定義または宣言されています。
+  c:\users\adm\source\repos\experiment_a\base_mode.h(11): note: 'BaseMode::BaseMode' の宣言を確認してください
+c:\users\adm\source\repos\experiment_a\player.h(50): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\item_mode.h(18): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\item_mode.h(29): error C2143: 構文エラー: ';' が '*' の前にありません。
+c:\users\adm\source\repos\experiment_a\item_mode.h(29): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません
+c:\users\adm\source\repos\experiment_a\item_mode.h(29): error C2238: ';' の前に無効なトークンがあります。
+c:\users\adm\source\repos\experiment_a\answer_mode.h(16): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\answer_mode.h(27): error C2143: 構文エラー: ';' が '*' の前にありません。
+c:\users\adm\source\repos\experiment_a\answer_mode.h(27): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません
+c:\users\adm\source\repos\experiment_a\answer_mode.h(27): error C2238: ';' の前に無効なトークンがあります。
+c:\users\adm\source\repos\experiment_a\quiz_maker.h(22): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\quiz_maker.h(23): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\quiz_maker.h(24): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\quiz_maker.h(25): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\quiz_maker.h(28): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\quiz_maker.cpp(12): error C2065: 'Quiz': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\quiz_maker.cpp(12): error C2065: 'q': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\quiz_maker.cpp(12): error C2761: 'void QuizMaker::quiz_maker_init(void)': メンバー関数の再宣言はできません。
+c:\users\adm\source\repos\experiment_a\quiz_maker.cpp(13): error C2448: 'QuizMaker::quiz_maker_init': 関数の定義が間違っています。
+c:\users\adm\source\repos\experiment_a\quiz_maker.cpp(23): error C2065: 'Quiz': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\quiz_maker.cpp(23): error C2065: 'q': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\quiz_maker.cpp(23): error C2761: 'void QuizMaker::quiz_maker_update(void)': メンバー関数の再宣言はできません。
+c:\users\adm\source\repos\experiment_a\quiz_maker.cpp(24): error C2448: 'QuizMaker::quiz_maker_update': 関数の定義が間違っています。
+c:\users\adm\source\repos\experiment_a\quiz_maker.cpp(50): error C2065: 'Quiz': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\quiz_maker.cpp(50): error C2065: 'q': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\quiz_maker.cpp(50): error C2761: 'void QuizMaker::quiz_maker_print(void)': メンバー関数の再宣言はできません。
+c:\users\adm\source\repos\experiment_a\quiz_maker.cpp(51): error C2448: 'QuizMaker::quiz_maker_print': 関数の定義が間違っています。
+c:\users\adm\source\repos\experiment_a\quiz_maker.cpp(65): error C2065: 'Quiz': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\quiz_maker.cpp(65): error C2065: 'q': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\quiz_maker.cpp(65): error C2761: 'int QuizMaker::quiz_maker_main(void)': メンバー関数の再宣言はできません。
+c:\users\adm\source\repos\experiment_a\quiz_maker.cpp(66): error C2448: 'QuizMaker::quiz_maker_main': 関数の定義が間違っています。
+c:\users\adm\source\repos\experiment_a\quiz_maker.cpp(90): error C2065: 'Quiz': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\quiz_maker.cpp(90): error C2065: 'q': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\quiz_maker.cpp(90): error C2062: 型 'int' は不要です。
+c:\users\adm\source\repos\experiment_a\quiz_maker.cpp(91): error C2143: 構文エラー: ';' が '{' の前にありません。
+c:\users\adm\source\repos\experiment_a\quiz_maker.cpp(91): error C2447: '{': 対応する関数ヘッダーがありません (旧形式の仮引数リスト?)
+  quiz_floor.cpp
+c:\users\adm\source\repos\experiment_a\item.h(28): error C2065: 'Quiz': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\item.h(28): error C2065: 'q': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\item.h(28): error C2059: 構文エラー: ')'
+c:\users\adm\source\repos\experiment_a\item.h(29): error C2065: 'q': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\item.h(29): error C3861: 'use_harf': 識別子が見つかりませんでした
+c:\users\adm\source\repos\experiment_a\base_mode.h(12): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\base_mode.h(12): error C2535: 'BaseMode::BaseMode(IQuizMakerChanger *)': メンバー関数は、既に定義または宣言されています。
+  c:\users\adm\source\repos\experiment_a\base_mode.h(11): note: 'BaseMode::BaseMode' の宣言を確認してください
+c:\users\adm\source\repos\experiment_a\player.h(50): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\item_mode.h(18): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\item_mode.h(29): error C2143: 構文エラー: ';' が '*' の前にありません。
+c:\users\adm\source\repos\experiment_a\item_mode.h(29): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません
+c:\users\adm\source\repos\experiment_a\item_mode.h(29): error C2238: ';' の前に無効なトークンがあります。
+c:\users\adm\source\repos\experiment_a\answer_mode.h(16): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\answer_mode.h(27): error C2143: 構文エラー: ';' が '*' の前にありません。
+c:\users\adm\source\repos\experiment_a\answer_mode.h(27): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません
+c:\users\adm\source\repos\experiment_a\answer_mode.h(27): error C2238: ';' の前に無効なトークンがあります。
+c:\users\adm\source\repos\experiment_a\quiz_maker.h(22): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\quiz_maker.h(23): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\quiz_maker.h(24): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\quiz_maker.h(25): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\quiz_maker.h(28): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\quiz_floor.cpp(47): warning C4800: 'int': ブール値を 'true' または 'false' に強制的に設定します (警告の処理)
+  quiz.cpp
+c:\users\adm\source\repos\experiment_a\quiz.cpp(3): error C2653: 'Quiz': 識別子がクラス名でも名前空間名でもありません。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(4): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません
+c:\users\adm\source\repos\experiment_a\quiz.cpp(7): error C2355: 'this': 静的でないメンバー関数の内部または静的でないデータ メンバー初期化子においてのみ参照できます
+c:\users\adm\source\repos\experiment_a\quiz.cpp(7): error C2227: '->answered_flag' : 左側がクラス、構造体、共用体、ジェネリック型へのポインターではありません。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(9): warning C4508: 'Quiz': 関数に戻り値の型が指定されていません。戻り値を void 型と見なします。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(11): error C2653: 'Quiz': 識別子がクラス名でも名前空間名でもありません。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(12): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません
+c:\users\adm\source\repos\experiment_a\quiz.cpp(12): error C2084: 関数 'int Quiz(void)' は既に本体を持っています。
+  c:\users\adm\source\repos\experiment_a\quiz.cpp(3): note: 'Quiz' の以前の定義を確認してください
+c:\users\adm\source\repos\experiment_a\quiz.cpp(15): error C2653: 'Quiz': 識別子がクラス名でも名前空間名でもありません。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(17): error C2355: 'this': 静的でないメンバー関数の内部または静的でないデータ メンバー初期化子においてのみ参照できます
+c:\users\adm\source\repos\experiment_a\quiz.cpp(17): error C2227: '->tp_str' : 左側がクラス、構造体、共用体、ジェネリック型へのポインターではありません。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(20): error C2653: 'Quiz': 識別子がクラス名でも名前空間名でもありません。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(22): error C2355: 'this': 静的でないメンバー関数の内部または静的でないデータ メンバー初期化子においてのみ参照できます
+c:\users\adm\source\repos\experiment_a\quiz.cpp(22): error C2227: '->qz_str' : 左側がクラス、構造体、共用体、ジェネリック型へのポインターではありません。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(25): error C2653: 'Quiz': 識別子がクラス名でも名前空間名でもありません。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(27): error C2355: 'this': 静的でないメンバー関数の内部または静的でないデータ メンバー初期化子においてのみ参照できます
+c:\users\adm\source\repos\experiment_a\quiz.cpp(27): error C2227: '->qz_opt' : 左側がクラス、構造体、共用体、ジェネリック型へのポインターではありません。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(30): error C2653: 'Quiz': 識別子がクラス名でも名前空間名でもありません。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(32): error C2355: 'this': 静的でないメンバー関数の内部または静的でないデータ メンバー初期化子においてのみ参照できます
+c:\users\adm\source\repos\experiment_a\quiz.cpp(32): error C2227: '->ans_type' : 左側がクラス、構造体、共用体、ジェネリック型へのポインターではありません。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(35): error C2653: 'Quiz': 識別子がクラス名でも名前空間名でもありません。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(37): error C2355: 'this': 静的でないメンバー関数の内部または静的でないデータ メンバー初期化子においてのみ参照できます
+c:\users\adm\source\repos\experiment_a\quiz.cpp(37): error C2227: '->answered_flag' : 左側がクラス、構造体、共用体、ジェネリック型へのポインターではありません。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(40): error C2653: 'Quiz': 識別子がクラス名でも名前空間名でもありません。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(42): error C2355: 'this': 静的でないメンバー関数の内部または静的でないデータ メンバー初期化子においてのみ参照できます
+c:\users\adm\source\repos\experiment_a\quiz.cpp(42): error C2227: '->tp_str' : 左側がクラス、構造体、共用体、ジェネリック型へのポインターではありません。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(45): error C2653: 'Quiz': 識別子がクラス名でも名前空間名でもありません。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(47): error C2355: 'this': 静的でないメンバー関数の内部または静的でないデータ メンバー初期化子においてのみ参照できます
+c:\users\adm\source\repos\experiment_a\quiz.cpp(47): error C2227: '->qz_str' : 左側がクラス、構造体、共用体、ジェネリック型へのポインターではありません。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(50): error C2653: 'Quiz': 識別子がクラス名でも名前空間名でもありません。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(52): error C2355: 'this': 静的でないメンバー関数の内部または静的でないデータ メンバー初期化子においてのみ参照できます
+c:\users\adm\source\repos\experiment_a\quiz.cpp(52): error C2227: '->qz_opt' : 左側がクラス、構造体、共用体、ジェネリック型へのポインターではありません。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(55): error C2653: 'Quiz': 識別子がクラス名でも名前空間名でもありません。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(57): error C2355: 'this': 静的でないメンバー関数の内部または静的でないデータ メンバー初期化子においてのみ参照できます
+c:\users\adm\source\repos\experiment_a\quiz.cpp(57): error C2227: '->ans_type' : 左側がクラス、構造体、共用体、ジェネリック型へのポインターではありません。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(60): error C2653: 'Quiz': 識別子がクラス名でも名前空間名でもありません。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(62): error C2355: 'this': 静的でないメンバー関数の内部または静的でないデータ メンバー初期化子においてのみ参照できます
+c:\users\adm\source\repos\experiment_a\quiz.cpp(62): error C2227: '->answered_flag' : 左側がクラス、構造体、共用体、ジェネリック型へのポインターではありません。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(65): error C2653: 'Quiz': 識別子がクラス名でも名前空間名でもありません。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(67): error C2355: 'this': 静的でないメンバー関数の内部または静的でないデータ メンバー初期化子においてのみ参照できます
+c:\users\adm\source\repos\experiment_a\quiz.cpp(67): error C2227: '->answered_flag' : 左側がクラス、構造体、共用体、ジェネリック型へのポインターではありません。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(69): error C2355: 'this': 静的でないメンバー関数の内部または静的でないデータ メンバー初期化子においてのみ参照できます
+c:\users\adm\source\repos\experiment_a\quiz.cpp(69): error C2227: '->ans_type' : 左側がクラス、構造体、共用体、ジェネリック型へのポインターではありません。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(73): error C2355: 'this': 静的でないメンバー関数の内部または静的でないデータ メンバー初期化子においてのみ参照できます
+c:\users\adm\source\repos\experiment_a\quiz.cpp(73): error C2227: '->answered_flag' : 左側がクラス、構造体、共用体、ジェネリック型へのポインターではありません。
+c:\users\adm\source\repos\experiment_a\quiz.cpp(75): error C2355: 'this': 静的でないメンバー関数の内部または静的でないデータ メンバー初期化子においてのみ参照できます
+c:\users\adm\source\repos\experiment_a\quiz.cpp(75): error C2227: '->ans_type' : 左側がクラス、構造体、共用体、ジェネリック型へのポインターではありません。
   player.cpp
+c:\users\adm\source\repos\experiment_a\player.h(50): error C2061: 構文エラー: 識別子 'Quiz'
+  menu_mode.cpp
+c:\users\adm\source\repos\experiment_a\base_mode.h(12): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\base_mode.h(12): error C2535: 'BaseMode::BaseMode(IQuizMakerChanger *)': メンバー関数は、既に定義または宣言されています。
+  c:\users\adm\source\repos\experiment_a\base_mode.h(11): note: 'BaseMode::BaseMode' の宣言を確認してください
   main.cpp
+c:\users\adm\source\repos\experiment_a\player.h(50): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\item.h(28): error C2065: 'Quiz': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\item.h(28): error C2065: 'q': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\item.h(28): error C2059: 構文エラー: ')'
+c:\users\adm\source\repos\experiment_a\item.h(29): error C2065: 'q': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\item.h(29): error C3861: 'use_harf': 識別子が見つかりませんでした
+c:\users\adm\source\repos\experiment_a\base_mode.h(12): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\base_mode.h(12): error C2535: 'BaseMode::BaseMode(IQuizMakerChanger *)': メンバー関数は、既に定義または宣言されています。
+  c:\users\adm\source\repos\experiment_a\base_mode.h(11): note: 'BaseMode::BaseMode' の宣言を確認してください
+c:\users\adm\source\repos\experiment_a\item_mode.h(18): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\item_mode.h(29): error C2143: 構文エラー: ';' が '*' の前にありません。
+c:\users\adm\source\repos\experiment_a\item_mode.h(29): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません
+c:\users\adm\source\repos\experiment_a\item_mode.h(29): error C2238: ';' の前に無効なトークンがあります。
+c:\users\adm\source\repos\experiment_a\answer_mode.h(16): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\answer_mode.h(27): error C2143: 構文エラー: ';' が '*' の前にありません。
+c:\users\adm\source\repos\experiment_a\answer_mode.h(27): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません
+c:\users\adm\source\repos\experiment_a\answer_mode.h(27): error C2238: ';' の前に無効なトークンがあります。
+c:\users\adm\source\repos\experiment_a\quiz_maker.h(22): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\quiz_maker.h(23): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\quiz_maker.h(24): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\quiz_maker.h(25): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\quiz_maker.h(28): error C2061: 構文エラー: 識別子 'Quiz'
+  item_mode.cpp
+c:\users\adm\source\repos\experiment_a\base_mode.h(12): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\base_mode.h(12): error C2535: 'BaseMode::BaseMode(IQuizMakerChanger *)': メンバー関数は、既に定義または宣言されています。
+  c:\users\adm\source\repos\experiment_a\base_mode.h(11): note: 'BaseMode::BaseMode' の宣言を確認してください
+c:\users\adm\source\repos\experiment_a\item.h(28): error C2065: 'Quiz': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\item.h(28): error C2065: 'q': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\item.h(28): error C2059: 構文エラー: ')'
+c:\users\adm\source\repos\experiment_a\item.h(29): error C2065: 'q': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\item.h(29): error C3861: 'use_harf': 識別子が見つかりませんでした
+c:\users\adm\source\repos\experiment_a\player.h(50): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\item_mode.h(18): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\item_mode.h(29): error C2143: 構文エラー: ';' が '*' の前にありません。
+c:\users\adm\source\repos\experiment_a\item_mode.h(29): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません
+c:\users\adm\source\repos\experiment_a\item_mode.h(29): error C2238: ';' の前に無効なトークンがあります。
+c:\users\adm\source\repos\experiment_a\item_mode.cpp(3): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\item_mode.cpp(3): error C2065: 'q': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\item_mode.cpp(6): error C2039: 'q': 'ItemMode' のメンバーではありません。
+  c:\users\adm\source\repos\experiment_a\item_mode.h(15): note: 'ItemMode' の宣言を確認してください
+c:\users\adm\source\repos\experiment_a\item_mode.cpp(6): error C2065: 'q': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\item_mode.cpp(35): error C2065: 'q': 定義されていない識別子です。
   item_floor.cpp
+c:\users\adm\source\repos\experiment_a\player.h(50): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\item.h(28): error C2065: 'Quiz': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\item.h(28): error C2065: 'q': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\item.h(28): error C2059: 構文エラー: ')'
+c:\users\adm\source\repos\experiment_a\item.h(29): error C2065: 'q': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\item.h(29): error C3861: 'use_harf': 識別子が見つかりませんでした
+c:\users\adm\source\repos\experiment_a\item_floor.cpp(102): warning C4805: '==': 演算中の 'int' 型と 'bool' 型の混用は安全ではありません
+c:\users\adm\source\repos\experiment_a\item_floor.cpp(102): warning C4553: '==': 演算子にプログラム上の作用がありません。'=' を意図しましたか?
+  base_mode.cpp
+c:\users\adm\source\repos\experiment_a\base_mode.h(12): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\base_mode.h(12): error C2535: 'BaseMode::BaseMode(IQuizMakerChanger *)': メンバー関数は、既に定義または宣言されています。
+  c:\users\adm\source\repos\experiment_a\base_mode.h(11): note: 'BaseMode::BaseMode' の宣言を確認してください
+c:\users\adm\source\repos\experiment_a\base_mode.cpp(8): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\base_mode.cpp(9): error C2084: 関数 'BaseMode::BaseMode(IQuizMakerChanger *)' は既に本体を持っています。
+  c:\users\adm\source\repos\experiment_a\base_mode.cpp(3): note: '{ctor}' の以前の定義を確認してください
+  answer_mode.cpp
+c:\users\adm\source\repos\experiment_a\base_mode.h(12): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\base_mode.h(12): error C2535: 'BaseMode::BaseMode(IQuizMakerChanger *)': メンバー関数は、既に定義または宣言されています。
+  c:\users\adm\source\repos\experiment_a\base_mode.h(11): note: 'BaseMode::BaseMode' の宣言を確認してください
+c:\users\adm\source\repos\experiment_a\answer_mode.h(16): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\answer_mode.h(27): error C2143: 構文エラー: ';' が '*' の前にありません。
+c:\users\adm\source\repos\experiment_a\answer_mode.h(27): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません
+c:\users\adm\source\repos\experiment_a\answer_mode.h(27): error C2238: ';' の前に無効なトークンがあります。
+c:\users\adm\source\repos\experiment_a\answer_mode.cpp(3): error C2061: 構文エラー: 識別子 'Quiz'
+c:\users\adm\source\repos\experiment_a\answer_mode.cpp(3): error C2065: 'q': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\answer_mode.cpp(6): error C2039: 'q': 'AnswerMode' のメンバーではありません。
+  c:\users\adm\source\repos\experiment_a\answer_mode.h(13): note: 'AnswerMode' の宣言を確認してください
+c:\users\adm\source\repos\experiment_a\answer_mode.cpp(6): error C2065: 'q': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\answer_mode.cpp(32): error C2065: 'q': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\answer_mode.cpp(32): error C2227: '->quiz_ans_check' : 左側がクラス、構造体、共用体、ジェネリック型へのポインターではありません。
+  c:\users\adm\source\repos\experiment_a\answer_mode.cpp(32): note: 型は 'unknown-type' です。
+c:\users\adm\source\repos\experiment_a\answer_mode.cpp(61): error C2065: 'q': 定義されていない識別子です。
+c:\users\adm\source\repos\experiment_a\answer_mode.cpp(61): error C2227: '->quiz_get_qz_opt' : 左側がクラス、構造体、共用体、ジェネリック型へのポインターではありません。
+  c:\users\adm\source\repos\experiment_a\answer_mode.cpp(61): note: 型は 'unknown-type' です。
   コードを生成中...
-  experiment_A.vcxproj -> C:\Users\Adm\Source\Repos\experiment_A\Debug\experiment_A.exe

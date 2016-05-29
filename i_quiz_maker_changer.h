@@ -1,20 +1,22 @@
 #pragma once
 
+#include "quiz_floor.h"
+
 typedef enum
 {
-	eMode_Menu,
-	eMode_Answer,
-	eMode_Item,
+	kBaseMenu,
+	kAnswerMenu,
+	kItemMenu,
 
-	eMode_None,
-} eMode;
+	kNoneMenu,
+} MenuEnum;
 
-class IQuizMakerChanger
+class IQuizFloor
 {
 public:
-	virtual ~IQuizMakerChanger() = 0;
-	virtual void change_mode(eMode next_mode) = 0;
-	virtual void change_clear_flag(bool clear_flag) = 0;
+	virtual ~IQuizFloor() = 0;
+	virtual void SwitchMenu(MenuEnum next_mode) = 0;
+	virtual void CheckAnswer(bool answer_type) = 0;
 
 private:
 

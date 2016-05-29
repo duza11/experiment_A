@@ -14,7 +14,7 @@
 
 #define QZ_START_Y 4
 
-class QuizMaker : IQuizMakerChanger
+class QuizMaker : IQuizFloor
 {
 public:
 	QuizMaker();
@@ -23,7 +23,7 @@ public:
 	void quiz_maker_update(Quiz & q);
 	void quiz_maker_print(Quiz & q);
 	int quiz_maker_main(Quiz & q);
-	void change_mode(eMode next_mode);
+	void SwitchMenu(eMode next_mode);
 	void change_clear_flag(bool clear_flag);
 	void quiz_maker_set_color(Quiz & q, int index);
 

@@ -2,6 +2,7 @@
 
 #include "base_mode.h"
 #include "item.h"
+#include "player.h"
 #include "text_box.h"
 
 #define ITEM_BOX_X 10
@@ -14,7 +15,7 @@
 class ItemMode : BaseMode
 {
 public:
-	ItemMode(IQuizMakerChanger* changer, Quiz* q);
+	ItemMode(IQuizFloor* changer, Quiz* q);
 	void init() override;
 	void finit() override;
 	bool update() override;

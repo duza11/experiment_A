@@ -21,7 +21,7 @@ typedef enum
 class MenuMode : public BaseMode
 {
 public:
-	MenuMode(IQuizMakerChanger* changer);
+	MenuMode(IQuizFloor* changer);
 	void init() override;
 	void finit() override;
 	bool update() override;

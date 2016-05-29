@@ -1,6 +1,6 @@
 #include "item_mode.h"
 
-ItemMode::ItemMode(IQuizMakerChanger* changer, Quiz* q) : BaseMode(changer, q)
+ItemMode::ItemMode(IQuizFloor* changer, Quiz* q) : BaseMode(changer, q)
 {
 	m_qm_changer = changer;
 	this->q = q;
@@ -41,7 +41,7 @@ bool ItemMode::update()
 		}
 		else if (c == KEY_BACK)
 		{
-			m_qm_changer->change_mode(eMode_Menu);
+			m_qm_changer->SwitchMenu(eMode_Menu);
 		}
 		else if (c == KEY_ARROW)
 		{

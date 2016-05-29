@@ -1,23 +1,21 @@
 #include "base_mode.h"
 
-BaseMode::BaseMode(IQuizMakerChanger* changer)
+BaseMode::BaseMode(IQuizFloor* iqf)
 {
-	m_qm_changer = changer;
+	iqf_ = iqf;
 }
 
-BaseMode::BaseMode(IQuizMakerChanger* changer, Quiz* q)
+BaseMode::BaseMode(IQuizFloor* iqf, Quiz* q)
 {
-
+	iqf_ = iqf;
 }
 
 BaseMode::~BaseMode()
 {
 }
 
-void BaseMode::init() {}
+void BaseMode::Finitialize() {}
 
-void BaseMode::finit() {}
+bool BaseMode::Update() { return true; }
 
-bool BaseMode::update() { return true; }
-
-void BaseMode::print() {}
+void BaseMode::Print() {}
