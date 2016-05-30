@@ -3,6 +3,7 @@
 #include <conio.h>
 #include "i_quiz_maker_changer.h"
 #include "consoleUtil.h"
+#include "common.h"
 
 class BaseMode
 {

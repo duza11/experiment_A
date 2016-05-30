@@ -4,7 +4,6 @@
 #include <iostream>
 #include "player.h"
 #include "consoleUtil.h"
-#include "item.h"
 
 class ItemFloor
 {

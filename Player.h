@@ -5,6 +5,7 @@
 #include <random>
 #include "common.h"
 #include "consoleUtil.h"
+#include "Timer.h"
 
 using namespace std;
 

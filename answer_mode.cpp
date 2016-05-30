@@ -23,7 +23,7 @@ bool AnswerMode::Update()
 		int c = _getch();
 		if (c == KEY_SPACE)
 		{
-			iqf_->CheckAnswer(quiz_->answer_type);
+			iqf_->CheckAnswer(*quiz_, now_select_);
 		}
 		else if (c == KEY_BACK)
 		{
@@ -52,7 +52,7 @@ void AnswerMode::Print ()
 	for (int i = 0; i < QZ_OPT_SIZE; i++)
 	{
 		setCursorPos(this->position_.first, this->position_.second + i);
-		cout << " " << (*quiz_).quiz_opt << "\n";
+		cout << " " << (*quiz_).quiz_opt[i] << "\n";
 	}
 	setCursorPos(this->position_.first, this->position_.second + now_select_);
 	cout << ">";

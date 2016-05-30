@@ -26,8 +26,8 @@ public:
 	int quiz_floor_main();
 	void TypingMain(string &sentence);
 	void QuizMain(Quiz &quiz);
-	void UpdateQuizMenu();
-	void CheckAnswer(bool answer_type);
+	void UpdateQuizMenu(Quiz &quiz);
+	void CheckAnswer(Quiz &quiz, int option_num);
 	void SwitchMenu(MenuEnum);
 	void PrintQuiz(Quiz &quiz);
 

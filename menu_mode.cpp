@@ -11,10 +11,6 @@ MenuMode::MenuMode(IQuizFloor* changer) : BaseMode(changer)
 
 void MenuMode::Finitialize()
 {
-}
-
-void MenuMode::Finitialize()
-{
 	delete tb_;
 }
 
@@ -27,10 +23,10 @@ bool MenuMode::Update()
 		{
 			switch (now_select_)
 			{
-			case eMenu_Asnwer:
+			case kAnswerMenu:
 				iqf_->SwitchMenu(kAnswerMenu);
 				break;
-			case eMenu_Item:
+			case kItemMenu:
 				iqf_->SwitchMenu(kItemMenu);
 				break;
 			}
@@ -40,11 +36,11 @@ bool MenuMode::Update()
 			c = _getch();
 			if (c == KEY_UP)
 			{
-				now_select_ = (now_select_ + eMenu_Num - 1) % eMenu_Num;
+				now_select_ = (now_select_ + kMenuNum - 1) % kMenuNum;
 			}
 			else if (c == KEY_DOWN)
 			{
-				now_select_ = (now_select_ + 1) % eMenu_Num;
+				now_select_ = (now_select_ + 1) % kMenuNum;
 			}
 		}
 		return true;

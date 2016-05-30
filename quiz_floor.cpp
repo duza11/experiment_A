@@ -120,11 +120,17 @@ void QuizFloor::QuizMain(Quiz & quiz)
 {
 	changed_flag_ = true;
 	goal_flag_ = false;
+	next_menu_ = kBaseMenu;
+	bm = (BaseMode*) new MenuMode(this);
+
+	setCursorPos(0, 0);
+	cout << quiz.quiz_str;
+
 	
 	PrintQuiz(quiz);
 	while (Timer::get_instance().timer_check() && !goal_flag_)
 	{
-		UpdateQuizMenu();
+		UpdateQuizMenu(quiz);
 		PrintQuiz(quiz);
 	}
 	system("cls");
@@ -133,7 +139,7 @@ void QuizFloor::QuizMain(Quiz & quiz)
 	//Item::get_instance().use_flag_reset();
 }
 
-void QuizFloor::UpdateQuizMenu()
+void QuizFloor::UpdateQuizMenu(Quiz &quiz)
 {
 	if (next_menu_ != kNoneMenu)
 	{
@@ -145,10 +151,10 @@ void QuizFloor::UpdateQuizMenu()
 			bm = (BaseMode*) new MenuMode(this);
 			break;
 		case kItemMenu:
-			bm = (BaseMode*) new ItemMode(this, &q);
+			bm = (BaseMode*) new ItemMode(this, &quiz);
 			break;
 		case kAnswerMenu:
-			bm = (BaseMode*) new AnswerMode(this, &q);
+			bm = (BaseMode*) new AnswerMode(this, &quiz);
 			break;
 		}
 		next_menu_ = kNoneMenu;
@@ -160,15 +166,19 @@ void QuizFloor::UpdateQuizMenu()
 	}
 }
 
-void QuizFloor::CheckAnswer(bool answer_type)
+void QuizFloor::CheckAnswer(Quiz &quiz, int option_num)
 {
-	if (answer_type)
+	if (quiz.enable_flag[option_num])
 	{
-		goal_flag_ = true;
-	}
-	else
-	{
-		Timer::get_instance().timer_penalty(30);
+		if (quiz.answer_type[option_num])
+		{
+			goal_flag_ = true;
+		}
+		else
+		{
+			Timer::get_instance().timer_penalty(30);
+		}
+		quiz.enable_flag[option_num] = false;
 	}
 }
 
