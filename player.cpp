@@ -1,45 +1,5 @@
 #include "player.h"
 
-/*Player::Player()
-{
-	this->p_pos.first = PLAYER_X;
-	this->p_pos.second = PLAYER_Y;
-	this->np_pos.first = PLAYER_NEXT_X;
-	this->np_pos.second = PLAYER_NEXT_Y;
-}
-
-Player::~Player()
-{
-
-}
-
-pair<int, int> Player::player_get_pos()
-{
-	return this->p_pos;
-}
-
-pair<int, int> Player::player_get_next_pos()
-{
-	return this->np_pos;
-}
-
-void Player::player_move_right()
-{
-	this->np_pos.first = (this->np_pos.first + 1) % PLAYER_MAX_X;
-}
-
-void Player::player_move_left()
-{
-	this->np_pos.first = (this->np_pos.first + PLAYER_MAX_X - 1) % PLAYER_MAX_X;
-}
-
-void Player::player_move_front()
-{
-	this->p_pos.first = this->np_pos.first;
-	this->p_pos.second = this->np_pos.second;
-	this->np_pos.second--;
-}*/
-
 pair<int, int> Player::get_now_position()
 {
 	return now_position_;
@@ -77,6 +37,21 @@ void Player::GetItem(int item_num)
 	cout << item_[item_num].item_name << "‚ðŽè‚É“ü‚ê‚½";
 }
 
+void Player::UseItem(int item_num, Quiz &quiz)
+{
+	if (item_[item_num].enable_flag) {
+		if (item_num == kFiftyFifty)
+		{
+			UseFiftyFity(quiz);
+		}
+		else if (item_num == kStopTimer)
+		{
+			UseStopTimer();
+		}
+		item_[item_num].enable_flag = false;
+	}
+}
+
 Player::Player()
 {
 	for (int i = 0; i < kItemKind; i++)
@@ -91,4 +66,22 @@ Player::Player()
 	next_position_.first = PLAYER_NEXT_X;
 	next_position_.second = PLAYER_NEXT_Y;
 	now_floor_ = 1;
+}
+
+void Player::UseFiftyFity(Quiz & quiz)
+{
+	for (int i = 0; i < (QZ_OPT_SIZE / 2);)
+	{
+		int temp = rnd() % QZ_OPT_SIZE;
+		if (quiz.answer_type[temp] && quiz.enable_flag[temp])
+		{
+			quiz.enable_flag[temp] = false;
+			i++;
+		}
+	}
+}
+
+void Player::UseStopTimer()
+{
+	Timer::get_instance().timer_switch(false);
 }

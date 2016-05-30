@@ -1,7 +1,6 @@
 #pragma once
 
 #include "base_mode.h"
-#include "item.h"
 #include "player.h"
 #include "text_box.h"
 
@@ -15,16 +14,15 @@
 class ItemMode : BaseMode
 {
 public:
-	ItemMode(IQuizFloor* changer, Quiz* q);
-	void init() override;
-	void finit() override;
-	bool update() override;
-	void print() override;
+	ItemMode(IQuizFloor* changer, Quiz *quiz);
+	void Finitialize() override;
+	bool Update() override;
+	void Print() override;
 
 private:
-	int now_select = eItem_harf;
-	pair<int, int> pos;
-	pair<int, int> box_pos;
-	TextBox *tb;
-	Quiz *q;
+	int now_select_ = kFiftyFifty;
+	pair<int, int> position_;
+	pair<int, int> box_position_;
+	TextBox *tb_;
+	Quiz *quiz_;
 };

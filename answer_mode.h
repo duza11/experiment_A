@@ -13,15 +13,15 @@
 class AnswerMode : BaseMode
 {
 public:
-	AnswerMode(IQuizFloor* changer, Quiz* q);
+	AnswerMode(IQuizFloor* changer, Quiz *quiz);
 	void Finitialize() override;
 	bool Update() override;
 	void Print() override;
 
 private:
-	int now_select = 0;
-	pair<int, int> pos;
-	pair<int, int> box_pos;
-	TextBox *tb;
-	Quiz *q;
+	int now_select_ = 0;
+	pair<int, int> position_;
+	pair<int, int> box_position_;
+	TextBox *tb_;
+	Quiz *quiz_;
 };

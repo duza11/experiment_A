@@ -2,36 +2,36 @@
 
 MenuMode::MenuMode(IQuizFloor* changer) : BaseMode(changer)
 {
-	this->pos.first = MENU_OPT_X;
-	this->pos.second = MENU_OPT_Y;
-	this->box_pos.first = MENU_BOX_X;
-	this->box_pos.second = MENU_BOX_Y;
-	tb = new TextBox(box_pos, MENU_BOX_WD, MENU_BOX_HT);
+	this->position_.first = MENU_OPT_X;
+	this->position_.second = MENU_OPT_Y;
+	this->box_position_.first = MENU_BOX_X;
+	this->box_position_.second = MENU_BOX_Y;
+	tb_ = new TextBox(box_position_, MENU_BOX_WD, MENU_BOX_HT);
 }
 
-void MenuMode::init()
+void MenuMode::Finitialize()
 {
 }
 
-void MenuMode::finit()
+void MenuMode::Finitialize()
 {
-	delete tb;
+	delete tb_;
 }
 
-bool MenuMode::update()
+bool MenuMode::Update()
 {
 	if (_kbhit())
 	{
 		int c = _getch();
 		if (c == KEY_SPACE)
 		{
-			switch (now_select)
+			switch (now_select_)
 			{
 			case eMenu_Asnwer:
-				m_qm_changer->SwitchMenu(eMode_Answer);
+				iqf_->SwitchMenu(kAnswerMenu);
 				break;
 			case eMenu_Item:
-				m_qm_changer->SwitchMenu(eMode_Item);
+				iqf_->SwitchMenu(kItemMenu);
 				break;
 			}
 		}
@@ -40,11 +40,11 @@ bool MenuMode::update()
 			c = _getch();
 			if (c == KEY_UP)
 			{
-				now_select = (now_select + eMenu_Num - 1) % eMenu_Num;
+				now_select_ = (now_select_ + eMenu_Num - 1) % eMenu_Num;
 			}
 			else if (c == KEY_DOWN)
 			{
-				now_select = (now_select + 1) % eMenu_Num;
+				now_select_ = (now_select_ + 1) % eMenu_Num;
 			}
 		}
 		return true;
@@ -52,13 +52,13 @@ bool MenuMode::update()
 	return false;
 }
 
-void MenuMode::print()
+void MenuMode::Print()
 {
-	tb->print();
-	setCursorPos(this->pos.first, this->pos.second);
+	tb_->print();
+	setCursorPos(this->position_.first, this->position_.second);
 	cout << " ‰ð“š";
-	setCursorPos(this->pos.first, this->pos.second + 1);
+	setCursorPos(this->position_.first, this->position_.second + 1);
 	cout << " ƒAƒCƒeƒ€";
-	setCursorPos(this->pos.first, this->pos.second + now_select);
+	setCursorPos(this->position_.first, this->position_.second + now_select_);
 	cout << ">";
 }

@@ -10,27 +10,18 @@
 #define MENU_BOX_WD 16
 #define MENU_BOX_HT 4
 
-typedef enum
-{
-	eMenu_Asnwer,
-	eMenu_Item,
-
-	eMenu_Num,
-} eMenu;
-
 class MenuMode : public BaseMode
 {
 public:
 	MenuMode(IQuizFloor* changer);
-	void init() override;
-	void finit() override;
-	bool update() override;
-	void print() override;
+	void Finitialize() override;
+	bool Update() override;
+	void Print() override;
 
 private:
 	
-	int now_select = eMenu_Asnwer;
-	pair<int, int> pos;
-	pair<int, int> box_pos;
-	TextBox *tb;
+	int now_select_ = kAnswerMenu;
+	pair<int, int> position_;
+	pair<int, int> box_position_;
+	TextBox *tb_;
 };

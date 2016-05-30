@@ -1,18 +1,13 @@
 #pragma once
 
 #include <vector>
-#include <new.h>
 #include <conio.h>
-//#include "typing.h"
-//#include "quiz_maker.h"
-#include "common.h"
-#include "timer.h"
-
 #include<fstream>
 #include<iostream>
 #include<string>
 #include<sstream> //ï∂éöÉXÉgÉäÅ[ÉÄ
-
+#include "common.h"
+#include "timer.h"
 #include "i_quiz_maker_changer.h"
 #include "base_mode.h"
 #include "menu_mode.h"
@@ -22,15 +17,6 @@
 #define QZ_START_Y 4
 
 using namespace std;
-
-typedef struct
-{
-	string typing_str;
-	string quiz_str;
-	string quiz_opt[QZ_OPT_SIZE];
-	bool answer_type[QZ_OPT_SIZE];
-	bool enable_flag[QZ_OPT_SIZE];
-} Quiz;
 
 class QuizFloor : IQuizFloor
 {
@@ -57,6 +43,6 @@ private:
 	//QuizMaker qm;
 	bool goal_flag_;
 	bool changed_flag_;
-	BaseMode* bm;
+	BaseMode *bm;
 	MenuEnum next_menu_;
 };

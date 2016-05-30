@@ -1,9 +1,8 @@
-#pragma once
+/*#pragma once
 
 #include <stdarg.h>
 #include <random>
 #include "common.h"
-#include "quiz.h"
 
 class Item
 {
@@ -64,9 +63,9 @@ private:
 		for (int i = 0; i < (QZ_OPT_SIZE / 2);)
 		{
 			int temp = rnd() % QZ_OPT_SIZE;
-			if (!q.quiz_get_ans_type(temp) && !q.quiz_get_answered_flag(temp))
+			if (!q.answer_type[temp] && q.enable_flag[temp])
 			{
-				q.quiz_set_answered_flag(temp, true);
+				q.enable_flag[temp] = false;
 				i++;
 			}
 		}
@@ -81,4 +80,4 @@ private:
 	int avail_item[eItem_length];
 	int use_flag[eItem_length];
 	string item_name[eItem_length];
-};
+};*/

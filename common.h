@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 #define WALL -1							// 番人
 #define BOARD_WD 3						// ボード幅
 #define BOARD_HT 7						// ボード高さ
@@ -21,10 +23,11 @@
 #define QZ_OPT_SIZE 6
 #define QZ_DT_SIZE ((QZ_OPT_SIZE * 2) + 2)
 
-typedef enum
+typedef struct
 {
-	eItem_harf,
-	eItem_time,
-
-	eItem_length,
-} eItem;
+	string typing_str;
+	string quiz_str;
+	string quiz_opt[QZ_OPT_SIZE];
+	bool answer_type[QZ_OPT_SIZE];
+	bool enable_flag[QZ_OPT_SIZE];
+} Quiz;

@@ -157,17 +157,13 @@
     <ClCompile Include="menu_mode.cpp" />
     <ClCompile Include="text_box.cpp" />
     <ClCompile Include="player.cpp" />
-    <ClCompile Include="quiz.cpp" />
     <ClCompile Include="quiz_floor.cpp" />
-    <ClCompile Include="quiz_maker.cpp" />
-    <ClCompile Include="typing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="answer_mode.h" />
     <ClInclude Include="base_mode.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="consoleUtil.h" />
-    <ClInclude Include="game_mgr.h" />
     <ClInclude Include="item.h" />
     <ClInclude Include="item_floor.h" />
     <ClInclude Include="item_mode.h" />
@@ -175,11 +171,8 @@
     <ClInclude Include="menu_mode.h" />
     <ClInclude Include="text_box.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="quiz.h" />
     <ClInclude Include="quiz_floor.h" />
-    <ClInclude Include="quiz_maker.h" />
     <ClInclude Include="timer.h" />
-    <ClInclude Include="typing.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

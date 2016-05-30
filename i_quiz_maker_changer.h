@@ -1,7 +1,5 @@
 #pragma once
 
-#include "quiz_floor.h"
-
 typedef enum
 {
 	kBaseMenu,

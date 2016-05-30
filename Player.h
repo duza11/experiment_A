@@ -4,26 +4,9 @@
 #include <string>
 #include <random>
 #include "common.h"
-#include "quiz.h"
+#include "consoleUtil.h"
 
 using namespace std;
-
-/*
-class Player
-{
-public:
-	Player();
-	~Player();
-	pair<int, int> player_get_pos();
-	pair<int, int> player_get_next_pos();
-	void player_move_left();
-	void player_move_right();
-	void player_move_front();
-
-private:
-	pair<int, int> p_pos;
-	pair<int, int> np_pos;
-};*/
 
 typedef enum
 {
@@ -51,9 +34,10 @@ public:
 
 private:
 	Player();
-	Player(const Player & Player) {}
+	Player(const Player &Player) {}
 	~Player() {}
-
+	void UseFiftyFity(Quiz &quiz);
+	void UseStopTimer();
 
 	typedef struct
 	{

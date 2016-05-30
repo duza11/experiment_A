@@ -121,23 +121,23 @@ void QuizFloor::QuizMain(Quiz & quiz)
 	changed_flag_ = true;
 	goal_flag_ = false;
 	
-	PrintQuiz();
+	PrintQuiz(quiz);
 	while (Timer::get_instance().timer_check() && !goal_flag_)
 	{
 		UpdateQuizMenu();
-		PrintQuiz();
+		PrintQuiz(quiz);
 	}
 	system("cls");
 	Timer::get_instance().timer_switch(true);
 	Timer::get_instance().timer_reprint();
-	Item::get_instance().use_flag_reset();
+	//Item::get_instance().use_flag_reset();
 }
 
 void QuizFloor::UpdateQuizMenu()
 {
 	if (next_menu_ != kNoneMenu)
 	{
-		bm->finit();
+		bm->Finitialize();
 		delete bm;
 		switch (next_menu_)
 		{
@@ -156,7 +156,7 @@ void QuizFloor::UpdateQuizMenu()
 	}
 	if (!changed_flag_)
 	{
-		changed_flag_ = bm->update();
+		changed_flag_ = bm->Update();
 	}
 }
 
@@ -181,7 +181,7 @@ void QuizFloor::PrintQuiz(Quiz &quiz)
 {
 	if (changed_flag_)
 	{
-		bm->print();
+		bm->Print();
 		setCursorPos(0, QZ_START_Y);
 		for (int i = 0; i < QZ_OPT_SIZE; i++) {
 			cout << " " << (char)('A' + i) << "." << quiz.quiz_opt[i] << "\n";

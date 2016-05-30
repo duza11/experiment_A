@@ -1,20 +1,19 @@
 #include "answer_mode.h"
 
-AnswerMode::AnswerMode(IQuizFloor* changer, Quiz* q) : BaseMode(changer, q)
+AnswerMode::AnswerMode(IQuizFloor* changer, Quiz *quiz) : BaseMode(changer, quiz)
 {
-	m_qm_changer = changer;
-	this->q = q;
-	this->pos.first = ANSWER_OPT_X;
-	this->pos.second = ANSWER_OPT_Y;
-	this->box_pos.first = ANSWER_BOX_X;
-	this->box_pos.second = ANSWER_BOX_Y;
-	tb = new TextBox(box_pos, ANSWER_BOX_WD, ANSWER_BOX_HT);
+	this->quiz_ = quiz;
+	this->position_.first = ANSWER_OPT_X;
+	this->position_.second = ANSWER_OPT_Y;
+	this->box_position_.first = ANSWER_BOX_X;
+	this->box_position_.second = ANSWER_BOX_Y;
+	tb_ = new TextBox(box_position_, ANSWER_BOX_WD, ANSWER_BOX_HT);
 }
 
 void AnswerMode::Finitialize()
 {
-	tb->finitialize();
-	delete tb;
+	tb_->finitialize();
+	delete tb_;
 }
 
 bool AnswerMode::Update()
@@ -24,7 +23,7 @@ bool AnswerMode::Update()
 		int c = _getch();
 		if (c == KEY_SPACE)
 		{
-			iqf_->CheckAnswer(q->answer_type);
+			iqf_->CheckAnswer(quiz_->answer_type);
 		}
 		else if (c == KEY_BACK)
 		{
@@ -35,11 +34,11 @@ bool AnswerMode::Update()
 			c = _getch();
 			if (c == KEY_UP)
 			{
-				now_select = (now_select + QZ_OPT_SIZE - 1) % QZ_OPT_SIZE;
+				now_select_ = (now_select_ + QZ_OPT_SIZE - 1) % QZ_OPT_SIZE;
 			}
 			else if (c == KEY_DOWN)
 			{
-				now_select = (now_select + 1) % QZ_OPT_SIZE;
+				now_select_ = (now_select_ + 1) % QZ_OPT_SIZE;
 			}
 		}
 		return true;
@@ -47,14 +46,14 @@ bool AnswerMode::Update()
 	return false;
 }
 
-void AnswerMode::print ()
+void AnswerMode::Print ()
 {
-	tb->print();
+	tb_->print();
 	for (int i = 0; i < QZ_OPT_SIZE; i++)
 	{
-		setCursorPos(this->pos.first, this->pos.second + i);
-		cout << " " << q->quiz_get_qz_opt(i) << "\n";
+		setCursorPos(this->position_.first, this->position_.second + i);
+		cout << " " << (*quiz_).quiz_opt << "\n";
 	}
-	setCursorPos(this->pos.first, this->pos.second + now_select);
+	setCursorPos(this->position_.first, this->position_.second + now_select_);
 	cout << ">";
 }

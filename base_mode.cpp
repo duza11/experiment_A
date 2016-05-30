@@ -1,11 +1,11 @@
 #include "base_mode.h"
 
-BaseMode::BaseMode(IQuizFloor* iqf)
+BaseMode::BaseMode(IQuizFloor *iqf)
 {
 	iqf_ = iqf;
 }
 
-BaseMode::BaseMode(IQuizFloor* iqf, Quiz* q)
+BaseMode::BaseMode(IQuizFloor *iqf, Quiz *quiz)
 {
 	iqf_ = iqf;
 }
