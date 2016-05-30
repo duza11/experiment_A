@@ -4,7 +4,7 @@
 #include <string>
 #include <random>
 #include "common.h"
-#include "consoleUtil.h"
+#include "console_util.h"
 #include "Timer.h"
 
 using namespace std;
@@ -32,6 +32,10 @@ public:
 	void MovePositionFront();
 	void GetItem(int item_num);
 	void UseItem(int item_num, Quiz &quiz);
+	void GoUpstairs();
+	int get_now_floor();
+	void PrintNowFloor();
+	void EnableItem();
 
 private:
 	Player();

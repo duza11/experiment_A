@@ -1,7 +1,7 @@
 #pragma once
 
 #include <time.h>
-#include "consoleUtil.h"
+#include "console_util.h"
 #include "common.h"
 
 class Timer {
@@ -26,8 +26,7 @@ public:
 		}
 		if (time_moved_flag)
 		{
-			setCursorPos(60, 0);
-			cout << "Žc‚èŽžŠÔF" << time_limit / 60 << "•ª" << time_limit % 60 << "•b";
+			timer_print();
 			time_moved_flag = false;
 		}
 		return (time_limit > 0);
@@ -44,9 +43,10 @@ public:
 		this->timer_flag = timer_flag;
 	}
 
-	void timer_reprint()
+	void timer_print()
 	{
-		this->time_moved_flag = true;
+		setCursorPos(60, 0);
+		cout << "Žc‚èŽžŠÔF" << time_limit / 60 << "•ª" << time_limit % 60 << "•b";
 	}
 
 private:

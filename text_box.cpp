@@ -15,7 +15,7 @@ TextBox::~TextBox()
 {
 }
 
-void TextBox::print()
+void TextBox::Print()
 {
 	for (int y = 0; y < this->box_ht; y++)
 	{
@@ -54,7 +54,7 @@ void TextBox::print()
 	}
 }
 
-void TextBox::finitialize()
+void TextBox::Finitialize()
 {
 	for (int y = 0; y < this->box_ht; y++)
 	{

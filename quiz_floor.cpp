@@ -14,7 +14,6 @@ QuizFloor::QuizFloor()
 	while (getline(ifs, str)) {
 		int option_count = 0;
 		int data_count = 0;
-		//Quiz q;
 		string token;
 		istringstream stream(str);
 
@@ -24,12 +23,10 @@ QuizFloor::QuizFloor()
 			{
 				if (data_count % 2 == 0)
 				{
-					//q.quiz_set_tp_str(token);
 					quiz_.typing_str = token;
 				}
 				else
 				{
-					//q.quiz_set_qz(token);
 					quiz_.quiz_str = token;
 				}
 			}
@@ -37,13 +34,11 @@ QuizFloor::QuizFloor()
 			{
 				if (data_count % 2 == 0)
 				{
-					//q.quiz_set_qz_opt(optCnt, token);
 					quiz_.quiz_opt[option_count] = token;
 				}
 				else
 				{
 					int temp = stoi(token);
-					//q.quiz_set_ans_type(optCnt % QZ_OPT_SIZE, temp);
 					quiz_.answer_type[option_count] = temp;
 					option_count++;
 				}
@@ -62,21 +57,21 @@ int QuizFloor::quiz_floor_main()
 {
 	for (auto itr = quiz_array_.begin(); itr < quiz_array_.begin() + QZ_FLOOR_SIZE; itr++)
 	{
-		if (!Timer::get_instance().timer_check()) break;
-		//t.typing_init((*itr).typing_str);
-		//t.typing_main();
+		Player::GetInstance().PrintNowFloor();
 		TypingMain((*itr).typing_str);
-
-		//qm.quiz_maker_init(*itr);
-		//qm.quiz_maker_main(*itr);
+		Player::GetInstance().PrintNowFloor();
 		QuizMain((*itr));
-
+		if (Timer::get_instance().timer_check())
+		{
+			Player::GetInstance().GoUpstairs();
+		}
 	}
 	return 0;
 }
 
 void QuizFloor::TypingMain(string &sentence)
 {
+	mistake_ = 0;
 	string typing_str = sentence;
 	string input_str = "";
 	changed_flag_ = true;
@@ -113,7 +108,7 @@ void QuizFloor::TypingMain(string &sentence)
 		}
 	}
 	system("cls");
-	Timer::get_instance().timer_reprint();
+	Timer::get_instance().timer_print();
 }
 
 void QuizFloor::QuizMain(Quiz & quiz)
@@ -121,7 +116,7 @@ void QuizFloor::QuizMain(Quiz & quiz)
 	changed_flag_ = true;
 	goal_flag_ = false;
 	next_menu_ = kBaseMenu;
-	bm = (BaseMode*) new MenuMode(this);
+	bm = (Menu*) new BaseMenu(this);
 
 	setCursorPos(0, 0);
 	cout << quiz.quiz_str;
@@ -135,8 +130,8 @@ void QuizFloor::QuizMain(Quiz & quiz)
 	}
 	system("cls");
 	Timer::get_instance().timer_switch(true);
-	Timer::get_instance().timer_reprint();
-	//Item::get_instance().use_flag_reset();
+	Timer::get_instance().timer_print();
+	Player::GetInstance().EnableItem();
 }
 
 void QuizFloor::UpdateQuizMenu(Quiz &quiz)
@@ -148,13 +143,13 @@ void QuizFloor::UpdateQuizMenu(Quiz &quiz)
 		switch (next_menu_)
 		{
 		case kBaseMenu:
-			bm = (BaseMode*) new MenuMode(this);
+			bm = (Menu*) new BaseMenu(this);
 			break;
 		case kItemMenu:
-			bm = (BaseMode*) new ItemMode(this, &quiz);
+			bm = (Menu*) new ItemMenu(this, &quiz);
 			break;
 		case kAnswerMenu:
-			bm = (BaseMode*) new AnswerMode(this, &quiz);
+			bm = (Menu*) new AnswerMenu(this, &quiz);
 			break;
 		}
 		next_menu_ = kNoneMenu;
@@ -194,6 +189,14 @@ void QuizFloor::PrintQuiz(Quiz &quiz)
 		bm->Print();
 		setCursorPos(0, QZ_START_Y);
 		for (int i = 0; i < QZ_OPT_SIZE; i++) {
+			if (quiz.enable_flag[i])
+			{
+				setColor(COL_WHITE, COL_BLACK);
+			}
+			else
+			{
+				setColor(COL_GRAY, COL_BLACK);
+			}
 			cout << " " << (char)('A' + i) << "." << quiz.quiz_opt[i] << "\n";
 			setColor(COL_WHITE, COL_BLACK);
 		}

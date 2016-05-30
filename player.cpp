@@ -33,8 +33,6 @@ void Player::GetItem(int item_num)
 	{
 		item_[item_num].item_count++;
 	}
-	setCursorPos(40, 4);
-	cout << item_[item_num].item_name << "‚ðŽè‚É“ü‚ê‚½";
 }
 
 void Player::UseItem(int item_num, Quiz &quiz)
@@ -73,7 +71,7 @@ void Player::UseFiftyFity(Quiz & quiz)
 	for (int i = 0; i < (QZ_OPT_SIZE / 2);)
 	{
 		int temp = rnd() % QZ_OPT_SIZE;
-		if (quiz.answer_type[temp] && quiz.enable_flag[temp])
+		if (!quiz.answer_type[temp] && quiz.enable_flag[temp])
 		{
 			quiz.enable_flag[temp] = false;
 			i++;
@@ -84,4 +82,28 @@ void Player::UseFiftyFity(Quiz & quiz)
 void Player::UseStopTimer()
 {
 	Timer::get_instance().timer_switch(false);
+}
+
+void Player::GoUpstairs()
+{
+	now_floor_++;
+}
+
+int Player::get_now_floor()
+{
+	return now_floor_;
+}
+
+void Player::PrintNowFloor()
+{
+	setCursorPos(60, 1);
+	cout << "Œ»Ý’n“_F" << now_floor_ << "ŠK";
+}
+
+void Player::EnableItem()
+{
+	for (int i = 0; i < kItemKind; i++)
+	{
+		item_[i].enable_flag = true;
+	}
 }

@@ -4,25 +4,22 @@
 #include "quiz_floor.h"
 #include "common.h"
 #include "timer.h"
+#include "Player.h"
 
 int main()
 {
 	system("cls");
-
-	bool clear_flag = false;
 
 	ItemFloor itf;
 	QuizFloor qf;
 
 	itf.item_floor_main();
 	Timer::get_instance();
-
 	qf.quiz_floor_main();
-	clear_flag = true;
 
 	system("cls");
 
-	if (clear_flag)
+	if (Player::GetInstance().get_now_floor() == 9)
 	{
 		cout << "GAME CLEAR";
 	}

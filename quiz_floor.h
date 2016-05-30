@@ -8,11 +8,11 @@
 #include<sstream> //•¶šƒXƒgƒŠ[ƒ€
 #include "common.h"
 #include "timer.h"
-#include "i_quiz_maker_changer.h"
-#include "base_mode.h"
-#include "menu_mode.h"
-#include "item_mode.h"
-#include "answer_mode.h"
+#include "i_quiz_floor.h"
+#include "menu.h"
+#include "base_menu.h"
+#include "item_menu.h"
+#include "answer_menu.h"
 
 #define QZ_START_Y 4
 
@@ -43,6 +43,6 @@ private:
 	//QuizMaker qm;
 	bool goal_flag_;
 	bool changed_flag_;
-	BaseMode *bm;
+	Menu *bm;
 	MenuEnum next_menu_;
 };

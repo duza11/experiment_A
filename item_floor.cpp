@@ -27,9 +27,9 @@ ItemFloor::ItemFloor()
 	}
 	this->clear_flag = false;
 	setColor(COL_WHITE);
-	setCursorPos(60, 2);
-	cout << "移動：[←][→]";
 	setCursorPos(60, 3);
+	cout << "移動：[←][→]";
+	setCursorPos(60, 4);
 	cout << "選択：[SPACE]";
 	setCursorPos(0, 0);
 }
@@ -40,6 +40,7 @@ ItemFloor::~ItemFloor()
 
 int ItemFloor::item_floor_main()
 {
+	Player::GetInstance().PrintNowFloor();
 	for (this->changed_flag = true; !this->clear_flag;)
 	{
 		if (changed_flag)
@@ -81,6 +82,7 @@ int ItemFloor::item_floor_main()
 		}
 		this->clear_flag = CheckGoal();
 	}
+	Player::GetInstance().GoUpstairs();
 	system("cls");
 
 	return 0;

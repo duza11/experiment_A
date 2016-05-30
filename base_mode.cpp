@@ -1,21 +1,21 @@
-#include "base_mode.h"
+#include "menu.h"
 
-BaseMode::BaseMode(IQuizFloor *iqf)
+Menu::Menu(IQuizFloor *iqf)
 {
 	iqf_ = iqf;
 }
 
-BaseMode::BaseMode(IQuizFloor *iqf, Quiz *quiz)
+Menu::Menu(IQuizFloor *iqf, Quiz *quiz)
 {
 	iqf_ = iqf;
 }
 
-BaseMode::~BaseMode()
+Menu::~Menu()
 {
 }
 
-void BaseMode::Finitialize() {}
+void Menu::Finitialize() {}
 
-bool BaseMode::Update() { return true; }
+bool Menu::Update() { return true; }
 
-void BaseMode::Print() {}
+void Menu::Print() {}
