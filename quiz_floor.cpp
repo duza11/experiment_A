@@ -98,7 +98,8 @@ void QuizFloor::TypingMain()
 		if (changed_flag_)
 		{
 			setCursorPos(0, 0);
-			cout << "ミス" << mistake_ << "回\n\n";
+			cout << "ミス" << mistake_ << "回\n\n\n";
+			cout << "次の文章をタイピングしてください\n\n\n";
 			cout << typing_str << "\n";
 			cout << input_str;
 			setColor(COL_WHITE, COL_CYAN);

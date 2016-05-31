@@ -28,12 +28,12 @@ ItemFloor::ItemFloor()
 
 	this->clear_flag_ = false;
 	item_position_.first = 60;
-	item_position_.second = 6;
+	item_position_.second = 8;
 
 	setColor(COL_WHITE);
-	setCursorPos(60, 3);
+	setCursorPos(60, 5);
 	cout << "ˆÚ“®F[©][¨]";
-	setCursorPos(60, 4);
+	setCursorPos(60, 6);
 	cout << "‘I‘ðF[SPACE]";
 	setCursorPos(0, 0);
 }
