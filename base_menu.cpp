@@ -2,19 +2,20 @@
 
 BaseMenu::BaseMenu(IQuizFloor* changer) : Menu(changer)
 {
-	this->position_.first = MENU_OPT_X;
-	this->position_.second = MENU_OPT_Y;
-	this->box_position_.first = MENU_BOX_X;
-	this->box_position_.second = MENU_BOX_Y;
-	tb_ = new TextBox(box_position_, MENU_BOX_WD, MENU_BOX_HT);
+	this->now_select_ = kAnswerMenu;
+	this->position_.first = BASE_MENU_OPTION_X;
+	this->position_.second = BASE_MENU_OPTION_Y;
+	this->box_position_.first = BASE_MENU_BOX_X;
+	this->box_position_.second = BASE_MENU_BOX_Y;
+	text_box_ = new TextBox(box_position_, BASE_MENU_BOX_WIDTH, BASE_MENU_BOX_HEIGHT);
 }
 
 void BaseMenu::Finitialize()
 {
-	delete tb_;
+	delete text_box_;
 	for (int i = 0; i < 2; i++)
 	{
-		setCursorPos(position_.first, position_.second + i);
+		setCursorPos(position_.first - 1, position_.second + i);
 		cout << " ";
 	}
 }
@@ -55,11 +56,11 @@ bool BaseMenu::Update()
 
 void BaseMenu::Print()
 {
-	tb_->Print();
+	text_box_->Print();
 	setCursorPos(this->position_.first, this->position_.second);
-	cout << " 解答";
+	cout << "解答";
 	setCursorPos(this->position_.first, this->position_.second + 1);
-	cout << " アイテム";
-	setCursorPos(this->position_.first, this->position_.second + now_select_);
+	cout << "アイテム";
+	setCursorPos(this->position_.first - 1, this->position_.second + now_select_);
 	cout << ">";
 }

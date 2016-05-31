@@ -3,7 +3,6 @@
 #include <conio.h>
 #include "i_quiz_floor.h"
 #include "console_util.h"
-#include "common.h"
 
 class Menu
 {
@@ -19,5 +18,5 @@ protected:
 	IQuizFloor* iqf_;
 
 private:
-	int now_select = 0;
+	int now_select_ = 0;
 };

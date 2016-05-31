@@ -147,7 +147,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="answer_menu.cpp" />
-    <ClCompile Include="base_mode.cpp" />
+    <ClCompile Include="menu.cpp" />
     <ClCompile Include="console_util.cpp" />
     <ClCompile Include="item_floor.cpp" />
     <ClCompile Include="item_menu.cpp" />
@@ -168,8 +168,8 @@
     <ClInclude Include="item_menu.h" />
     <ClInclude Include="i_quiz_floor.h" />
     <ClInclude Include="base_menu.h" />
+    <ClInclude Include="player.h" />
     <ClInclude Include="text_box.h" />
-    <ClInclude Include="Player.h" />
     <ClInclude Include="quiz_floor.h" />
     <ClInclude Include="timer.h" />
   </ItemGroup>

@@ -1,4 +1,4 @@
-#include "player.h"
+﻿#include "player.h"
 
 pair<int, int> Player::get_now_position()
 {
@@ -12,12 +12,12 @@ pair<int, int> Player::get_next_position()
 
 void Player::MoveNextPositionLeft()
 {
-	next_position_.first = (next_position_.first + PLAYER_MAX_X - 1) % PLAYER_MAX_X;
+	next_position_.first = (next_position_.first + ITEM_FLOOR_WIDTH - 1) % ITEM_FLOOR_WIDTH;
 }
 
 void Player::MoveNextPositionRight()
 {
-	next_position_.first = (next_position_.first + 1) % PLAYER_MAX_X;
+	next_position_.first = (next_position_.first + 1) % ITEM_FLOOR_WIDTH;
 }
 
 void Player::MovePositionFront()
@@ -29,15 +29,21 @@ void Player::MovePositionFront()
 
 void Player::GetItem(int item_num)
 {
+	setCursorPos(0,21);
 	if (item_num != -1)
 	{
 		item_[item_num].item_count++;
+		cout << item_[item_num].item_name << "を手に入れた";
+	}
+	else
+	{
+		cout << "何も見つからなかった   ";
 	}
 }
 
 void Player::UseItem(int item_num, Quiz &quiz)
 {
-	if (item_[item_num].enable_flag) {
+	if (item_[item_num].enable_flag && item_[item_num].item_count > 0) {
 		if (item_num == kFiftyFifty)
 		{
 			UseFiftyFity(quiz);
@@ -47,6 +53,7 @@ void Player::UseItem(int item_num, Quiz &quiz)
 			UseStopTimer();
 		}
 		item_[item_num].enable_flag = false;
+		item_[item_num].item_count--;
 	}
 }
 
@@ -57,8 +64,8 @@ Player::Player()
 		item_[i].item_count = 0;
 		item_[i].enable_flag = true;
 	}
-	item_[kFiftyFifty].item_name = "�A�C�e��1";
-	item_[kStopTimer].item_name = "�A�C�e��2";
+	item_[kFiftyFifty].item_name = "アイテム1";
+	item_[kStopTimer].item_name = "アイテム2";
 	now_position_.first = PLAYER_X;;
 	now_position_.second = PLAYER_Y;
 	next_position_.first = PLAYER_NEXT_X;
@@ -68,9 +75,9 @@ Player::Player()
 
 void Player::UseFiftyFity(Quiz & quiz)
 {
-	for (int i = 0; i < (QZ_OPT_SIZE / 2);)
+	for (int i = 0; i < (QUIZ_OPTION_SIZE / 2);)
 	{
-		int temp = rnd() % QZ_OPT_SIZE;
+		int temp = (unsigned)rnd() % QUIZ_OPTION_SIZE;
 		if (!quiz.answer_type[temp] && quiz.enable_flag[temp])
 		{
 			quiz.enable_flag[temp] = false;
@@ -81,7 +88,7 @@ void Player::UseFiftyFity(Quiz & quiz)
 
 void Player::UseStopTimer()
 {
-	Timer::get_instance().timer_switch(false);
+	Timer::GetInstance().SwitchTimer(false);
 }
 
 void Player::GoUpstairs()
@@ -97,7 +104,7 @@ int Player::get_now_floor()
 void Player::PrintNowFloor()
 {
 	setCursorPos(60, 1);
-	cout << "���ݒn�_�F" << now_floor_ << "�K";
+	cout << "現在地点：" << now_floor_ << "階";
 }
 
 void Player::EnableItem()
@@ -105,5 +112,23 @@ void Player::EnableItem()
 	for (int i = 0; i < kItemKind; i++)
 	{
 		item_[i].enable_flag = true;
+	}
+}
+
+void Player::PrintItemStatus(pair<int, int> position)
+{
+	for (int i = 0; i < kItemKind; i++)
+	{
+		if (item_[i].enable_flag && item_[i].item_count > 0)
+		{
+			setColor(COL_WHITE, COL_BLACK);
+		}
+		else
+		{
+			setColor(COL_GRAY, COL_BLACK);
+		}
+		setCursorPos(position.first, position.second + i);
+		cout << item_[i].item_name << "*" << item_[i].item_count;
+		setColor(COL_WHITE, COL_BLACK);
 	}
 }

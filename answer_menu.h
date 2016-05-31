@@ -2,15 +2,9 @@
 
 #include "menu.h"
 #include "text_box.h"
+#include "common.h"
 
-#define ANSWER_BOX_X 10
-#define ANSWER_BOX_Y 17
-#define ANSWER_OPT_X (ANSWER_BOX_X + 2)
-#define ANSWER_OPT_Y (ANSWER_BOX_Y + 1)
-#define ANSWER_BOX_WD 16
-#define ANSWER_BOX_HT 8
-
-class AnswerMenu : Menu
+class AnswerMenu : public Menu
 {
 public:
 	AnswerMenu(IQuizFloor* changer, Quiz *quiz);
@@ -19,9 +13,9 @@ public:
 	void Print() override;
 
 private:
-	int now_select_ = 0;
+	int now_select_;
 	pair<int, int> position_;
 	pair<int, int> box_position_;
-	TextBox *tb_;
+	TextBox *text_box_;
 	Quiz *quiz_;
 };

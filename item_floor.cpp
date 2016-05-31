@@ -2,30 +2,34 @@
 
 ItemFloor::ItemFloor()
 {
-	for (int x = 0; x < BOARD_WD; ++x) {
-		for (int y = 0; y < BOARD_HT; ++y) {
-			if ((x == 0 || x == BOARD_WD - 1) && (y == 0 || y == BOARD_HT - 1))
+	for (int y = 0; y < ITEM_FLOOR_HEIGT; y++) {
+		for (int x = 0; x < ITEM_FLOOR_WIDTH; x++) {
+			if (y == 0 || y == ITEM_FLOOR_HEIGT - 1)
 			{
-				//g_board[x][y] = WALL;
-				room[x][y].room_status = WALL;
-				room[x][y].item_status = -1;
-				room[x][y].item_get_flag = true;
-			}
-			else if (y == 0 || y == BOARD_HT - 1)
-			{
-				room[x][y].room_status = 0;
-				room[x][y].item_status = -1;
-				room[x][y].item_get_flag = true;
+				room_[x][y].room_status = 0;
+				room_[x][y].item_status = -1;
+				room_[x][y].item_get_flag = true;
 			}
 			else
 			{
-				room[x][y].room_status = 0;
-				room[x][y].item_status = x - 1;
-				room[x][y].item_get_flag = false;
+				room_[x][y].room_status = 0;
+				room_[x][y].item_status = x - 1;
+				room_[x][y].item_get_flag = false;
 			}
 		}
+		for (int x = 0; x < ITEM_FLOOR_WIDTH; x++)
+		{
+			int ran_num = (unsigned)rnd() % ITEM_FLOOR_WIDTH;
+			int temp = room_[x][y].item_status;
+			room_[x][y].item_status = room_[ran_num][y].item_status;
+			room_[ran_num][y].item_status = temp;
+		}
 	}
-	this->clear_flag = false;
+
+	this->clear_flag_ = false;
+	item_position_.first = 60;
+	item_position_.second = 6;
+
 	setColor(COL_WHITE);
 	setCursorPos(60, 3);
 	cout << "移動：[←][→]";
@@ -38,49 +42,45 @@ ItemFloor::~ItemFloor()
 {
 }
 
-int ItemFloor::item_floor_main()
+int ItemFloor::ItemFloorMain()
 {
 	Player::GetInstance().PrintNowFloor();
-	for (this->changed_flag = true; !this->clear_flag;)
+	for (this->changed_flag_ = true; !this->clear_flag_;)
 	{
-		if (changed_flag)
+		if (changed_flag_)
 		{
-			//Update(p.player_get_pos(), p.player_get_next_pos());
 			Update(Player::GetInstance().get_now_position(), Player::GetInstance().get_next_position());
 			Print();
-			setColor(COL_WHITE, COL_BLACK);
-			changed_flag = false;
+			Player::GetInstance().PrintItemStatus(item_position_);
+			changed_flag_ = false;
 		}if (_kbhit())
 		{
-			int c = _getch();
-			if (c == 'q')
+			int input_key = _getch();
+			if (input_key == 'q')
 			{
 				exit(0);
 			}
-			if (c == KEY_SPACE)
+			if (input_key == KEY_SPACE)
 			{
-				//p.player_move_front();
 				Player::GetInstance().MovePositionFront();
-				changed_flag = true;
+				changed_flag_ = true;
 			}
-			else if (c == KEY_ARROW)
+			else if (input_key == KEY_ARROW)
 			{
-				int c = _getch();
-				switch (c) {
+				input_key = _getch();
+				switch (input_key) {
 				case KEY_LEFT:
-					//p.player_move_left();
 					Player::GetInstance().MoveNextPositionLeft();
-					changed_flag = true;
+					changed_flag_ = true;
 					break;
 				case KEY_RIGHT:
-					//p.player_move_right();
 					Player::GetInstance().MoveNextPositionRight();
-					changed_flag = true;
+					changed_flag_ = true;
 					break;
 				}
 			}
 		}
-		this->clear_flag = CheckGoal();
+		this->clear_flag_ = CheckGoal();
 	}
 	Player::GetInstance().GoUpstairs();
 	system("cls");
@@ -90,28 +90,26 @@ int ItemFloor::item_floor_main()
 
 void ItemFloor::Update(pair<int, int> now_position, pair<int, int> next_position)
 {
-	for (int x = 0; x < BOARD_WD; x++)
+	for (int x = 0; x < ITEM_FLOOR_WIDTH; x++)
 	{
-		for (int y = 0; y < BOARD_HT; y++)
+		for (int y = 0; y < ITEM_FLOOR_HEIGT; y++)
 		{
 			if (x == now_position.first && y == now_position.second)
 			{
-				if (room[x][y].item_get_flag == false)
+				if (room_[x][y].item_get_flag == false)
 				{
-
-					//Item::get_instance().get_item(room[x][y].item_status);
-					Player::GetInstance().GetItem(room[x][y].item_status);
-					room[x][y].item_get_flag == true;
+					Player::GetInstance().GetItem(room_[x][y].item_status);
+					room_[x][y].item_get_flag = true;
 				}
-				room[x][y].room_status = 'P';
+				room_[x][y].room_status = 1;
 			}
 			else if (x == next_position.first && y == next_position.second)
 			{
-				room[x][y].room_status = 'N';
+				room_[x][y].room_status = 2;
 			}
 			else
 			{
-				room[x][y].room_status = 0;
+				room_[x][y].room_status = 0;
 			}
 		}
 	}
@@ -120,7 +118,7 @@ void ItemFloor::Update(pair<int, int> now_position, pair<int, int> next_position
 void ItemFloor::Print()
 {
 	setCursorPos(0, 0);
-	for (int y = 0; y < BOARD_HT; y++)
+	for (int y = 0; y < ITEM_FLOOR_HEIGT; y++)
 	{
 		PrintLine(y, false);
 		PrintLine(y, true);
@@ -130,16 +128,50 @@ void ItemFloor::Print()
 
 void ItemFloor::PrintLine(int y, bool print_value_flag)
 {
-	for (int x = 0; x < BOARD_WD; x++) {
-		int v = room[x][y].room_status;
-		//setColor(fgColor(v), bgColor(v));
-		setFgBgColor(v);
+	for (int x = 0; x < ITEM_FLOOR_WIDTH; x++) {
+		int room_status = room_[x][y].room_status;
+		int fg = COL_WHITE;
+		int bg = COL_BLACK;
+		switch (room_status) {
+		case 0:
+			if (y == 0)
+			{
+				bg = COL_DARK_RED;
+			}
+			else if (y == ITEM_FLOOR_HEIGT - 1)
+			{
+				bg = COL_DARK_BLUE;
+			}
+			else
+			{
+				bg = COL_LIGHT_GRAY;
+			}
+			break;
+		case 1:
+			bg = COL_DARK_GREEN;
+			break;
+		case 2:
+			bg = COL_DARK_YELLOW;
+			break;
+		}
+		setColor(fg, bg);
 		string str(CELL_WIDTH, ' ');
 		if (print_value_flag) {
-			if (!v)
+			if (!room_status)
+			{
 				str = '.';
+			}
 			else
-				str = v;
+			{
+				if (room_status == 1)
+				{
+					str = 'P';
+				}
+				else if (room_status == 2)
+				{
+					str = 'N';
+				}
+			}
 			str += string((CELL_WIDTH - str.size()) / 2, ' ');		//	末尾に空白パディング
 			str = string(CELL_WIDTH - str.size(), ' ') + str;		//	先頭に空白パディング
 		}
@@ -150,9 +182,9 @@ void ItemFloor::PrintLine(int y, bool print_value_flag)
 
 bool ItemFloor::CheckGoal()
 {
-	for (int x = 0; x < BOARD_WD; x++)
+	for (int x = 0; x < ITEM_FLOOR_WIDTH; x++)
 	{
-		if (room[x][0].room_status == 'P') {
+		if (room_[x][0].room_status == 1) {
 			return true;
 		}
 	}

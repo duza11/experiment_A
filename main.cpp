@@ -1,8 +1,5 @@
-#include <time.h>			//	time
-#include <string>
 #include "item_floor.h"
 #include "quiz_floor.h"
-#include "common.h"
 #include "timer.h"
 #include "Player.h"
 
@@ -10,12 +7,13 @@ int main()
 {
 	system("cls");
 
+	SetCursorDisplay(FALSE);
 	ItemFloor itf;
 	QuizFloor qf;
 
-	itf.item_floor_main();
-	Timer::get_instance();
-	qf.quiz_floor_main();
+	itf.ItemFloorMain();
+	Timer::GetInstance();
+	qf.QuizFloorMain();
 
 	system("cls");
 

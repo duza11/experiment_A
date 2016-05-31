@@ -2,7 +2,6 @@
 
 #include <Windows.h>
 #include <string>
-#include <time.h>
 #include <iostream>
 
 using namespace std;
@@ -43,33 +42,5 @@ void setColor(int col);
 void setColor(int fg, int bg);
 // カーソル位置指定 for Windows Console
 void setCursorPos(int x, int y);
-// 罫線つきの文字列
-void borderString(string str, int size);
-
-
-template <class X> void setFgBgColor(X input)
-{
-	int fg = COL_WHITE;
-	int bg = COL_BLACK;
-	switch (input) {
-	case 0:
-		bg = COL_LIGHT_GRAY;
-		break;
-	case 1:
-		bg = COL_DARK_YELLOW;
-		break;
-	case 2:
-		bg = COL_DARK_CYAN;
-		break;
-	case 3:
-		bg = COL_DARK_GREEN;
-		break;
-	case 'P':
-		bg = COL_DARK_BLUE;
-		break;
-	case 'N':
-		bg = COL_BLACK;
-		break;
-	}
-	setColor(fg, bg);
-}
+// カーソルを表示設定 TRUE=表示,FALSE=非表示
+void SetCursorDisplay(BOOL bVisible);

@@ -49,6 +49,15 @@ void setCursorPos(int x, int y)
 	SetConsoleCursorPosition(hCons, pos);
 }
 
+void SetCursorDisplay(BOOL bVisible)
+{
+	HANDLE hCons = GetStdHandle(STD_OUTPUT_HANDLE);
+	CONSOLE_CURSOR_INFO info;
+	GetConsoleCursorInfo(hCons,&info);
+	info.bVisible = bVisible;
+	SetConsoleCursorInfo(hCons, &info);
+}
+
 void borderString(string str, int size)
 {
 	

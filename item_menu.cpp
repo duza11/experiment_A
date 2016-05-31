@@ -2,18 +2,19 @@
 
 ItemMenu::ItemMenu(IQuizFloor* changer, Quiz *quiz) : Menu(changer, quiz)
 {
+	this->now_select_ = kFiftyFifty;
 	this->quiz_ = quiz;
-	this->position_.first = ITEM_OPT_X;
-	this->position_.second = ITEM_OPT_Y;
-	this->box_position_.first =  ITEM_BOX_X;
-	this->box_position_.second = ITEM_BOX_Y;
-	tb_ = new TextBox(box_position_, ITEM_BOX_WD, ITEM_BOX_HT);
+	this->position_.first = ITEM_MENU_OPTION_X;
+	this->position_.second = ITEM_MENU_OPTION_Y;
+	this->box_position_.first =  ITEM_MENU_BOX_X;
+	this->box_position_.second = ITEM_MENU_BOX_Y;
+	text_box_ = new TextBox(box_position_, ITEM_MENU_BOX_WIDTH, ITEM_MENU_BOX_HEIGHT);
 }
 
 void ItemMenu::Finitialize()
 {
-	tb_->Finitialize();
-	delete tb_;
+	text_box_->Finitialize();
+	delete text_box_;
 }
 
 bool ItemMenu::Update()
@@ -56,11 +57,8 @@ bool ItemMenu::Update()
 
 void ItemMenu::Print()
 {
-	tb_->Print();
-	setCursorPos(this->position_.first, this->position_.second);
-	cout << " アイテム1";
-	setCursorPos(this->position_.first, this->position_.second + 1);
-	cout << " アイテム2";
-	setCursorPos(this->position_.first, this->position_.second + now_select_);
+	text_box_->Print();
+	Player::GetInstance().PrintItemStatus(this->position_);
+	setCursorPos(this->position_.first - 1, this->position_.second + now_select_);
 	cout << ">";
 }

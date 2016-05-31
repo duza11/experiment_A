@@ -7,13 +7,13 @@ class TextBox
 {
 public:
 	TextBox();
-	TextBox(pair<int, int> pos, int box_ht, int box_wd);
+	TextBox(pair<int, int> position, int height, int width);
 	~TextBox();
 	void Print();
 	void Finitialize();
 
 private:
-	pair<int, int> pos;
-	int  box_ht;
-	int box_wd;
+	pair<int, int> position_;
+	int  height_;
+	int width_;
 };

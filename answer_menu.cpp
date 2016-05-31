@@ -2,18 +2,19 @@
 
 AnswerMenu::AnswerMenu(IQuizFloor* changer, Quiz *quiz) : Menu(changer, quiz)
 {
+	this->now_select_ = 0;
 	this->quiz_ = quiz;
-	this->position_.first = ANSWER_OPT_X;
-	this->position_.second = ANSWER_OPT_Y;
-	this->box_position_.first = ANSWER_BOX_X;
-	this->box_position_.second = ANSWER_BOX_Y;
-	tb_ = new TextBox(box_position_, ANSWER_BOX_WD, ANSWER_BOX_HT);
+	this->position_.first = ANSWER_MENU_OPTION_X;
+	this->position_.second = ANSWER_MENU_OPTION_Y;
+	this->box_position_.first = ANSWER_MENU_BOX_X;
+	this->box_position_.second = ANSWER_MENU_BOX_Y;
+	text_box_ = new TextBox(box_position_, ANSWER_MENU_BOX_WIDTH, ANSWER_MENU_BOX_HEIGHT);
 }
 
 void AnswerMenu::Finitialize()
 {
-	tb_->Finitialize();
-	delete tb_;
+	text_box_->Finitialize();
+	delete text_box_;
 }
 
 bool AnswerMenu::Update()
@@ -23,7 +24,7 @@ bool AnswerMenu::Update()
 		int c = _getch();
 		if (c == KEY_SPACE)
 		{
-			iqf_->CheckAnswer(*quiz_, now_select_);
+			iqf_->CheckAnswer(now_select_);
 		}
 		else if (c == KEY_BACK)
 		{
@@ -34,11 +35,11 @@ bool AnswerMenu::Update()
 			c = _getch();
 			if (c == KEY_UP)
 			{
-				now_select_ = (now_select_ + QZ_OPT_SIZE - 1) % QZ_OPT_SIZE;
+				now_select_ = (now_select_ + QUIZ_OPTION_SIZE - 1) % QUIZ_OPTION_SIZE;
 			}
 			else if (c == KEY_DOWN)
 			{
-				now_select_ = (now_select_ + 1) % QZ_OPT_SIZE;
+				now_select_ = (now_select_ + 1) % QUIZ_OPTION_SIZE;
 			}
 		}
 		return true;
@@ -48,8 +49,8 @@ bool AnswerMenu::Update()
 
 void AnswerMenu::Print ()
 {
-	tb_->Print();
-	for (int i = 0; i < QZ_OPT_SIZE; i++)
+	text_box_->Print();
+	for (int i = 0; i < QUIZ_OPTION_SIZE; i++)
 	{
 		if ((*quiz_).enable_flag[i])
 		{
@@ -60,8 +61,8 @@ void AnswerMenu::Print ()
 			setColor(COL_GRAY, COL_BLACK);
 		}
 		setCursorPos(this->position_.first, this->position_.second + i);
-		cout << " " << (*quiz_).quiz_opt[i] << "\n";
+		cout << (*quiz_).quiz_opt[i];
 	}
-	setCursorPos(this->position_.first, this->position_.second + now_select_);
+	setCursorPos(this->position_.first - 1, this->position_.second + now_select_);
 	cout << ">";
 }

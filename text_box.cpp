@@ -4,11 +4,11 @@ TextBox::TextBox()
 {
 }
 
-TextBox::TextBox(pair<int, int> pos, int box_wd, int box_ht)
+TextBox::TextBox(pair<int, int> posion, int width, int box_HEIGHT)
 {
-	this->pos = pos;
-	this->box_wd = box_wd;
-	this->box_ht = box_ht;
+	this->position_ = posion;
+	this->width_ = width;
+	this->height_ = box_HEIGHT;
 }
 
 TextBox::~TextBox()
@@ -17,32 +17,32 @@ TextBox::~TextBox()
 
 void TextBox::Print()
 {
-	for (int y = 0; y < this->box_ht; y++)
+	for (int y = 0; y < this->height_; y++)
 	{
-		setCursorPos(this->pos.first, this->pos.second + y);
-		for (int x = 0; x < this->box_wd; x += 2)
+		setCursorPos(this->position_.first, this->position_.second + y);
+		for (int x = 0; x < this->width_; x += 2)
 		{
 			if (x == 0 && y == 0)
 			{
 				cout << "„¬";
 			}
-			else if (x == this->box_wd - 2 && y == 0)
+			else if (x == this->width_ - 2 && y == 0)
 			{
 				cout << "„­";
 			}
-			else if (x == 0 && y == this->box_ht - 1)
+			else if (x == 0 && y == this->height_ - 1)
 			{
 				cout << "„¯";
 			}
-			else if (x == this->box_wd - 2 && y == this->box_ht - 1)
+			else if (x == this->width_ - 2 && y == this->height_ - 1)
 			{
 				cout << "„®";
 			}
-			else if (x == 0 || x == this->box_wd - 2)
+			else if (x == 0 || x == this->width_ - 2)
 			{
 				cout << "„«";
 			}
-			else if (y == 0 || y == this->box_ht - 1)
+			else if (y == 0 || y == this->height_ - 1)
 			{
 				cout << "„ª";
 			}
@@ -56,10 +56,10 @@ void TextBox::Print()
 
 void TextBox::Finitialize()
 {
-	for (int y = 0; y < this->box_ht; y++)
+	for (int y = 0; y < this->height_; y++)
 	{
-		setCursorPos(this->pos.first, this->pos.second + y);
-		for (int x = 0; x < this->box_wd; x += 2)
+		setCursorPos(this->position_.first, this->position_.second + y);
+		for (int x = 0; x < this->width_; x += 2)
 		{
 			cout << "  ";
 		}

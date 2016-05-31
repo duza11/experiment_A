@@ -1,11 +1,10 @@
 #pragma once
 
-#include <utility>
 #include <string>
 #include <random>
 #include "common.h"
 #include "console_util.h"
-#include "Timer.h"
+#include "timer.h"
 
 using namespace std;
 
@@ -36,6 +35,7 @@ public:
 	int get_now_floor();
 	void PrintNowFloor();
 	void EnableItem();
+	void PrintItemStatus(pair<int, int> position);
 
 private:
 	Player();

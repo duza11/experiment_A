@@ -4,32 +4,48 @@
 
 using namespace std;
 
-#define WALL -1							// 番人
-#define BOARD_WD 3						// ボード幅
-#define BOARD_HT 7						// ボード高さ
-#define BOARD_ARY_WD (BOARD_WD + 2)		// ボード用配列の1次元目の要素数
-#define BOARD_ARY_HT (BOARD_HT + 2)		// ボード用配列の2次元目の要素数
-#define CELL_WIDTH 8					// セル表示幅
-
-#define PLAYER_X (BOARD_WD / 2)	// プレイヤーの初期X座標
-#define PLAYER_Y BOARD_HT - 1				// プレイヤーの初期Y座標
-#define PLAYER_NEXT_X PLAYER_X			// プレイヤーの次の初期X座標
-#define PLAYER_NEXT_Y (PLAYER_Y - 1)	// プレイヤーの次の初期Y座標
-#define PLAYER_MAX_X BOARD_WD			// プレイヤーのX座標の最大値
-#define PLAYER_MIN_X 1					// プレイヤーのX座標の最小値
-#define PLAYER_MAX_Y BOARD_HT			// プレイヤーのY座標の最大値
-
-#define TIME 600
-#define QZ_FLOOR_SIZE 7
-
-#define QZ_OPT_SIZE 6
-#define QZ_DT_SIZE ((QZ_OPT_SIZE * 2) + 2)
+/*1F関連*/
+#define WALL -1	// 壁
+#define ITEM_FLOOR_WIDTH 3 // 1Fのダンジョンの横幅
+#define ITEM_FLOOR_HEIGT 7 // 1Fのダンジョンの縦幅
+#define CELL_WIDTH 8 // セル表示幅
+#define PLAYER_X (ITEM_FLOOR_WIDTH / 2) // プレイヤーの初期X座標
+#define PLAYER_Y ITEM_FLOOR_HEIGT - 1 // プレイヤーの初期Y座標
+#define PLAYER_NEXT_X PLAYER_X // プレイヤーの次の初期X座標
+#define PLAYER_NEXT_Y (PLAYER_Y - 1) // プレイヤーの次の初期Y座標
+/*タイマー関連*/
+#define REMAINING_TIME 600 // 制限時間
+/*2F以降関連*/
+#define QUIZ_FLOOR_SIZE 7 // クイズを出題する階数
+#define QUIZ_OPTION_SIZE 6 // クイズの選択肢の数
+#define QUIZ_DATA_SIZE ((QUIZ_OPTION_SIZE * 2) + 2) // CVSにおけるクイズ1問のデータ数
+/*基本メニュー関連*/
+#define BASE_MENU_BOX_X 0
+#define BASE_MENU_BOX_Y 21
+#define BASE_MENU_OPTION_X (BASE_MENU_BOX_X + 3)
+#define BASE_MENU_OPTION_Y (BASE_MENU_BOX_Y + 1)
+#define BASE_MENU_BOX_WIDTH 16
+#define BASE_MENU_BOX_HEIGHT 4
+/*回答メニュー関連*/
+#define ANSWER_MENU_BOX_X 10
+#define ANSWER_MENU_BOX_Y 17
+#define ANSWER_MENU_OPTION_X (ANSWER_MENU_BOX_X + 3)
+#define ANSWER_MENU_OPTION_Y (ANSWER_MENU_BOX_Y + 1)
+#define ANSWER_MENU_BOX_WIDTH 40
+#define ANSWER_MENU_BOX_HEIGHT 8
+/*アイテムメニュー関連*/
+#define ITEM_MENU_BOX_X 10
+#define ITEM_MENU_BOX_Y 21
+#define ITEM_MENU_OPTION_X (ITEM_MENU_BOX_X + 3)
+#define ITEM_MENU_OPTION_Y (ITEM_MENU_BOX_Y + 1)
+#define ITEM_MENU_BOX_WIDTH 16
+#define ITEM_MENU_BOX_HEIGHT 4
 
 typedef struct
 {
 	string typing_str;
 	string quiz_str;
-	string quiz_opt[QZ_OPT_SIZE];
-	bool answer_type[QZ_OPT_SIZE];
-	bool enable_flag[QZ_OPT_SIZE];
+	string quiz_opt[QUIZ_OPTION_SIZE];
+	bool answer_type[QUIZ_OPTION_SIZE];
+	bool enable_flag[QUIZ_OPTION_SIZE];
 } Quiz;
