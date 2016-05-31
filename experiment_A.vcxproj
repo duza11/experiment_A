@@ -157,6 +157,7 @@
     <ClCompile Include="text_box.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="quiz_floor.cpp" />
+    <ClCompile Include="timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="answer_menu.h" />

@@ -12,7 +12,7 @@ AnswerMenu::AnswerMenu(IQuizFloor* changer, Quiz *quiz) : Menu(changer, quiz)
 
 void AnswerMenu::Finitialize()
 {
-	tb_->finitialize();
+	tb_->Finitialize();
 	delete tb_;
 }
 
@@ -48,7 +48,7 @@ bool AnswerMenu::Update()
 
 void AnswerMenu::Print ()
 {
-	tb_->print();
+	tb_->Print();
 	for (int i = 0; i < QZ_OPT_SIZE; i++)
 	{
 		if ((*quiz_).enable_flag[i])

@@ -55,7 +55,7 @@ bool BaseMenu::Update()
 
 void BaseMenu::Print()
 {
-	tb_->print();
+	tb_->Print();
 	setCursorPos(this->position_.first, this->position_.second);
 	cout << " ‰ð“š";
 	setCursorPos(this->position_.first, this->position_.second + 1);

@@ -1,9 +1,3 @@
-﻿  quiz_floor.cpp
-c:\users\adm\source\repos\experiment_a\quiz_floor.cpp(42): warning C4800: 'int': ブール値を 'true' または 'false' に強制的に設定します (警告の処理)
-  main.cpp
-  item_menu.cpp
-  base_mode.cpp
-  base_menu.cpp
-  answer_menu.cpp
-  コードを生成中...
-  experiment_A.vcxproj -> C:\Users\Adm\Source\Repos\experiment_A\Debug\experiment_A.exe
+﻿  base_menu.cpp
+  LINK : C:\Users\大樹\Source\Repos\experiment_A\Debug\experiment_A.exe not found or not built by the last incremental link; performing full link
+  experiment_A.vcxproj -> C:\Users\大樹\Source\Repos\experiment_A\Debug\experiment_A.exe

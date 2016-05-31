@@ -12,7 +12,7 @@ ItemMenu::ItemMenu(IQuizFloor* changer, Quiz *quiz) : Menu(changer, quiz)
 
 void ItemMenu::Finitialize()
 {
-	tb_->finitialize();
+	tb_->Finitialize();
 	delete tb_;
 }
 
@@ -56,7 +56,7 @@ bool ItemMenu::Update()
 
 void ItemMenu::Print()
 {
-	tb_->print();
+	tb_->Print();
 	setCursorPos(this->position_.first, this->position_.second);
 	cout << " ƒAƒCƒeƒ€1";
 	setCursorPos(this->position_.first, this->position_.second + 1);
