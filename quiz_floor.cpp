@@ -97,6 +97,7 @@ void QuizFloor::TypingMain()
 	{
 		if (changed_flag_)
 		{
+			
 			setCursorPos(0, 0);
 			cout << "ミス" << mistake_ << "回\n\n\n";
 			cout << "次の文章をタイピングしてください\n\n\n";
@@ -105,6 +106,17 @@ void QuizFloor::TypingMain()
 			setColor(COL_WHITE, COL_CYAN);
 			cout << " \n";
 			setColor(COL_WHITE, COL_BLACK);
+			
+			/*Timer::GetInstance().PrintTime();
+			DoubleBuffer::GetInstance().setCursorPos(0, 0);
+			DoubleBuffer::GetInstance().write("ミス" + to_string(mistake_) + "回\n\n\n");
+			DoubleBuffer::GetInstance().write("次の文章をタイピングしてください\n\n\n");
+			DoubleBuffer::GetInstance().write(typing_str + "\n");
+			DoubleBuffer::GetInstance().write(input_str);
+			DoubleBuffer::GetInstance().setColor(COL_WHITE, COL_CYAN);
+			DoubleBuffer::GetInstance().write(" ");
+			DoubleBuffer::GetInstance().setColor(COL_WHITE, COL_BLACK);
+			DoubleBuffer::GetInstance().swap();*/
 			changed_flag_ = false;
 		}
 		if (_kbhit())
@@ -128,7 +140,11 @@ void QuizFloor::TypingMain()
 		}
 	}
 	system("cls");
-	Timer::GetInstance().PrintTime();
+	//DoubleBuffer::GetInstance().ClearScreen();
+	//DoubleBuffer::GetInstance().swap();
+	//DoubleBuffer::GetInstance().ClearScreen();
+	//Timer::GetInstance().PrintTime();
+	//DoubleBuffer::GetInstance().swap();
 }
 
 void QuizFloor::QuizMain()
@@ -143,6 +159,8 @@ void QuizFloor::QuizMain()
 
 
 	PrintQuiz();
+	//DoubleBuffer::GetInstance().setCursorPos(0, 0);
+	//DoubleBuffer::GetInstance().write((*quiz_).quiz_str);
 	while (Timer::GetInstance().CheckTime() && !goal_flag_)
 	{
 		UpdateQuizMenu();
@@ -150,7 +168,11 @@ void QuizFloor::QuizMain()
 	}
 	system("cls");
 	Timer::GetInstance().SwitchTimer(true);
+	//DoubleBuffer::GetInstance().ClearScreen();
+	//DoubleBuffer::GetInstance().swap();
+	//DoubleBuffer::GetInstance().ClearScreen();
 	Timer::GetInstance().PrintTime();
+	//DoubleBuffer::GetInstance().swap();
 	Player::GetInstance().EnableItem();
 }
 
@@ -206,20 +228,29 @@ void QuizFloor::PrintQuiz()
 {
 	if (changed_flag_)
 	{
+		//DoubleBuffer::GetInstance().setCursorPos(0, 0);
+		//DoubleBuffer::GetInstance().write((*quiz_).quiz_str);
+		Timer::GetInstance().PrintTime();
 		menu_->Print();
 		setCursorPos(0, QZ_START_Y);
+		//DoubleBuffer::GetInstance().setCursorPos(0, QZ_START_Y);
 		for (int i = 0; i < QUIZ_OPTION_SIZE; i++) {
 			if ((*quiz_).enable_flag[i])
 			{
 				setColor(COL_WHITE, COL_BLACK);
+				//DoubleBuffer::GetInstance().setColor(COL_WHITE, COL_BLACK);
 			}
 			else
 			{
 				setColor(COL_GRAY, COL_BLACK);
+				//DoubleBuffer::GetInstance().setColor(COL_GRAY, COL_BLACK);
 			}
 			cout << " " << (char)('A' + i) << "." << (*quiz_).quiz_opt[i] << "\n";
 			setColor(COL_WHITE, COL_BLACK);
+			//DoubleBuffer::GetInstance().write(" " + to_string((char)('A' + i)) + "." + (*quiz_).quiz_opt[i] + "\n");
 		}
+		//DoubleBuffer::GetInstance().swap();
+		//DoubleBuffer::GetInstance().ClearScreen();
 		changed_flag_ = false;
 	}
 }

@@ -4,10 +4,8 @@ AnswerMenu::AnswerMenu(IQuizFloor* changer, Quiz *quiz) : Menu(changer, quiz)
 {
 	this->now_select_ = 0;
 	this->quiz_ = quiz;
-	this->position_.first = ANSWER_MENU_OPTION_X;
-	this->position_.second = ANSWER_MENU_OPTION_Y;
-	this->box_position_.first = ANSWER_MENU_BOX_X;
-	this->box_position_.second = ANSWER_MENU_BOX_Y;
+	this->position_ = { ANSWER_MENU_OPTION_X , ANSWER_MENU_OPTION_Y };
+	this->box_position_ = { ANSWER_MENU_BOX_X , ANSWER_MENU_BOX_Y };
 	text_box_ = new TextBox(box_position_, ANSWER_MENU_BOX_WIDTH, ANSWER_MENU_BOX_HEIGHT);
 }
 

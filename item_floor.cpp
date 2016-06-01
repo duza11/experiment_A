@@ -46,10 +46,6 @@ int ItemFloor::ItemFloorMain()
 		}if (_kbhit())
 		{
 			int input_key = _getch();
-			if (input_key == 'q')
-			{
-				exit(0);
-			}
 			if (input_key == KEY_SPACE)
 			{
 				Player::GetInstance().MovePositionFront();
@@ -73,8 +69,10 @@ int ItemFloor::ItemFloorMain()
 		this->clear_flag_ = CheckGoal();
 	}
 	Player::GetInstance().GoUpstairs();
-	system("cls");
 
+	system("cls");
+	//DoubleBuffer::GetInstance().swap();
+	//DoubleBuffer::GetInstance().ClearScreen();
 	return 0;
 }
 
@@ -107,7 +105,7 @@ void ItemFloor::Update(pair<int, int> now_position, pair<int, int> next_position
 
 void ItemFloor::Print()
 {
-	/*
+	
 	setCursorPos(0, 0);
 	for (int y = 0; y < ITEM_FLOOR_HEIGT; y++)
 	{
@@ -123,8 +121,8 @@ void ItemFloor::Print()
 	cout << "選択：[SPACE]";
 	Player::GetInstance().PrintItemStatus(item_position_);
 	setCursorPos(0, 0);
-	*/
-	DoubleBuffer::GetInstance().setCursorPos(0, 0);
+	
+	/*DoubleBuffer::GetInstance().setCursorPos(0, 0);
 	for (int y = 0; y < ITEM_FLOOR_HEIGT; y++)
 	{
 		PrintLine(y, false);
@@ -135,11 +133,12 @@ void ItemFloor::Print()
 	Player::GetInstance().PrintNowFloor();
 	DoubleBuffer::GetInstance().setCursorPos(60, 5);
 	DoubleBuffer::GetInstance().write("移動：[←][→]");
-	DoubleBuffer::GetInstance().setCursorPos(60, 5);
+	DoubleBuffer::GetInstance().setCursorPos(60, 6);
 	DoubleBuffer::GetInstance().write("選択：[SPACE]");
 	Player::GetInstance().PrintItemStatus(item_position_);
 	DoubleBuffer::GetInstance().setCursorPos(0, 0);
 	DoubleBuffer::GetInstance().swap();
+	DoubleBuffer::GetInstance().ClearScreen();*/
 }
 
 void ItemFloor::PrintLine(int y, bool print_value_flag)
@@ -171,6 +170,7 @@ void ItemFloor::PrintLine(int y, bool print_value_flag)
 			break;
 		}
 		setColor(fg, bg);
+		//DoubleBuffer::GetInstance().setColor(fg, bg);
 		string str(CELL_WIDTH, ' ');
 		if (print_value_flag) {
 			if (!room_status)
@@ -192,8 +192,10 @@ void ItemFloor::PrintLine(int y, bool print_value_flag)
 			str = string(CELL_WIDTH - str.size(), ' ') + str;		//	先頭に空白パディング
 		}
 		cout << str;
+		//DoubleBuffer::GetInstance().write(str);
 	}
 	cout << "\n";
+	//DoubleBuffer::GetInstance().write("\n");
 }
 
 bool ItemFloor::CheckGoal()

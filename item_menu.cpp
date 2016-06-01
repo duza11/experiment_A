@@ -4,10 +4,8 @@ ItemMenu::ItemMenu(IQuizFloor* changer, Quiz *quiz) : Menu(changer, quiz)
 {
 	this->now_select_ = kFiftyFifty;
 	this->quiz_ = quiz;
-	this->position_.first = ITEM_MENU_OPTION_X;
-	this->position_.second = ITEM_MENU_OPTION_Y;
-	this->box_position_.first =  ITEM_MENU_BOX_X;
-	this->box_position_.second = ITEM_MENU_BOX_Y;
+	this->position_ = { ITEM_MENU_OPTION_X , ITEM_MENU_OPTION_Y };
+	this->box_position_ = { ITEM_MENU_BOX_X , ITEM_MENU_BOX_Y };
 	text_box_ = new TextBox(box_position_, ITEM_MENU_BOX_WIDTH, ITEM_MENU_BOX_HEIGHT);
 }
 

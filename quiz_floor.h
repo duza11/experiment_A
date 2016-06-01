@@ -14,6 +14,7 @@
 #include "base_menu.h"
 #include "item_menu.h"
 #include "answer_menu.h"
+#include "double_buffer.h"
 
 #define QZ_START_Y 4
 

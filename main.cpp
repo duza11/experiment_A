@@ -6,7 +6,7 @@
 
 int main()
 {
-	//system("cls");
+	system("cls");
 	
 	SetCursorDisplay(FALSE);
 	ItemFloor itf;

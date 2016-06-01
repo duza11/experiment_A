@@ -3,10 +3,8 @@
 BaseMenu::BaseMenu(IQuizFloor* changer) : Menu(changer)
 {
 	this->now_select_ = kAnswerMenu;
-	this->position_.first = BASE_MENU_OPTION_X;
-	this->position_.second = BASE_MENU_OPTION_Y;
-	this->box_position_.first = BASE_MENU_BOX_X;
-	this->box_position_.second = BASE_MENU_BOX_Y;
+	this->position_ = { BASE_MENU_OPTION_X , BASE_MENU_OPTION_Y };
+	this->box_position_ = { BASE_MENU_BOX_X , BASE_MENU_BOX_Y };
 	text_box_ = new TextBox(box_position_, BASE_MENU_BOX_WIDTH, BASE_MENU_BOX_HEIGHT);
 }
 

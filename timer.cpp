@@ -8,28 +8,28 @@ Timer & Timer::GetInstance()
 
 bool Timer::CheckTime()
 {
-	time(&now_time_);
-	if (old_time_ != now_time_)
+	time(&this->now_time_);
+	if (old_time_ != this->now_time_)
 	{
-		if (enable_flag_)
+		if (this->enable_flag_)
 		{
-			remaining_time_ -= (int)(now_time_ - old_time_);
+			this->remaining_time_ -= (int)(this->now_time_ - this->old_time_);
 		}
-		old_time_ = now_time_;
-		changed_flag_ = true;
+		this->old_time_ = this->now_time_;
+		this->changed_flag_ = true;
 	}
-	if (changed_flag_)
+	if (this->changed_flag_)
 	{
 		PrintTime();
-		changed_flag_ = false;
+		this->changed_flag_ = false;
 	}
 	return (remaining_time_ > 0);
 }
 
 void Timer::PenaltyTime(int penalty_time)
 {
-	remaining_time_ -= penalty_time;
-	changed_flag_ = true;
+	this->remaining_time_ -= penalty_time;
+	this->changed_flag_ = true;
 }
 
 void Timer::SwitchTimer(bool enable_flag)
@@ -40,14 +40,20 @@ void Timer::SwitchTimer(bool enable_flag)
 void Timer::PrintTime()
 {
 	setCursorPos(60, 2);
-	cout << "Žc‚èŽžŠÔF" << remaining_time_ / 60 << "•ª" << remaining_time_ % 60 << "•b";
+	cout << "Žc‚èŽžŠÔF" << this->remaining_time_ / 60 << "•ª" << this->remaining_time_ % 60 << "•b";
+	/*for (int i = 0; i < 2; i++)
+	{
+		DoubleBuffer::GetInstance().setCursorPos(60, 2);
+		DoubleBuffer::GetInstance().write("Žc‚èŽžŠÔF" + to_string(remaining_time_ / 60) + "•ª" + to_string(remaining_time_ % 60) + "•b");
+		DoubleBuffer::GetInstance().swap();
+	}*/
 }
 
 Timer::Timer()
 {
-	remaining_time_ = REMAINING_TIME;
-	time(&old_time_);
-	time(&now_time_);
-	enable_flag_ = true;
-	changed_flag_ = true;
+	this->remaining_time_ = REMAINING_TIME;
+	time(&this->old_time_);
+	time(&this->now_time_);
+	this->enable_flag_ = true;
+	this->changed_flag_ = true;
 }

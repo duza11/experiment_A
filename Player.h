@@ -19,11 +19,7 @@ typedef enum
 class Player
 {
 public:
-	static Player &GetInstance()
-	{
-		static Player player;
-		return player;
-	}
+	static Player &GetInstance();
 	pair<int, int> get_now_position();
 	pair<int, int> get_next_position();
 	void MoveNextPositionLeft();
