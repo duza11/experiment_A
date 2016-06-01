@@ -49,7 +49,7 @@ public:
 private:
 	DoubleBuffer();
 	DoubleBuffer(const DoubleBuffer &DoubleBuffer) {}
-	~DoubleBuffer() {}
+	~DoubleBuffer();
 
 	bool m_swapped;
 	HANDLE m_hCons1;		//	コンソールハンドルその１

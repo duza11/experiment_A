@@ -2,11 +2,12 @@
 #include "quiz_floor.h"
 #include "timer.h"
 #include "Player.h"
+#include "double_buffer.h"
 
 int main()
 {
-	system("cls");
-
+	//system("cls");
+	
 	SetCursorDisplay(FALSE);
 	ItemFloor itf;
 	QuizFloor qf;

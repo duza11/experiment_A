@@ -27,15 +27,7 @@ ItemFloor::ItemFloor()
 	}
 
 	this->clear_flag_ = false;
-	item_position_.first = 60;
-	item_position_.second = 8;
-
-	setColor(COL_WHITE);
-	setCursorPos(60, 5);
-	cout << "移動：[←][→]";
-	setCursorPos(60, 6);
-	cout << "選択：[SPACE]";
-	setCursorPos(0, 0);
+	item_position_ = { 60, 8 };
 }
 
 ItemFloor::~ItemFloor()
@@ -44,14 +36,12 @@ ItemFloor::~ItemFloor()
 
 int ItemFloor::ItemFloorMain()
 {
-	Player::GetInstance().PrintNowFloor();
 	for (this->changed_flag_ = true; !this->clear_flag_;)
 	{
 		if (changed_flag_)
 		{
 			Update(Player::GetInstance().get_now_position(), Player::GetInstance().get_next_position());
 			Print();
-			Player::GetInstance().PrintItemStatus(item_position_);
 			changed_flag_ = false;
 		}if (_kbhit())
 		{
@@ -117,6 +107,7 @@ void ItemFloor::Update(pair<int, int> now_position, pair<int, int> next_position
 
 void ItemFloor::Print()
 {
+	/*
 	setCursorPos(0, 0);
 	for (int y = 0; y < ITEM_FLOOR_HEIGT; y++)
 	{
@@ -124,6 +115,31 @@ void ItemFloor::Print()
 		PrintLine(y, true);
 		PrintLine(y, false);
 	}
+	setColor(COL_WHITE, COL_BLACK);
+	Player::GetInstance().PrintNowFloor();
+	setCursorPos(60, 5);
+	cout << "移動：[←][→]";
+	setCursorPos(60, 6);
+	cout << "選択：[SPACE]";
+	Player::GetInstance().PrintItemStatus(item_position_);
+	setCursorPos(0, 0);
+	*/
+	DoubleBuffer::GetInstance().setCursorPos(0, 0);
+	for (int y = 0; y < ITEM_FLOOR_HEIGT; y++)
+	{
+		PrintLine(y, false);
+		PrintLine(y, true);
+		PrintLine(y, false);
+	}
+	DoubleBuffer::GetInstance().setColor(DoubleBuffer::WHITE, DoubleBuffer::BLACK);
+	Player::GetInstance().PrintNowFloor();
+	DoubleBuffer::GetInstance().setCursorPos(60, 5);
+	DoubleBuffer::GetInstance().write("移動：[←][→]");
+	DoubleBuffer::GetInstance().setCursorPos(60, 5);
+	DoubleBuffer::GetInstance().write("選択：[SPACE]");
+	Player::GetInstance().PrintItemStatus(item_position_);
+	DoubleBuffer::GetInstance().setCursorPos(0, 0);
+	DoubleBuffer::GetInstance().swap();
 }
 
 void ItemFloor::PrintLine(int y, bool print_value_flag)
