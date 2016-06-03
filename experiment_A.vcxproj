@@ -147,7 +147,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="answer_menu.cpp" />
-    <ClCompile Include="double_buffer.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="console_util.cpp" />
     <ClCompile Include="item_floor.cpp" />
@@ -162,7 +161,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="answer_menu.h" />
-    <ClInclude Include="double_buffer.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="console_util.h" />

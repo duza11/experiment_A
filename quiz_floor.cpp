@@ -232,29 +232,21 @@ void QuizFloor::PrintQuiz()
 {
 	if (changed_flag_)
 	{
-		//DoubleBuffer::GetInstance().SetCursorPosition(0, 0);
-		//DoubleBuffer::GetInstance().write((*quiz_).quiz_str);
 		Timer::GetInstance().PrintTime();
 		this->menu_->Print();
 		SetCursorPosition(0, QZ_START_Y);
-		//DoubleBuffer::GetInstance().SetCursorPosition(0, QZ_START_Y);
 		for (int i = 0; i < QUIZ_OPTION_SIZE; i++) {
 			if ((*quiz_).enable_flag[i])
 			{
 				SetColor(COL_WHITE, COL_BLACK);
-				//DoubleBuffer::GetInstance().SetColor(COL_WHITE, COL_BLACK);
 			}
 			else
 			{
 				SetColor(COL_GRAY, COL_BLACK);
-				//DoubleBuffer::GetInstance().SetColor(COL_GRAY, COL_BLACK);
 			}
 			cout << " " << (char)('A' + i) << "." << (*quiz_).quiz_opt[i] << "\n";
 			SetColor(COL_WHITE, COL_BLACK);
-			//DoubleBuffer::GetInstance().write(" " + to_string((char)('A' + i)) + "." + (*quiz_).quiz_opt[i] + "\n");
 		}
-		//DoubleBuffer::GetInstance().swap();
-		//DoubleBuffer::GetInstance().ClearScreen();
 		this->changed_flag_ = false;
 	}
 }

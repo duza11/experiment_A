@@ -2,7 +2,6 @@
 #include "quiz_floor.h"
 #include "timer.h"
 #include "player.h"
-#include "double_buffer.h"
 
 void ClearJudge()
 {

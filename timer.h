@@ -3,7 +3,6 @@
 #include <time.h>
 #include "console_util.h"
 #include "common.h"
-#include "double_buffer.h"
 
 class Timer {
 public:

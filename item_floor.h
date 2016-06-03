@@ -6,7 +6,6 @@
 #include "player.h"
 #include "console_util.h"
 #include "common.h"
-#include "double_buffer.h"
 
 class ItemFloor
 {

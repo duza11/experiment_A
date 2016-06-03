@@ -118,24 +118,6 @@ void ItemFloor::Print()
 	cout << "選択：[SPACE]";
 	Player::GetInstance().PrintItemStatus(item_position_);
 	SetCursorPosition(0, 0);
-	
-	/*DoubleBuffer::GetInstance().SetCursorPosition(0, 0);
-	for (int y = 0; y < ITEM_FLOOR_HEIGT; y++)
-	{
-		PrintLine(y, false);
-		PrintLine(y, true);
-		PrintLine(y, false);
-	}
-	DoubleBuffer::GetInstance().SetColor(DoubleBuffer::WHITE, DoubleBuffer::BLACK);
-	Player::GetInstance().PrintNowFloor();
-	DoubleBuffer::GetInstance().SetCursorPosition(60, 5);
-	DoubleBuffer::GetInstance().write("移動：[←][→]");
-	DoubleBuffer::GetInstance().SetCursorPosition(60, 6);
-	DoubleBuffer::GetInstance().write("選択：[SPACE]");
-	Player::GetInstance().PrintItemStatus(item_position_);
-	DoubleBuffer::GetInstance().SetCursorPosition(0, 0);
-	DoubleBuffer::GetInstance().swap();
-	DoubleBuffer::GetInstance().ClearScreen();*/
 }
 
 void ItemFloor::PrintLine(int y, bool print_value_flag)
@@ -167,7 +149,6 @@ void ItemFloor::PrintLine(int y, bool print_value_flag)
 			break;
 		}
 		SetColor(fg, bg);
-		//DoubleBuffer::GetInstance().SetColor(fg, bg);
 		string str(CELL_WIDTH, ' ');
 		if (print_value_flag) {
 			if (!room_status)
@@ -189,10 +170,8 @@ void ItemFloor::PrintLine(int y, bool print_value_flag)
 			str = string(CELL_WIDTH - str.size(), ' ') + str;		//	先頭に空白パディング
 		}
 		cout << str;
-		//DoubleBuffer::GetInstance().write(str);
 	}
 	cout << "\n";
-	//DoubleBuffer::GetInstance().write("\n");
 }
 
 bool ItemFloor::CheckGoal()

@@ -41,12 +41,6 @@ void Timer::PrintTime()
 {
 	SetCursorPosition(60, 2);
 	cout << "Žc‚èŽžŠÔF" << this->remaining_time_ / 60 << "•ª" << this->remaining_time_ % 60 << "•b";
-	/*for (int i = 0; i < 2; i++)
-	{
-		DoubleBuffer::GetInstance().SetCursorPosition(60, 2);
-		DoubleBuffer::GetInstance().write("Žc‚èŽžŠÔF" + to_string(remaining_time_ / 60) + "•ª" + to_string(remaining_time_ % 60) + "•b");
-		DoubleBuffer::GetInstance().swap();
-	}*/
 }
 
 Timer::Timer()
