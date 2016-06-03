@@ -62,7 +62,7 @@ QuizFloor::QuizFloor()
 		int ran_num = (unsigned)rnd() % quiz_array_.size();
 		Quiz temp = *itr;
 		*itr = quiz_array_[ran_num];
-		quiz_array_[ran_num] = temp;
+		this->quiz_array_[ran_num] = temp;
 	}
 }
 
@@ -74,7 +74,7 @@ int QuizFloor::QuizFloorMain()
 {
 	for (auto itr = quiz_array_.begin(); itr < quiz_array_.begin() + QUIZ_FLOOR_SIZE; itr++)
 	{
-		quiz_ = &(*itr);
+		this->quiz_ = &(*itr);
 		Player::GetInstance().PrintNowFloor();
 		TypingMain();
 		Player::GetInstance().PrintNowFloor();
@@ -89,17 +89,17 @@ int QuizFloor::QuizFloorMain()
 
 void QuizFloor::TypingMain()
 {
-	mistake_ = 0;
+	this->mistake_ = 0;
 	string typing_str = (*quiz_).typing_str;
 	string input_str = "";
-	changed_flag_ = true;
+	this->changed_flag_ = true;
 	for (auto itr = typing_str.begin(); itr != typing_str.end() && Timer::GetInstance().CheckTime();)
 	{
 		if (changed_flag_)
 		{
 			
 			setCursorPos(0, 0);
-			cout << "ミス" << mistake_ << "回\n\n\n";
+			cout << "ミス" << this->mistake_ << "回\n\n\n";
 			cout << "次の文章をタイピングしてください\n\n\n";
 			cout << typing_str << "\n";
 			cout << input_str;
@@ -117,7 +117,7 @@ void QuizFloor::TypingMain()
 			DoubleBuffer::GetInstance().write(" ");
 			DoubleBuffer::GetInstance().setColor(COL_WHITE, COL_BLACK);
 			DoubleBuffer::GetInstance().swap();*/
-			changed_flag_ = false;
+			this->changed_flag_ = false;
 		}
 		if (_kbhit())
 		{
@@ -136,7 +136,7 @@ void QuizFloor::TypingMain()
 				this->mistake_++;
 				Timer::GetInstance().PenaltyTime(1);
 			}
-			changed_flag_ = true;
+			this->changed_flag_ = true;
 		}
 	}
 	system("cls");
@@ -149,10 +149,10 @@ void QuizFloor::TypingMain()
 
 void QuizFloor::QuizMain()
 {
-	changed_flag_ = true;
-	goal_flag_ = false;
-	next_menu_ = kBaseMenu;
-	menu_ = (Menu*) new BaseMenu(this);
+	this->changed_flag_ = true;
+	this->goal_flag_ = false;
+	this->next_menu_ = kBaseMenu;
+	this->menu_ = (Menu*) new BaseMenu(this);
 
 	setCursorPos(0, 0);
 	cout << (*quiz_).quiz_str;
@@ -178,28 +178,28 @@ void QuizFloor::QuizMain()
 
 void QuizFloor::UpdateQuizMenu()
 {
-	if (next_menu_ != kNoneMenu)
+	if (this->next_menu_ != kNoneMenu)
 	{
 		menu_->Finitialize();
 		delete menu_;
-		switch (next_menu_)
+		switch (this->next_menu_)
 		{
 		case kBaseMenu:
-			menu_ = (Menu*) new BaseMenu(this);
+			this->menu_ = (Menu*) new BaseMenu(this);
 			break;
 		case kItemMenu:
-			menu_ = (Menu*) new ItemMenu(this, quiz_);
+			this->menu_ = (Menu*) new ItemMenu(this, quiz_);
 			break;
 		case kAnswerMenu:
-			menu_ = (Menu*) new AnswerMenu(this, quiz_);
+			this->menu_ = (Menu*) new AnswerMenu(this, quiz_);
 			break;
 		}
-		next_menu_ = kNoneMenu;
-		changed_flag_ = true;
+		this->next_menu_ = kNoneMenu;
+		this->changed_flag_ = true;
 	}
 	if (!changed_flag_)
 	{
-		changed_flag_ = menu_->Update();
+		this->changed_flag_ = menu_->Update();
 	}
 }
 
@@ -209,7 +209,7 @@ void QuizFloor::CheckAnswer(int option_num)
 	{
 		if ((*quiz_).answer_type[option_num])
 		{
-			goal_flag_ = true;
+			this->goal_flag_ = true;
 		}
 		else
 		{
@@ -221,7 +221,7 @@ void QuizFloor::CheckAnswer(int option_num)
 
 void QuizFloor::SwitchMenu(MenuEnum next_menu)
 {
-	next_menu_ = next_menu;
+	this->next_menu_ = next_menu;
 }
 
 void QuizFloor::PrintQuiz()
@@ -231,7 +231,7 @@ void QuizFloor::PrintQuiz()
 		//DoubleBuffer::GetInstance().setCursorPos(0, 0);
 		//DoubleBuffer::GetInstance().write((*quiz_).quiz_str);
 		Timer::GetInstance().PrintTime();
-		menu_->Print();
+		this->menu_->Print();
 		setCursorPos(0, QZ_START_Y);
 		//DoubleBuffer::GetInstance().setCursorPos(0, QZ_START_Y);
 		for (int i = 0; i < QUIZ_OPTION_SIZE; i++) {
@@ -251,6 +251,6 @@ void QuizFloor::PrintQuiz()
 		}
 		//DoubleBuffer::GetInstance().swap();
 		//DoubleBuffer::GetInstance().ClearScreen();
-		changed_flag_ = false;
+		this->changed_flag_ = false;
 	}
 }

@@ -107,7 +107,7 @@ int Player::get_now_floor()
 void Player::PrintNowFloor()
 {
 	setCursorPos(60, 3);
-	cout << "現在地点：" << this->now_floor_ << "階";
+	cout << "現在地点：" << this->now_floor_ << "/9階";
 }
 
 void Player::EnableItem()

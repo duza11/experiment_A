@@ -84,6 +84,7 @@ void ItemFloor::Update(pair<int, int> now_position, pair<int, int> next_position
 		{
 			if (x == now_position.first && y == now_position.second)
 			{
+
 				if (room_[x][y].item_get_flag == false)
 				{
 					Player::GetInstance().GetItem(room_[x][y].item_status);
