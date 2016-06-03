@@ -6,15 +6,11 @@ ItemFloor::ItemFloor()
 		for (int x = 0; x < ITEM_FLOOR_WIDTH; x++) {
 			if (y == 0 || y == ITEM_FLOOR_HEIGT - 1)
 			{
-				room_[x][y].room_status = 0;
-				room_[x][y].item_status = -1;
-				room_[x][y].item_get_flag = true;
+				room_[x][y] = { 0, -1, true };
 			}
 			else
 			{
-				room_[x][y].room_status = 0;
-				room_[x][y].item_status = x - 1;
-				room_[x][y].item_get_flag = false;
+				room_[x][y] = { 0, (x - 1), false };
 			}
 		}
 		for (int x = 0; x < ITEM_FLOOR_WIDTH; x++)
@@ -107,37 +103,37 @@ void ItemFloor::Update(pair<int, int> now_position, pair<int, int> next_position
 void ItemFloor::Print()
 {
 	
-	setCursorPos(0, 0);
+	SetCursorPosition(0, 0);
 	for (int y = 0; y < ITEM_FLOOR_HEIGT; y++)
 	{
 		PrintLine(y, false);
 		PrintLine(y, true);
 		PrintLine(y, false);
 	}
-	setColor(COL_WHITE, COL_BLACK);
+	SetColor(COL_WHITE, COL_BLACK);
 	Player::GetInstance().PrintNowFloor();
-	setCursorPos(60, 5);
+	SetCursorPosition(60, 5);
 	cout << "移動：[←][→]";
-	setCursorPos(60, 6);
+	SetCursorPosition(60, 6);
 	cout << "選択：[SPACE]";
 	Player::GetInstance().PrintItemStatus(item_position_);
-	setCursorPos(0, 0);
+	SetCursorPosition(0, 0);
 	
-	/*DoubleBuffer::GetInstance().setCursorPos(0, 0);
+	/*DoubleBuffer::GetInstance().SetCursorPosition(0, 0);
 	for (int y = 0; y < ITEM_FLOOR_HEIGT; y++)
 	{
 		PrintLine(y, false);
 		PrintLine(y, true);
 		PrintLine(y, false);
 	}
-	DoubleBuffer::GetInstance().setColor(DoubleBuffer::WHITE, DoubleBuffer::BLACK);
+	DoubleBuffer::GetInstance().SetColor(DoubleBuffer::WHITE, DoubleBuffer::BLACK);
 	Player::GetInstance().PrintNowFloor();
-	DoubleBuffer::GetInstance().setCursorPos(60, 5);
+	DoubleBuffer::GetInstance().SetCursorPosition(60, 5);
 	DoubleBuffer::GetInstance().write("移動：[←][→]");
-	DoubleBuffer::GetInstance().setCursorPos(60, 6);
+	DoubleBuffer::GetInstance().SetCursorPosition(60, 6);
 	DoubleBuffer::GetInstance().write("選択：[SPACE]");
 	Player::GetInstance().PrintItemStatus(item_position_);
-	DoubleBuffer::GetInstance().setCursorPos(0, 0);
+	DoubleBuffer::GetInstance().SetCursorPosition(0, 0);
 	DoubleBuffer::GetInstance().swap();
 	DoubleBuffer::GetInstance().ClearScreen();*/
 }
@@ -170,8 +166,8 @@ void ItemFloor::PrintLine(int y, bool print_value_flag)
 			bg = COL_DARK_YELLOW;
 			break;
 		}
-		setColor(fg, bg);
-		//DoubleBuffer::GetInstance().setColor(fg, bg);
+		SetColor(fg, bg);
+		//DoubleBuffer::GetInstance().SetColor(fg, bg);
 		string str(CELL_WIDTH, ' ');
 		if (print_value_flag) {
 			if (!room_status)

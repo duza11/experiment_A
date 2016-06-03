@@ -1,8 +1,20 @@
 #include "item_floor.h"
 #include "quiz_floor.h"
 #include "timer.h"
-#include "Player.h"
+#include "player.h"
 #include "double_buffer.h"
+
+void ClearJudge()
+{
+	if (Player::GetInstance().get_now_floor() == 9)
+	{
+		cout << "GAME CLEAR";
+	}
+	else
+	{
+		cout << "GAME OVER";
+	}
+}
 
 int main()
 {
@@ -17,15 +29,8 @@ int main()
 	qf.QuizFloorMain();
 
 	system("cls");
-
-	if (Player::GetInstance().get_now_floor() == 9)
-	{
-		cout << "GAME CLEAR";
-	}
-	else
-	{
-		cout << "GAME OVER";
-	}
+	ClearJudge();
+	
 	_getch();
 
 	return 0;

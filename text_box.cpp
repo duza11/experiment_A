@@ -19,7 +19,7 @@ void TextBox::Print()
 {
 	for (int y = 0; y < this->height_; y++)
 	{
-		setCursorPos(this->position_.first, this->position_.second + y);
+		SetCursorPosition(this->position_.first, this->position_.second + y);
 		for (int x = 0; x < this->width_; x += 2)
 		{
 			if (x == 0 && y == 0)
@@ -58,7 +58,7 @@ void TextBox::Finitialize()
 {
 	for (int y = 0; y < this->height_; y++)
 	{
-		setCursorPos(this->position_.first, this->position_.second + y);
+		SetCursorPosition(this->position_.first, this->position_.second + y);
 		for (int x = 0; x < this->width_; x += 2)
 		{
 			cout << "  ";

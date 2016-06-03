@@ -13,7 +13,7 @@ void BaseMenu::Finitialize()
 	delete text_box_;
 	for (int i = 0; i < 2; i++)
 	{
-		setCursorPos(position_.first - 1, position_.second + i);
+		SetCursorPosition(position_.first - 1, position_.second + i);
 		cout << " ";
 	}
 }
@@ -55,10 +55,10 @@ bool BaseMenu::Update()
 void BaseMenu::Print()
 {
 	text_box_->Print();
-	setCursorPos(this->position_.first, this->position_.second);
+	SetCursorPosition(this->position_.first, this->position_.second);
 	cout << "‰ð“š";
-	setCursorPos(this->position_.first, this->position_.second + 1);
+	SetCursorPosition(this->position_.first, this->position_.second + 1);
 	cout << "ƒAƒCƒeƒ€";
-	setCursorPos(this->position_.first - 1, this->position_.second + now_select_);
+	SetCursorPosition(this->position_.first - 1, this->position_.second + now_select_);
 	cout << ">";
 }

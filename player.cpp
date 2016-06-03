@@ -34,7 +34,7 @@ void Player::MovePositionFront()
 
 void Player::GetItem(int item_num)
 {
-	setCursorPos(0,21);
+	SetCursorPosition(0,21);
 	if (item_num != -1)
 	{
 		this->item_[item_num].item_count++;
@@ -106,7 +106,7 @@ int Player::get_now_floor()
 
 void Player::PrintNowFloor()
 {
-	setCursorPos(60, 3);
+	SetCursorPosition(60, 3);
 	cout << "現在地点：" << this->now_floor_ << "/9階";
 }
 
@@ -124,14 +124,14 @@ void Player::PrintItemStatus(pair<int, int> position)
 	{
 		if (item_[i].enable_flag && item_[i].item_count > 0)
 		{
-			setColor(COL_WHITE, COL_BLACK);
+			SetColor(COL_WHITE, COL_BLACK);
 		}
 		else
 		{
-			setColor(COL_GRAY, COL_BLACK);
+			SetColor(COL_GRAY, COL_BLACK);
 		}
-		setCursorPos(position.first, position.second + i);
+		SetCursorPosition(position.first, position.second + i);
 		cout << this->item_[i].item_name << "*" << this->item_[i].item_count;
-		setColor(COL_WHITE, COL_BLACK);
+		SetColor(COL_WHITE, COL_BLACK);
 	}
 }

@@ -57,6 +57,6 @@ void ItemMenu::Print()
 {
 	text_box_->Print();
 	Player::GetInstance().PrintItemStatus(this->position_);
-	setCursorPos(this->position_.first - 1, this->position_.second + now_select_);
+	SetCursorPosition(this->position_.first - 1, this->position_.second + now_select_);
 	cout << ">";
 }

@@ -36,9 +36,9 @@ public:
 		static DoubleBuffer double_buffer;
 		return double_buffer;
 	}
-	void setColor(int);
-	void setColor(int, int);
-	void setCursorPos(int, int);
+	void SetColor(int);
+	void SetColor(int, int);
+	void SetCursorPosition(int, int);
 	void write(const char *);
 	void write(const wchar_t *);
 	void write(const std::string &);

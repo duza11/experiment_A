@@ -18,7 +18,6 @@ public:
 	void Print();
 	void PrintLine(int y, bool print_value_flag);
 	bool CheckGoal();
-	bool CheckInputKey();
 
 private:
 	typedef struct

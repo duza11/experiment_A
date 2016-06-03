@@ -23,7 +23,7 @@ DoubleBuffer::~DoubleBuffer()
 	CloseHandle(m_hCons2);
 }
 
-void DoubleBuffer::setColor(int col)
+void DoubleBuffer::SetColor(int col)
 {
 	WORD attr = 0;
 	if (col & INTENSITY)
@@ -37,7 +37,7 @@ void DoubleBuffer::setColor(int col)
 	SetConsoleTextAttribute(m_swapped ? m_hCons1 : m_hCons2, attr);
 }
 
-void DoubleBuffer::setColor(int fg, int bg)
+void DoubleBuffer::SetColor(int fg, int bg)
 {
 	WORD attr = 0;
 	if (fg & INTENSITY)
@@ -60,7 +60,7 @@ void DoubleBuffer::setColor(int fg, int bg)
 	SetConsoleTextAttribute(m_swapped ? m_hCons1 : m_hCons2, attr);
 }
 
-void DoubleBuffer::setCursorPos(int x, int y)
+void DoubleBuffer::SetCursorPosition(int x, int y)
 {
 	COORD pos;
 	pos.X = x;

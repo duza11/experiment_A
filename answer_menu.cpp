@@ -52,15 +52,15 @@ void AnswerMenu::Print ()
 	{
 		if ((*quiz_).enable_flag[i])
 		{
-			setColor(COL_WHITE, COL_BLACK);
+			SetColor(COL_WHITE, COL_BLACK);
 		}
 		else
 		{
-			setColor(COL_GRAY, COL_BLACK);
+			SetColor(COL_GRAY, COL_BLACK);
 		}
-		setCursorPos(this->position_.first, this->position_.second + i);
+		SetCursorPosition(this->position_.first, this->position_.second + i);
 		cout << (*quiz_).quiz_opt[i];
 	}
-	setCursorPos(this->position_.first - 1, this->position_.second + now_select_);
+	SetCursorPosition(this->position_.first - 1, this->position_.second + now_select_);
 	cout << ">";
 }

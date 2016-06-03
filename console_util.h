@@ -36,11 +36,11 @@ using namespace std;
 #define KEY_SPACE 0x20
 #define KEY_BACK 0x08
 
-// 文字色指定 for Windows Console
-void setColor(int col);
+// 文字色指定
+void SetColor(int col);
 // 文字色と背景色指定
-void setColor(int fg, int bg);
-// カーソル位置指定 for Windows Console
-void setCursorPos(int x, int y);
+void SetColor(int fg, int bg);
+// カーソル位置指定
+void SetCursorPosition(int x, int y);
 // カーソルを表示設定 TRUE=表示,FALSE=非表示
 void SetCursorDisplay(BOOL bVisible);

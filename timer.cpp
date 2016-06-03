@@ -39,11 +39,11 @@ void Timer::SwitchTimer(bool enable_flag)
 
 void Timer::PrintTime()
 {
-	setCursorPos(60, 2);
+	SetCursorPosition(60, 2);
 	cout << "Žc‚èŽžŠÔF" << this->remaining_time_ / 60 << "•ª" << this->remaining_time_ % 60 << "•b";
 	/*for (int i = 0; i < 2; i++)
 	{
-		DoubleBuffer::GetInstance().setCursorPos(60, 2);
+		DoubleBuffer::GetInstance().SetCursorPosition(60, 2);
 		DoubleBuffer::GetInstance().write("Žc‚èŽžŠÔF" + to_string(remaining_time_ / 60) + "•ª" + to_string(remaining_time_ % 60) + "•b");
 		DoubleBuffer::GetInstance().swap();
 	}*/

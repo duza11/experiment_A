@@ -1,6 +1,2 @@
-﻿  quiz_floor.cpp
-c:\users\admin\source\repos\experiment_a\quiz_floor.cpp(42): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
-  player.cpp
-  item_floor.cpp
-  Generating Code...
+﻿  item_floor.cpp
   experiment_A.vcxproj -> C:\Users\Admin\Source\Repos\experiment_A\Debug\experiment_A.exe

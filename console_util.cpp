@@ -1,6 +1,6 @@
 #include "console_util.h"
 
-void setColor(int col)
+void SetColor(int col)
 {
 	HANDLE hCons = GetStdHandle(STD_OUTPUT_HANDLE);
 	WORD attr = 0;
@@ -15,7 +15,7 @@ void setColor(int col)
 	SetConsoleTextAttribute(hCons, attr);
 }
 
-void setColor(int fg, int bg)
+void SetColor(int fg, int bg)
 {
 	HANDLE hCons = GetStdHandle(STD_OUTPUT_HANDLE);
 	WORD attr = 0;
@@ -40,7 +40,7 @@ void setColor(int fg, int bg)
 }
 
 //	カーソル位置指定 for Windows Console
-void setCursorPos(int x, int y)
+void SetCursorPosition(int x, int y)
 {
 	HANDLE hCons = GetStdHandle(STD_OUTPUT_HANDLE);
 	COORD pos;
@@ -57,9 +57,3 @@ void SetCursorDisplay(BOOL bVisible)
 	info.bVisible = bVisible;
 	SetConsoleCursorInfo(hCons, &info);
 }
-
-void borderString(string str, int size)
-{
-	
-}
-
