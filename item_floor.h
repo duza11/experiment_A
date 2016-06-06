@@ -27,7 +27,7 @@ private:
 	} Room;
 	Room room_[ITEM_FLOOR_WIDTH][ITEM_FLOOR_HEIGT];
 	bool changed_flag_;
-	bool clear_flag_;
+	bool goal_flag_;
 	pair<int, int> item_position_;
 	random_device rnd;
 };

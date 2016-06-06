@@ -54,13 +54,18 @@ void AnswerMenu::Print ()
 		{
 			SetColor(COL_WHITE, COL_BLACK);
 		}
+		else if ((*quiz_).answer_type[i])
+		{
+			SetColor(COL_DARK_GREEN, COL_BLACK);
+		}
 		else
 		{
-			SetColor(COL_GRAY, COL_BLACK);
+			SetColor(COL_DARK_RED, COL_BLACK);
 		}
 		SetCursorPosition(this->position_.first, this->position_.second + i);
 		cout << (*quiz_).quiz_opt[i];
 	}
+	SetColor(COL_WHITE, COL_BLACK);
 	SetCursorPosition(this->position_.first - 1, this->position_.second + now_select_);
 	cout << ">";
 }

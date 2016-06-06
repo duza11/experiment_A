@@ -46,12 +46,12 @@ void Player::GetItem(int item_num)
 	}
 }
 
-void Player::UseItem(int item_num, Quiz &quiz)
+void Player::UseItem(int item_num, Quiz &quiz, IQuizFloor *iqf)
 {
 	if (item_[item_num].enable_flag && item_[item_num].item_count > 0) {
 		if (item_num == kFiftyFifty)
 		{
-			UseFiftyFity(quiz);
+			UseFiftyFity(quiz, iqf);
 		}
 		else if (item_num == kStopTimer)
 		{
@@ -76,15 +76,36 @@ Player::Player()
 	this->now_floor_ = 1;
 }
 
-void Player::UseFiftyFity(Quiz & quiz)
+void Player::UseFiftyFity(Quiz & quiz, IQuizFloor *iqf)
 {
-	for (int i = 0; i < (QUIZ_OPTION_SIZE / 2);)
+	int enable_flag_count = 0;
+	int answer_num;
+	for (int i = 0; i < QUIZ_OPTION_SIZE; i++)
 	{
-		int temp = (unsigned)rnd() % QUIZ_OPTION_SIZE;
-		if (!quiz.answer_type[temp] && quiz.enable_flag[temp])
+		if (quiz.enable_flag[i])
 		{
-			quiz.enable_flag[temp] = false;
-			i++;
+			if (quiz.answer_type[i] == true)
+			{
+				answer_num = i;
+			}
+			enable_flag_count++;
+		}
+	}
+	if (enable_flag_count < 4)
+	{
+		(*iqf).CheckAnswer(answer_num);
+		return;
+	}
+	else
+	{
+		for (int i = 0; i < (QUIZ_OPTION_SIZE / 2);)
+		{
+			int temp = (unsigned)rnd() % QUIZ_OPTION_SIZE;
+			if (!quiz.answer_type[temp] && quiz.enable_flag[temp])
+			{
+				quiz.enable_flag[temp] = false;
+				i++;
+			}
 		}
 	}
 }

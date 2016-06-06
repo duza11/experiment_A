@@ -29,6 +29,7 @@ public:
 	void CheckAnswer(int option_num);
 	void SwitchMenu(MenuEnum);
 	void PrintQuiz();
+	void PrintGoalMessage();
 
 private:
 	int mistake_ = 0;

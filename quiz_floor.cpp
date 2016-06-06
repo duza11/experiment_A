@@ -97,30 +97,25 @@ void QuizFloor::TypingMain()
 	string typing_str = (*quiz_).typing_str;
 	string input_str = "";
 	this->changed_flag_ = true;
+
+	SetCursorPosition(0, 3);
+	cout << "次の文章をタイピングしてください";
+	SetCursorPosition(0, 6);
+	cout << typing_str;
+
 	for (auto itr = typing_str.begin(); itr != typing_str.end() && Timer::GetInstance().CheckTime();)
 	{
 		if (changed_flag_)
 		{
 			
 			SetCursorPosition(0, 0);
-			cout << "ミス" << this->mistake_ << "回\n\n\n";
-			cout << "次の文章をタイピングしてください\n\n\n";
-			cout << typing_str << "\n";
+			cout << "ミス" << this->mistake_ << "回";
+			SetCursorPosition(0, 7);
 			cout << input_str;
 			SetColor(COL_WHITE, COL_CYAN);
-			cout << " \n";
+			cout << " ";
 			SetColor(COL_WHITE, COL_BLACK);
 			
-			/*Timer::GetInstance().PrintTime();
-			DoubleBuffer::GetInstance().SetCursorPosition(0, 0);
-			DoubleBuffer::GetInstance().write("ミス" + to_string(mistake_) + "回\n\n\n");
-			DoubleBuffer::GetInstance().write("次の文章をタイピングしてください\n\n\n");
-			DoubleBuffer::GetInstance().write(typing_str + "\n");
-			DoubleBuffer::GetInstance().write(input_str);
-			DoubleBuffer::GetInstance().SetColor(COL_WHITE, COL_CYAN);
-			DoubleBuffer::GetInstance().write(" ");
-			DoubleBuffer::GetInstance().SetColor(COL_WHITE, COL_BLACK);
-			DoubleBuffer::GetInstance().swap();*/
 			this->changed_flag_ = false;
 		}
 		if (_kbhit())
@@ -143,12 +138,12 @@ void QuizFloor::TypingMain()
 			this->changed_flag_ = true;
 		}
 	}
-	system("cls");
-	//DoubleBuffer::GetInstance().ClearScreen();
-	//DoubleBuffer::GetInstance().swap();
-	//DoubleBuffer::GetInstance().ClearScreen();
-	//Timer::GetInstance().PrintTime();
-	//DoubleBuffer::GetInstance().swap();
+	SetCursorPosition(0, 7);
+	cout << input_str;
+	SetColor(COL_WHITE, COL_CYAN);
+	cout << " ";
+	SetColor(COL_WHITE, COL_BLACK);
+	PrintGoalMessage();
 }
 
 void QuizFloor::QuizMain()
@@ -161,23 +156,16 @@ void QuizFloor::QuizMain()
 	SetCursorPosition(0, 0);
 	cout << (*quiz_).quiz_str;
 
-
 	PrintQuiz();
-	//DoubleBuffer::GetInstance().SetCursorPosition(0, 0);
-	//DoubleBuffer::GetInstance().write((*quiz_).quiz_str);
 	while (Timer::GetInstance().CheckTime() && !goal_flag_)
 	{
 		UpdateQuizMenu();
 		PrintQuiz();
 	}
-	system("cls");
 	Timer::GetInstance().SwitchTimer(true);
-	//DoubleBuffer::GetInstance().ClearScreen();
-	//DoubleBuffer::GetInstance().swap();
-	//DoubleBuffer::GetInstance().ClearScreen();
 	Timer::GetInstance().PrintTime();
-	//DoubleBuffer::GetInstance().swap();
 	Player::GetInstance().EnableItem();
+	PrintGoalMessage();
 }
 
 void QuizFloor::UpdateQuizMenu()
@@ -240,13 +228,39 @@ void QuizFloor::PrintQuiz()
 			{
 				SetColor(COL_WHITE, COL_BLACK);
 			}
+			else if ((*quiz_).answer_type[i])
+			{
+				SetColor(COL_DARK_GREEN, COL_BLACK);
+			}
 			else
 			{
-				SetColor(COL_GRAY, COL_BLACK);
+				SetColor(COL_DARK_RED, COL_BLACK);
 			}
 			cout << " " << (char)('A' + i) << "." << (*quiz_).quiz_opt[i] << "\n";
 			SetColor(COL_WHITE, COL_BLACK);
 		}
 		this->changed_flag_ = false;
 	}
+}
+
+void QuizFloor::PrintGoalMessage()
+{
+	SetCursorPosition(0, 24);
+	cout << "クリアです [SPACE]で次に進む";
+	while (Timer::GetInstance().CheckTime())
+	{
+		if (_kbhit())
+		{
+			int input_key = _getch();
+			if (input_key == KEY_SPACE)
+			{
+				break;
+			}
+			else if (input_key == 0 || input_key == 224)
+			{
+				_getch();
+			}
+		}
+	}
+	system("cls");
 }

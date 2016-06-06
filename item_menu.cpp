@@ -25,10 +25,10 @@ bool ItemMenu::Update()
 			switch (now_select_)
 			{
 			case kFiftyFifty:
-				Player::GetInstance().UseItem(kFiftyFifty, *quiz_);
+				Player::GetInstance().UseItem(kFiftyFifty, *quiz_, iqf_);
 				break;
 			case kStopTimer:
-				Player::GetInstance().UseItem(kStopTimer, *quiz_);
+				Player::GetInstance().UseItem(kStopTimer, *quiz_, iqf_);
 				break;
 			}
 		}

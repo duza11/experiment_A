@@ -5,17 +5,9 @@
 #include "common.h"
 #include "console_util.h"
 #include "timer.h"
+#include "quiz_floor.h"
 
 using namespace std;
-
-//アイテム用の列挙型
-typedef enum
-{
-	kFiftyFifty,
-	kStopTimer,
-
-	kItemKind,
-} ItemNum;
 
 class Player
 {
@@ -35,7 +27,7 @@ public:
 	//アイテムの獲得
 	void GetItem(int item_num);
 	//アイテムの使用
-	void UseItem(int item_num, Quiz &quiz);
+	void UseItem(int item_num, Quiz &quiz, IQuizFloor *iqf);
 	//階を昇る
 	void GoUpstairs();
 	//現在の階を取得
@@ -53,7 +45,7 @@ private:
 	Player(const Player &Player) {}
 	~Player() {}
 	//回答を半分にするアイテムの使用
-	void UseFiftyFity(Quiz &quiz);
+	void UseFiftyFity(Quiz &quiz, IQuizFloor *iqf);
 	//時間を止めるアイテムの使用
 	void UseStopTimer();
 

@@ -21,25 +21,34 @@ using namespace std;
 #define QUIZ_DATA_SIZE ((QUIZ_OPTION_SIZE * 2) + 2) // CVSにおけるクイズ1問のデータ数
 /*基本メニュー関連*/
 #define BASE_MENU_BOX_X 0
-#define BASE_MENU_BOX_Y 21
+#define BASE_MENU_BOX_Y 20
 #define BASE_MENU_OPTION_X (BASE_MENU_BOX_X + 3)
 #define BASE_MENU_OPTION_Y (BASE_MENU_BOX_Y + 1)
 #define BASE_MENU_BOX_WIDTH 16
 #define BASE_MENU_BOX_HEIGHT 4
 /*回答メニュー関連*/
 #define ANSWER_MENU_BOX_X 10
-#define ANSWER_MENU_BOX_Y 17
+#define ANSWER_MENU_BOX_Y 16
 #define ANSWER_MENU_OPTION_X (ANSWER_MENU_BOX_X + 3)
 #define ANSWER_MENU_OPTION_Y (ANSWER_MENU_BOX_Y + 1)
 #define ANSWER_MENU_BOX_WIDTH 40
 #define ANSWER_MENU_BOX_HEIGHT 8
 /*アイテムメニュー関連*/
 #define ITEM_MENU_BOX_X 10
-#define ITEM_MENU_BOX_Y 21
+#define ITEM_MENU_BOX_Y 20
 #define ITEM_MENU_OPTION_X (ITEM_MENU_BOX_X + 3)
 #define ITEM_MENU_OPTION_Y (ITEM_MENU_BOX_Y + 1)
 #define ITEM_MENU_BOX_WIDTH 16
 #define ITEM_MENU_BOX_HEIGHT 4
+
+//アイテム用の列挙型
+typedef enum
+{
+	kFiftyFifty,
+	kStopTimer,
+
+	kItemKind,
+} ItemNum;
 
 typedef struct
 {
