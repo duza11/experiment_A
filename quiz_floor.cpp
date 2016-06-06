@@ -98,19 +98,14 @@ void QuizFloor::TypingMain()
 	string input_str = "";
 	this->changed_flag_ = true;
 
-	SetCursorPosition(0, 3);
-	cout << "次の文章をタイピングしてください";
-	SetCursorPosition(0, 6);
-	cout << typing_str;
-
 	for (auto itr = typing_str.begin(); itr != typing_str.end() && Timer::GetInstance().CheckTime();)
 	{
 		if (changed_flag_)
 		{
-			
 			SetCursorPosition(0, 0);
-			cout << "ミス" << this->mistake_ << "回";
-			SetCursorPosition(0, 7);
+			cout << "ミス" << this->mistake_ << "回\n\n\n";
+			cout << "次の文章をタイピングしてください\n\n\n";
+			cout << typing_str << "\n";
 			cout << input_str;
 			SetColor(COL_WHITE, COL_CYAN);
 			cout << " ";
@@ -138,11 +133,16 @@ void QuizFloor::TypingMain()
 			this->changed_flag_ = true;
 		}
 	}
-	SetCursorPosition(0, 7);
+	SetCursorPosition(0, 0);
+	cout << "ミス" << this->mistake_ << "回\n\n\n";
+	cout << "次の文章をタイピングしてください\n\n\n";
+	cout << typing_str << "\n";
 	cout << input_str;
 	SetColor(COL_WHITE, COL_CYAN);
 	cout << " ";
 	SetColor(COL_WHITE, COL_BLACK);
+
+	this->changed_flag_ = false;
 	PrintGoalMessage();
 }
 
@@ -230,11 +230,11 @@ void QuizFloor::PrintQuiz()
 			}
 			else if ((*quiz_).answer_type[i])
 			{
-				SetColor(COL_DARK_GREEN, COL_BLACK);
+				SetColor(COL_GREEN, COL_BLACK);
 			}
 			else
 			{
-				SetColor(COL_DARK_RED, COL_BLACK);
+				SetColor(COL_RED, COL_BLACK);
 			}
 			cout << " " << (char)('A' + i) << "." << (*quiz_).quiz_opt[i] << "\n";
 			SetColor(COL_WHITE, COL_BLACK);

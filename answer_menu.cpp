@@ -56,11 +56,11 @@ void AnswerMenu::Print ()
 		}
 		else if ((*quiz_).answer_type[i])
 		{
-			SetColor(COL_DARK_GREEN, COL_BLACK);
+			SetColor(COL_GREEN, COL_BLACK);
 		}
 		else
 		{
-			SetColor(COL_DARK_RED, COL_BLACK);
+			SetColor(COL_RED, COL_BLACK);
 		}
 		SetCursorPosition(this->position_.first, this->position_.second + i);
 		cout << (*quiz_).quiz_opt[i];

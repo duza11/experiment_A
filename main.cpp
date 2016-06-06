@@ -22,7 +22,7 @@ void PrintTutorial()
 		}
 		cout << *itr;
 	}
-	cout << "I—¹‚·‚é[SPACE]";
+	cout << "ŽŸ‚Éi‚Þ[SPACE]";
 	while ((input_key = _getch()) != KEY_SPACE)
 	{
 		Sleep(0);

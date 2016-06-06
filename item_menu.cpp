@@ -22,15 +22,7 @@ bool ItemMenu::Update()
 		int c = _getch();
 		if (c == KEY_SPACE)
 		{
-			switch (now_select_)
-			{
-			case kFiftyFifty:
-				Player::GetInstance().UseItem(kFiftyFifty, *quiz_, iqf_);
-				break;
-			case kStopTimer:
-				Player::GetInstance().UseItem(kStopTimer, *quiz_, iqf_);
-				break;
-			}
+			Player::GetInstance().UseItem(now_select_, *quiz_, iqf_);
 		}
 		else if (c == KEY_BACK)
 		{
@@ -57,6 +49,7 @@ void ItemMenu::Print()
 {
 	text_box_->Print();
 	Player::GetInstance().PrintItemStatus(this->position_);
+	SetColor(COL_WHITE, COL_BLACK);
 	SetCursorPosition(this->position_.first - 1, this->position_.second + now_select_);
 	cout << ">";
 }

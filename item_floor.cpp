@@ -66,10 +66,9 @@ int ItemFloor::ItemFloorMain() // 1Fのゲーム進行を管理する関数
 		}
 		this->goal_flag_ = CheckGoal(); // プレイヤーがゴールにいるか判定
 	}
-	Player::GetInstance().GoUpstairs(); // プレイヤーの階を1つ進める
 	SetCursorPosition(0, 24);
 	cout << "クリアです [SPACE]で次に進む";
-	while (Timer::GetInstance().CheckTime())
+	while (1)
 	{
 		if (_kbhit())
 		{
@@ -84,6 +83,7 @@ int ItemFloor::ItemFloorMain() // 1Fのゲーム進行を管理する関数
 			}
 		}
 	}
+	Player::GetInstance().GoUpstairs(); // プレイヤーの階を1つ進める
 	system("cls"); // 画面を消去する
 	return 0;
 }
