@@ -102,6 +102,11 @@ void ItemFloor::Update(pair<int, int> now_position, pair<int, int> next_position
 					Player::GetInstance().GetItem(room_[x][y].item_status);
 					room_[x][y].item_get_flag = true;
 				}
+				else
+				{
+					SetCursorPosition(0, 21);
+					cout << "                      ";
+				}
 				room_[x][y].room_status = 1; // プレイヤーのいる部屋の状態を1にする
 			}
 			else if (x == next_position.first && y == next_position.second)
@@ -131,8 +136,33 @@ void ItemFloor::Print()
 	SetCursorPosition(60, 5); // カーソルを(60, 5)に移動
 	cout << "移動：[←][→]";
 	SetCursorPosition(60, 6); // カーソルを(60, 6)に移動
-	cout << "選択：[SPACE]";
+	cout << "決定：[SPACE]";
 	Player::GetInstance().PrintItemStatus(item_position_); // 所有アイテムを出力
+	SetCursorPosition(60, 11);
+	SetColor(COL_WHITE, COL_DARK_GREEN);
+	cout << "P";
+	SetColor(COL_WHITE, COL_BLACK);
+	cout << "：プレイヤーの位置";
+	SetCursorPosition(60, 12);
+	SetColor(COL_WHITE, COL_DARK_YELLOW);
+	cout << "N";
+	SetColor(COL_WHITE, COL_BLACK);
+	cout << "：プレイヤー移動先";
+	SetCursorPosition(60, 13);
+	SetColor(COL_WHITE, COL_DARK_BLUE);
+	cout << " ";
+	SetColor(COL_WHITE, COL_BLACK);
+	cout << "：スタート地点";
+	SetCursorPosition(60, 14);
+	SetColor(COL_WHITE, COL_DARK_RED);
+	cout << " ";
+	SetColor(COL_WHITE, COL_BLACK);
+	cout << "：ゴール地点";
+	SetCursorPosition(60, 15);
+	SetColor(COL_WHITE, COL_LIGHT_GRAY);
+	cout << " ";
+	SetColor(COL_WHITE, COL_BLACK);
+	cout << "：部屋";
 	SetCursorPosition(0, 0); // カーソルを(0, 0)に移動
 }
 

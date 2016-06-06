@@ -155,6 +155,12 @@ void QuizFloor::QuizMain()
 
 	SetCursorPosition(0, 0);
 	cout << (*quiz_).quiz_str;
+	SetCursorPosition(60, 5); // カーソルを(60, 5)に移動
+	cout << "移動：[↑][↓]";
+	SetCursorPosition(60, 6); // カーソルを(60, 6)に移動
+	cout << "決定：[SPACE]";
+	SetCursorPosition(60, 7); // カーソルを(60, 6)に移動
+	cout << "戻る：[BACKSPACE]";
 
 	PrintQuiz();
 	while (Timer::GetInstance().CheckTime() && !goal_flag_)
@@ -166,6 +172,7 @@ void QuizFloor::QuizMain()
 	Timer::GetInstance().PrintTime();
 	Player::GetInstance().EnableItem();
 	PrintGoalMessage();
+	Timer::GetInstance().PrintTime();
 }
 
 void QuizFloor::UpdateQuizMenu()
