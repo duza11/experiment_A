@@ -35,6 +35,7 @@ using namespace std;
 #define	KEY_DOWN 0x50
 #define KEY_SPACE 0x20
 #define KEY_BACK 0x08
+#define KEY_ENTER 0x0d
 
 // •¶šFw’è
 void SetColor(int col);

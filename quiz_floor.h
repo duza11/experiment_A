@@ -15,8 +15,6 @@
 #include "item_menu.h"
 #include "answer_menu.h"
 
-#define QZ_START_Y 4
-
 class QuizFloor : public IQuizFloor
 {
 public:

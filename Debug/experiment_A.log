@@ -1,3 +1,16 @@
 ﻿  quiz_floor.cpp
-c:\users\adm\source\repos\experiment_a\quiz_floor.cpp(42): warning C4800: 'int': ブール値を 'true' または 'false' に強制的に設定します (警告の処理)
-  experiment_A.vcxproj -> C:\Users\Adm\Source\Repos\experiment_A\Debug\experiment_A.exe
+c:\users\admin\source\repos\experiment_a\quiz_floor.cpp(42): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
+  Generating Code...
+  Compiling...
+  timer.cpp
+  text_box.cpp
+  player.cpp
+  menu.cpp
+  main.cpp
+  item_menu.cpp
+  item_floor.cpp
+  i_quiz_floor.cpp
+  base_menu.cpp
+  answer_menu.cpp
+  Generating Code...
+  experiment_A.vcxproj -> C:\Users\Admin\Source\Repos\experiment_A\Debug\experiment_A.exe
