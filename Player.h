@@ -38,6 +38,8 @@ public:
 	void EnableItem();
 	//アイテムの所持情報を表示
 	void PrintItemStatus(pair<int, int> position);
+	//
+	void PrintItemExplain(int item_num, pair<int, int> position);
 
 private:
 	//プレイヤー情報の初期化
@@ -55,6 +57,7 @@ private:
 		string item_name;
 		int item_count;
 		bool enable_flag;
+		vector<string> explain;
 	} Item;
 
 	random_device rnd; //乱数生成クラス

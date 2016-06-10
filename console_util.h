@@ -35,6 +35,7 @@ using namespace std;
 #define	KEY_DOWN 0x50
 #define KEY_SPACE 0x20
 #define KEY_BACK 0x08
+#define KEY_ENTER 0x0d
 
 // 文字色指定
 void SetColor(int col);
@@ -44,3 +45,5 @@ void SetColor(int fg, int bg);
 void SetCursorPosition(int x, int y);
 // カーソルを表示設定 TRUE=表示,FALSE=非表示
 void SetCursorDisplay(BOOL bVisible);
+
+void SetBufferSize(int x, int y);

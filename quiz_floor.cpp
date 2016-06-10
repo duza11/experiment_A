@@ -103,8 +103,9 @@ void QuizFloor::TypingMain()
 		if (changed_flag_)
 		{
 			SetCursorPosition(0, 0);
-			cout << "ミス" << this->mistake_ << "回\n\n\n";
-			cout << "次の文章をタイピングしてください\n\n\n";
+			cout << "ミス" << this->mistake_ << "回\n\n\n\n\n";
+			cout << "次の文章をタイピングしてください\n";
+			cout << "1回タイピングミスするごとにペナルティとして残り時間が-1されます\n\n";
 			cout << typing_str << "\n";
 			cout << input_str;
 			SetColor(COL_WHITE, COL_CYAN);
@@ -134,8 +135,9 @@ void QuizFloor::TypingMain()
 		}
 	}
 	SetCursorPosition(0, 0);
-	cout << "ミス" << this->mistake_ << "回\n\n\n";
-	cout << "次の文章をタイピングしてください\n\n\n";
+	cout << "ミス" << this->mistake_ << "回\n\n\n\n\n";
+	cout << "次の文章をタイピングしてください\n";
+	cout << "1回タイピングミスするごとにペナルティとして残り時間が-1されます\n\n";
 	cout << typing_str << "\n";
 	cout << input_str;
 	SetColor(COL_WHITE, COL_CYAN);
@@ -154,12 +156,14 @@ void QuizFloor::QuizMain()
 	this->menu_ = (Menu*) new BaseMenu(this);
 
 	SetCursorPosition(0, 0);
+	cout << "クイズに正解してください\n";
+	cout << "間違えるごとにペナルティとして残り時間が-30秒されます\n\n\n\n\n";
 	cout << (*quiz_).quiz_str;
-	SetCursorPosition(60, 5); // カーソルを(60, 5)に移動
+	SetCursorPosition(70, 9); // カーソルを(60, 9)に移動
 	cout << "移動：[↑][↓]";
-	SetCursorPosition(60, 6); // カーソルを(60, 6)に移動
-	cout << "決定：[SPACE]";
-	SetCursorPosition(60, 7); // カーソルを(60, 6)に移動
+	SetCursorPosition(70, 10); // カーソルを(60, 10)に移動
+	cout << "決定：[ENTER]";
+	SetCursorPosition(70, 11); // カーソルを(60, 11)に移動
 	cout << "戻る：[BACKSPACE]";
 
 	PrintQuiz();
@@ -253,13 +257,13 @@ void QuizFloor::PrintQuiz()
 void QuizFloor::PrintGoalMessage()
 {
 	SetCursorPosition(0, 24);
-	cout << "クリアです [SPACE]で次に進む";
+	cout << "クリアです [ENTER]で次に進む";
 	while (Timer::GetInstance().CheckTime())
 	{
 		if (_kbhit())
 		{
 			int input_key = _getch();
-			if (input_key == KEY_SPACE)
+			if (input_key == KEY_ENTER)
 			{
 				break;
 			}

@@ -20,7 +20,7 @@ bool AnswerMenu::Update()
 	if (_kbhit())
 	{
 		int c = _getch();
-		if (c == KEY_SPACE)
+		if (c == KEY_ENTER)
 		{
 			iqf_->CheckAnswer(now_select_);
 		}

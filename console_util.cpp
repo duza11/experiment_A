@@ -57,3 +57,15 @@ void SetCursorDisplay(BOOL bVisible)
 	info.bVisible = bVisible;
 	SetConsoleCursorInfo(hCons, &info);
 }
+
+void SetBufferSize(int x, int y)
+{
+	SMALL_RECT rc = { 0, 0, x, y };
+	COORD      coord;
+
+	coord.X = rc.Right + 1;
+	coord.Y = rc.Bottom + 1;
+	SetConsoleScreenBufferSize(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+
+	SetConsoleWindowInfo(GetStdHandle(STD_OUTPUT_HANDLE), TRUE, &rc);
+}

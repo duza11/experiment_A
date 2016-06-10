@@ -24,7 +24,7 @@ ItemFloor::ItemFloor()
 	}
 
 	this->goal_flag_ = false; // ゴール判定フラグをfalseにする
-	item_position_ = { 60, 8 }; // アイテム情報描画座標を(60, 8)にする
+	item_position_ = { 70, 8 }; // アイテム情報描画座標を(60, 8)にする
 	this->changed_flag_ = true; // 画面更新判定フラグをtrueにする
 }
 
@@ -44,7 +44,7 @@ int ItemFloor::ItemFloorMain() // 1Fのゲーム進行を管理する関数
 		}if (_kbhit()) // キー入力があるか判定
 		{
 			int input_key = _getch(); // キー入力を受け取る
-			if (input_key == KEY_SPACE)
+			if (input_key == KEY_ENTER)
 			{
 				Player::GetInstance().MovePositionFront(); // スペースキーであればプレイヤーを移動する
 				changed_flag_ = true;
@@ -67,13 +67,13 @@ int ItemFloor::ItemFloorMain() // 1Fのゲーム進行を管理する関数
 		this->goal_flag_ = CheckGoal(); // プレイヤーがゴールにいるか判定
 	}
 	SetCursorPosition(0, 24);
-	cout << "クリアです [SPACE]で次に進む";
+	cout << "クリアです [ENTER]で次に進む";
 	while (1)
 	{
 		if (_kbhit())
 		{
 			int input_key = _getch();
-			if (input_key == KEY_SPACE)
+			if (input_key == KEY_ENTER)
 			{
 				break;
 			}
@@ -133,32 +133,32 @@ void ItemFloor::Print()
 	}
 	SetColor(COL_WHITE, COL_BLACK); // 文字色を白,背景色を黒に設定
 	Player::GetInstance().PrintNowFloor();
-	SetCursorPosition(60, 5); // カーソルを(60, 5)に移動
+	SetCursorPosition(70, 5); // カーソルを(60, 5)に移動
 	cout << "移動：[←][→]";
-	SetCursorPosition(60, 6); // カーソルを(60, 6)に移動
-	cout << "決定：[SPACE]";
+	SetCursorPosition(70, 6); // カーソルを(60, 6)に移動
+	cout << "決定：[ENTER]";
 	Player::GetInstance().PrintItemStatus(item_position_); // 所有アイテムを出力
-	SetCursorPosition(60, 11);
+	SetCursorPosition(70, 11);
 	SetColor(COL_WHITE, COL_DARK_GREEN);
 	cout << "P";
 	SetColor(COL_WHITE, COL_BLACK);
 	cout << "：プレイヤーの位置";
-	SetCursorPosition(60, 12);
+	SetCursorPosition(70, 12);
 	SetColor(COL_WHITE, COL_DARK_YELLOW);
 	cout << "N";
 	SetColor(COL_WHITE, COL_BLACK);
 	cout << "：プレイヤー移動先";
-	SetCursorPosition(60, 13);
+	SetCursorPosition(70, 13);
 	SetColor(COL_WHITE, COL_DARK_BLUE);
 	cout << " ";
 	SetColor(COL_WHITE, COL_BLACK);
 	cout << "：スタート地点";
-	SetCursorPosition(60, 14);
+	SetCursorPosition(70, 14);
 	SetColor(COL_WHITE, COL_DARK_RED);
 	cout << " ";
 	SetColor(COL_WHITE, COL_BLACK);
 	cout << "：ゴール地点";
-	SetCursorPosition(60, 15);
+	SetCursorPosition(70, 15);
 	SetColor(COL_WHITE, COL_LIGHT_GRAY);
 	cout << " ";
 	SetColor(COL_WHITE, COL_BLACK);

@@ -39,7 +39,7 @@ void Timer::SwitchTimer(bool enable_flag)
 
 void Timer::PrintTime()
 {
-	SetCursorPosition(60, 2);
+	SetCursorPosition(70, 2);
 	cout << "Žc‚èŽžŠÔF" << this->remaining_time_ / 60 << "•ª" << this->remaining_time_ % 60 << "•b";
 }
 

@@ -69,8 +69,10 @@ Player::Player()
 		this->item_[i].item_count = 0;
 		this->item_[i].enable_flag = true;
 	}
-	this->item_[kFiftyFifty].item_name = "アイテム1";
-	this->item_[kStopTimer].item_name = "アイテム2";
+	this->item_[kFiftyFifty].item_name = "フィフティ・フィフティ";
+	this->item_[kStopTimer].item_name = "タイムストッパー";
+	this->item_[kFiftyFifty].explain = {"選択肢を3つ消します", "残りの選択肢が3つ", "以下の場合は正解に", "なります"};
+	this->item_[kStopTimer].explain = {"このクイズに正解する", "まで時間経過で残り", "時間が減りません", "ペナルティは発生しま", "す"};
 	this->now_position_ = { PLAYER_X , PLAYER_Y };
 	this->next_position_ = { PLAYER_NEXT_X , PLAYER_NEXT_Y };
 	this->now_floor_ = 1;
@@ -127,7 +129,7 @@ int Player::get_now_floor()
 
 void Player::PrintNowFloor()
 {
-	SetCursorPosition(60, 3);
+	SetCursorPosition(70, 3);
 	cout << "現在地点：" << this->now_floor_ << "/9階";
 }
 
@@ -154,5 +156,14 @@ void Player::PrintItemStatus(pair<int, int> position)
 		SetCursorPosition(position.first, position.second + i);
 		cout << this->item_[i].item_name << "*" << this->item_[i].item_count;
 		SetColor(COL_WHITE, COL_BLACK);
+	}
+}
+
+void Player::PrintItemExplain(int item_num, pair<int, int> position)
+{
+	for (int i = 0; i < item_[item_num].explain.size(); i++)
+	{
+		SetCursorPosition(position.first, position.second + i);
+		cout << item_[item_num].explain[i];
 	}
 }

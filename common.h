@@ -16,7 +16,7 @@ using namespace std;
 /*タイマー関連*/
 #define REMAINING_TIME 600 // 制限時間
 /*2F以降関連*/
-#define QUIZ_START_Y 5// クイズの選択肢の開始Y座標
+#define QUIZ_START_Y 10// クイズの選択肢の開始Y座標
 #define QUIZ_FLOOR_SIZE 7 // クイズを出題する階数
 #define QUIZ_OPTION_SIZE 6 // クイズの選択肢の数
 #define QUIZ_DATA_SIZE ((QUIZ_OPTION_SIZE * 2) + 2) // CVSにおけるクイズ1問のデータ数
@@ -39,7 +39,7 @@ using namespace std;
 #define ITEM_MENU_BOX_Y 20
 #define ITEM_MENU_OPTION_X (ITEM_MENU_BOX_X + 3)
 #define ITEM_MENU_OPTION_Y (ITEM_MENU_BOX_Y + 1)
-#define ITEM_MENU_BOX_WIDTH 16
+#define ITEM_MENU_BOX_WIDTH 30
 #define ITEM_MENU_BOX_HEIGHT 4
 
 //アイテム用の列挙型

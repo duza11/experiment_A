@@ -23,7 +23,7 @@ bool BaseMenu::Update()
 	if (_kbhit())
 	{
 		int c = _getch();
-		if (c == KEY_SPACE)
+		if (c == KEY_ENTER)
 		{
 			switch (now_select_)
 			{
