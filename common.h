@@ -16,6 +16,7 @@ using namespace std;
 /*タイマー関連*/
 #define REMAINING_TIME 600 // 制限時間
 /*2F以降関連*/
+#define QUIZ_START_Y 5// クイズの選択肢の開始Y座標
 #define QUIZ_FLOOR_SIZE 7 // クイズを出題する階数
 #define QUIZ_OPTION_SIZE 6 // クイズの選択肢の数
 #define QUIZ_DATA_SIZE ((QUIZ_OPTION_SIZE * 2) + 2) // CVSにおけるクイズ1問のデータ数

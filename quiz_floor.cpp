@@ -229,7 +229,7 @@ void QuizFloor::PrintQuiz()
 	{
 		Timer::GetInstance().PrintTime();
 		this->menu_->Print();
-		SetCursorPosition(0, QZ_START_Y);
+		SetCursorPosition(0, QUIZ_START_Y);
 		for (int i = 0; i < QUIZ_OPTION_SIZE; i++) {
 			if ((*quiz_).enable_flag[i])
 			{
