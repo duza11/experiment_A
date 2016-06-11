@@ -34,7 +34,7 @@ void Player::MovePositionFront()
 
 void Player::GetItem(int item_num)
 {
-	SetCursorPosition(0,21);
+	SetCursorPosition(3,25);
 	if (item_num != -1)
 	{
 		this->item_[item_num].item_count++;
@@ -42,7 +42,7 @@ void Player::GetItem(int item_num)
 	}
 	else
 	{
-		cout << "何も見つからなかった   ";
+		cout << "何も見つからなかった";
 	}
 }
 

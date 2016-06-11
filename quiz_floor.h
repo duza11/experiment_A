@@ -28,6 +28,7 @@ public:
 	void SwitchMenu(MenuEnum);
 	void PrintQuiz();
 	void PrintGoalMessage();
+	void SetQuizArray(string file_name, vector<Quiz> &quiz_array);
 
 private:
 	int mistake_ = 0;

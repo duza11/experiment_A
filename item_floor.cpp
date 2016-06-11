@@ -24,8 +24,10 @@ ItemFloor::ItemFloor()
 	}
 
 	this->goal_flag_ = false; // ゴール判定フラグをfalseにする
-	item_position_ = { 70, 8 }; // アイテム情報描画座標を(60, 8)にする
+	this->item_position_ = { 70, 8 }; // アイテム情報描画座標を(60, 8)にする
 	this->changed_flag_ = true; // 画面更新判定フラグをtrueにする
+	this->text_position_ = { 0, 24 };
+	this->text_box_ = new TextBox(text_position_, 40, 3);
 }
 
 ItemFloor::~ItemFloor()
@@ -66,7 +68,7 @@ int ItemFloor::ItemFloorMain() // 1Fのゲーム進行を管理する関数
 		}
 		this->goal_flag_ = CheckGoal(); // プレイヤーがゴールにいるか判定
 	}
-	SetCursorPosition(0, 24);
+	SetCursorPosition(2, 25);
 	cout << "クリアです [ENTER]で次に進む";
 	while (1)
 	{
@@ -77,7 +79,7 @@ int ItemFloor::ItemFloorMain() // 1Fのゲーム進行を管理する関数
 			{
 				break;
 			}
-			else if (input_key == 0 || input_key == 224)
+			else if (input_key == 0x00 || input_key == KEY_ARROW)
 			{
 				_getch();
 			}
@@ -96,7 +98,7 @@ void ItemFloor::Update(pair<int, int> now_position, pair<int, int> next_position
 		{
 			if (x == now_position.first && y == now_position.second)
 			{
-
+				text_box_->Print();
 				if (room_[x][y].item_get_flag == false) // プレイヤーの座標かつアイテム所得フラグがfalseならばアイテムを獲得する
 				{
 					Player::GetInstance().GetItem(room_[x][y].item_status);

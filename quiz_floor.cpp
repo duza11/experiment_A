@@ -2,68 +2,11 @@
 
 QuizFloor::QuizFloor()
 {
-	//ファイルの読み込み
-	ifstream ifs("csv/quiz.csv");
-	if (!ifs) {
-		return;
-	}
-
-	//csvファイルを1行ずつ読み込む
-	string str;
-	Quiz quiz;
-	while (getline(ifs, str)) {
-		int option_count = 0;
-		int data_count = 0;
-		string token;
-		istringstream stream(str);
-
-		//1行のうち、文字列とコンマを分割する
-		while (getline(stream, token, ',')) {
-			if (data_count % QUIZ_DATA_SIZE < 2)
-			{
-				if (data_count % 2 == 0)
-				{
-					quiz.typing_str = token;
-				}
-				else
-				{
-					quiz.quiz_str = token;
-				}
-			}
-			else
-			{
-				if (data_count % 2 == 0)
-				{
-					quiz.quiz_opt[option_count] = token;
-				}
-				else
-				{
-					int temp = stoi(token);
-					quiz.answer_type[option_count] = temp;
-					option_count++;
-				}
-			}
-			data_count++;
-		}
-		for (int i = 0; i < QUIZ_OPTION_SIZE; i++)
-		{
-			int ran_num = (unsigned)rnd() % QUIZ_OPTION_SIZE;
-			string quiz_opt_temp = quiz.quiz_opt[i];
-			bool answer_type_temp = quiz.answer_type[i];
-			quiz.quiz_opt[i] = quiz.quiz_opt[ran_num];
-			quiz.answer_type[i] = quiz.answer_type[ran_num];
-			quiz.quiz_opt[ran_num] = quiz_opt_temp;
-			quiz.answer_type[ran_num] = answer_type_temp;
-		}
-		quiz_array_.push_back(quiz);
-	}
-	for (auto itr = quiz_array_.begin(); itr != quiz_array_.end(); itr++)
-	{
-		int ran_num = (unsigned)rnd() % quiz_array_.size();
-		Quiz temp = *itr;
-		*itr = quiz_array_[ran_num];
-		this->quiz_array_[ran_num] = temp;
-	}
+	vector<Quiz> easy_quiz_array;
+	vector<Quiz> hard_quiz_array;
+	SetQuizArray("csv/easy_quiz.csv", easy_quiz_array);
+	SetQuizArray("csv/hard_quiz.csv", hard_quiz_array);
+	quiz_array_ = {easy_quiz_array[0], easy_quiz_array[1], easy_quiz_array[2], hard_quiz_array[0], hard_quiz_array[1], hard_quiz_array[2], hard_quiz_array[3]};
 }
 
 QuizFloor::~QuizFloor()
@@ -158,7 +101,7 @@ void QuizFloor::QuizMain()
 	SetCursorPosition(0, 0);
 	cout << "クイズに正解してください\n";
 	cout << "間違えるごとにペナルティとして残り時間が-30秒されます\n\n\n\n\n";
-	cout << (*quiz_).quiz_str;
+	cout << "Q." << (*quiz_).quiz_str;
 	SetCursorPosition(70, 9); // カーソルを(60, 9)に移動
 	cout << "移動：[↑][↓]";
 	SetCursorPosition(70, 10); // カーソルを(60, 10)に移動
@@ -274,4 +217,70 @@ void QuizFloor::PrintGoalMessage()
 		}
 	}
 	system("cls");
+}
+
+void QuizFloor::SetQuizArray(string file_name, vector<Quiz> &quiz_array)
+{
+	//ファイルの読み込み
+	ifstream ifs(file_name);
+	if (!ifs) {
+		return;
+	}
+
+	//csvファイルを1行ずつ読み込む
+	string str;
+	Quiz quiz;
+	while (getline(ifs, str)) {
+		int option_count = 0;
+		int data_count = 0;
+		string token;
+		istringstream stream(str);
+
+		//1行のうち、文字列とコンマを分割する
+		while (getline(stream, token, ',')) {
+			if (data_count % QUIZ_DATA_SIZE < 2)
+			{
+				if (data_count % 2 == 0)
+				{
+					quiz.typing_str = token;
+				}
+				else
+				{
+					quiz.quiz_str = token;
+				}
+			}
+			else
+			{
+				if (data_count % 2 == 0)
+				{
+					quiz.quiz_opt[option_count] = token;
+				}
+				else
+				{
+					int temp = stoi(token);
+					quiz.answer_type[option_count] = temp;
+					option_count++;
+				}
+			}
+			data_count++;
+		}
+		for (int i = 0; i < QUIZ_OPTION_SIZE; i++)
+		{
+			int ran_num = (unsigned)rnd() % QUIZ_OPTION_SIZE;
+			string quiz_opt_temp = quiz.quiz_opt[i];
+			bool answer_type_temp = quiz.answer_type[i];
+			quiz.quiz_opt[i] = quiz.quiz_opt[ran_num];
+			quiz.answer_type[i] = quiz.answer_type[ran_num];
+			quiz.quiz_opt[ran_num] = quiz_opt_temp;
+			quiz.answer_type[ran_num] = answer_type_temp;
+		}
+		quiz_array.push_back(quiz);
+	}
+	for (auto itr = quiz_array.begin(); itr != quiz_array.end(); itr++)
+	{
+		int ran_num = (unsigned)rnd() % quiz_array.size();
+		Quiz temp = *itr;
+		*itr = quiz_array[ran_num];
+		quiz_array[ran_num] = temp;
+	}
 }
