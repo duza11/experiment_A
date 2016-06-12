@@ -1,3 +1,2 @@
-﻿  quiz_floor.cpp
-c:\users\adm\source\repos\experiment_a\quiz_floor.cpp(261): warning C4800: 'int': ブール値を 'true' または 'false' に強制的に設定します (警告の処理)
+﻿  main.cpp
   experiment_A.vcxproj -> C:\Users\Adm\Source\Repos\experiment_A\Debug\experiment_A.exe

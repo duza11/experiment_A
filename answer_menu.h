@@ -7,10 +7,10 @@
 class AnswerMenu : public Menu
 {
 public:
-	AnswerMenu(IQuizFloor* changer, Quiz *quiz);
-	void Finitialize() override;
-	bool Update() override;
-	void Print() override;
+	AnswerMenu(IQuizFloor* changer, Quiz *quiz); // ´…‘åŽ÷
+	void Finitialize() override; // ´…‘åŽ÷
+	bool Update() override; // ´…‘åŽ÷
+	void Print() override; // ´…‘åŽ÷
 
 private:
 	int now_select_;

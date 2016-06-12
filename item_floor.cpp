@@ -24,26 +24,17 @@ ItemFloor::ItemFloor()
 	}
 
 	this->goal_flag_ = false; // ゴール判定フラグをfalseにする
-	this->item_position_ = { 70, 8 }; // アイテム情報描画座標を(60, 8)にする
+	this->item_position_ = { 70, 8 }; // アイテム情報描画座標を(70, 8)にする
 	this->changed_flag_ = true; // 画面更新判定フラグをtrueにする
-	this->text_position_ = { 0, 24 };
-	this->text_box_ = new TextBox(text_position_, 40, 3);
-}
-
-ItemFloor::~ItemFloor()
-{
+	this->text_position_ = { MESSAGE_BOX_X, MESSAGE_BOX_Y };
+	this->text_box_ = new TextBox(text_position_, MESSAGE_BOX_WIDTH, MESSAGE_BOX_HEIGHT);
 }
 
 int ItemFloor::ItemFloorMain() // 1Fのゲーム進行を管理する関数
 {
 	while (!this->goal_flag_) // ゴール判定フラグがfalseである限り繰り返す
 	{
-		if (changed_flag_) // 画面更新判定フラグがtrueであれば1Fの情報の更新,描画を行う
-		{
-			Update(Player::GetInstance().get_now_position(), Player::GetInstance().get_next_position()); // 1Fの情報の更新
-			Print(); // 1Fの描画
-			changed_flag_ = false; // 画面更新判定フラグをfalseにする
-		}if (_kbhit()) // キー入力があるか判定
+		if (_kbhit()) // キー入力があるか判定
 		{
 			int input_key = _getch(); // キー入力を受け取る
 			if (input_key == KEY_ENTER)
@@ -66,10 +57,13 @@ int ItemFloor::ItemFloorMain() // 1Fのゲーム進行を管理する関数
 				}
 			}
 		}
-		this->goal_flag_ = CheckGoal(); // プレイヤーがゴールにいるか判定
+		if (changed_flag_) // 画面更新判定フラグがtrueであれば1Fの情報の更新,描画を行う
+		{
+			Update(Player::GetInstance().get_now_position(), Player::GetInstance().get_next_position()); // 1Fの情報の更新
+			Print(); // 1Fの描画
+			changed_flag_ = false; // 画面更新判定フラグをfalseにする
+		}
 	}
-	SetCursorPosition(2, 25);
-	cout << "クリアです [ENTER]で次に進む";
 	while (1)
 	{
 		if (_kbhit())
@@ -86,6 +80,7 @@ int ItemFloor::ItemFloorMain() // 1Fのゲーム進行を管理する関数
 		}
 	}
 	Player::GetInstance().GoUpstairs(); // プレイヤーの階を1つ進める
+	delete text_box_;
 	system("cls"); // 画面を消去する
 	return 0;
 }
@@ -101,13 +96,12 @@ void ItemFloor::Update(pair<int, int> now_position, pair<int, int> next_position
 				text_box_->Print();
 				if (room_[x][y].item_get_flag == false) // プレイヤーの座標かつアイテム所得フラグがfalseならばアイテムを獲得する
 				{
-					Player::GetInstance().GetItem(room_[x][y].item_status);
+					this->message_ = Player::GetInstance().GetItem(room_[x][y].item_status);
 					room_[x][y].item_get_flag = true;
 				}
 				else
 				{
-					SetCursorPosition(0, 21);
-					cout << "                      ";
+					this->message_.clear();
 				}
 				room_[x][y].room_status = 1; // プレイヤーのいる部屋の状態を1にする
 			}
@@ -121,11 +115,15 @@ void ItemFloor::Update(pair<int, int> now_position, pair<int, int> next_position
 			}
 		}
 	}
+	if (this->goal_flag_ = CheckGoal()) // プレイヤーがゴールにいるか判定)
+	{
+		message_ = "クリアです [ENTER]で次に進む";
+	}
 }
 
 void ItemFloor::Print()
 {
-	
+
 	SetCursorPosition(0, 0);
 	for (int y = 0; y < ITEM_FLOOR_HEIGT; y++) // PrintLineを利用してダンジョンを出力
 	{
@@ -135,9 +133,9 @@ void ItemFloor::Print()
 	}
 	SetColor(COL_WHITE, COL_BLACK); // 文字色を白,背景色を黒に設定
 	Player::GetInstance().PrintNowFloor();
-	SetCursorPosition(70, 5); // カーソルを(60, 5)に移動
+	SetCursorPosition(70, 5);
 	cout << "移動：[←][→]";
-	SetCursorPosition(70, 6); // カーソルを(60, 6)に移動
+	SetCursorPosition(70, 6);
 	cout << "決定：[ENTER]";
 	Player::GetInstance().PrintItemStatus(item_position_); // 所有アイテムを出力
 	SetCursorPosition(70, 11);
@@ -149,7 +147,7 @@ void ItemFloor::Print()
 	SetColor(COL_WHITE, COL_DARK_YELLOW);
 	cout << "N";
 	SetColor(COL_WHITE, COL_BLACK);
-	cout << "：プレイヤー移動先";
+	cout << "：プレイヤーの移動先";
 	SetCursorPosition(70, 13);
 	SetColor(COL_WHITE, COL_DARK_BLUE);
 	cout << " ";
@@ -165,7 +163,9 @@ void ItemFloor::Print()
 	cout << " ";
 	SetColor(COL_WHITE, COL_BLACK);
 	cout << "：部屋";
-	SetCursorPosition(0, 0); // カーソルを(0, 0)に移動
+	SetCursorPosition(MESSAGE_X, MESSAGE_Y);
+	cout << message_;
+	SetCursorPosition(0, 0);
 }
 
 void ItemFloor::PrintLine(int y, bool print_value_flag)

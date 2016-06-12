@@ -7,10 +7,10 @@
 class BaseMenu : public Menu
 {
 public:
-	BaseMenu(IQuizFloor* changer);
-	void Finitialize() override;
-	bool Update() override;
-	void Print() override;
+	BaseMenu(IQuizFloor* changer); // ´…‘åŽ÷
+	void Finitialize() override; // ´…‘åŽ÷
+	bool Update() override; // ´…‘åŽ÷
+	void Print() override; // ´…‘åŽ÷
 
 private:
 	int now_select_;

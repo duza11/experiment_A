@@ -10,13 +10,12 @@
 class ItemFloor
 {
 public:
-	ItemFloor();
-	~ItemFloor();
-	int ItemFloorMain();
-	void Update(pair<int, int> p_pos, pair<int, int> np_pos);
-	void Print();
-	void PrintLine(int y, bool print_value_flag);
-	bool CheckGoal();
+	ItemFloor(); // 池田マイク
+	int ItemFloorMain(); // 池田マイク
+	void Update(pair<int, int> p_pos, pair<int, int> np_pos); // 清水大樹
+	void Print(); // 池田マイク
+	void PrintLine(int y, bool print_value_flag); // 池田マイク
+	bool CheckGoal(); // 清水大樹
 
 private:
 	typedef struct
@@ -32,4 +31,5 @@ private:
 	random_device rnd;
 	pair<int, int> text_position_;
 	TextBox *text_box_;
+	string message_;
 };

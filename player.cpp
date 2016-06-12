@@ -32,23 +32,28 @@ void Player::MovePositionFront()
 	this->next_position_.second--;
 }
 
-void Player::GetItem(int item_num)
+string Player::GetItem(int item_num)
 {
-	SetCursorPosition(3,25);
+	SetCursorPosition(3, 25);
 	if (item_num != -1)
 	{
 		this->item_[item_num].item_count++;
-		cout << item_[item_num].item_name << "を手に入れた";
+		return item_[item_num].item_name + "を手に入れた";
 	}
-	else
-	{
-		cout << "何も見つからなかった";
-	}
+	return "何も見つからなかった";
 }
 
 void Player::UseItem(int item_num, Quiz &quiz, IQuizFloor *iqf)
 {
-	if (item_[item_num].enable_flag && item_[item_num].item_count > 0) {
+	if (!item_[item_num].enable_flag)
+	{
+		iqf->set_message(item_[item_num].item_name + "は使用済みです");
+	}
+	else if (item_[item_num].item_count == 0)
+	{
+		iqf->set_message(item_[item_num].item_name + "は所持していません");
+	}
+	else {
 		if (item_num == kFiftyFifty)
 		{
 			UseFiftyFity(quiz, iqf);
@@ -57,6 +62,7 @@ void Player::UseItem(int item_num, Quiz &quiz, IQuizFloor *iqf)
 		{
 			UseStopTimer();
 		}
+		iqf->set_message(item_[item_num].item_name + "を使用しました");
 		this->item_[item_num].enable_flag = false;
 		this->item_[item_num].item_count--;
 	}
@@ -71,8 +77,10 @@ Player::Player()
 	}
 	this->item_[kFiftyFifty].item_name = "フィフティ・フィフティ";
 	this->item_[kStopTimer].item_name = "タイムストッパー";
-	this->item_[kFiftyFifty].explain = {"選択肢を3つ消します", "残りの選択肢が3つ", "以下の場合は正解に", "なります"};
-	this->item_[kStopTimer].explain = {"このクイズに正解する", "まで時間経過で残り", "時間が減りません", "ペナルティは発生しま", "す"};
+	string temp;
+
+	SplitString(temp = "選択肢を3つ消します 残りの選択肢が3つ以下の場合は正解になります", this->item_[kFiftyFifty].item_explain, (ITEM_EXPLAIN_WIDTH - 4));
+	SplitString(temp = "このクイズに正解するまで時間経過で残り時間が減りません ペナルティは発生します", this->item_[kStopTimer].item_explain, (ITEM_EXPLAIN_WIDTH - 4));
 	this->now_position_ = { PLAYER_X , PLAYER_Y };
 	this->next_position_ = { PLAYER_NEXT_X , PLAYER_NEXT_Y };
 	this->now_floor_ = 1;
@@ -161,9 +169,9 @@ void Player::PrintItemStatus(pair<int, int> position)
 
 void Player::PrintItemExplain(int item_num, pair<int, int> position)
 {
-	for (int i = 0; i < item_[item_num].explain.size(); i++)
+	for (int i = 0; i < item_[item_num].item_explain.size(); i++)
 	{
 		SetCursorPosition(position.first, position.second + i);
-		cout << item_[item_num].explain[i];
+		cout << item_[item_num].item_explain[i];
 	}
 }

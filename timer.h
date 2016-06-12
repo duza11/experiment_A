@@ -6,16 +6,16 @@
 
 class Timer {
 public:
-	static Timer& GetInstance();
-	bool CheckTime();
-	void PenaltyTime(int penalty_time);
-	void SwitchTimer(bool enable_flag);
-	void PrintTime();
+	static Timer& GetInstance(); // ´…‘åŽ÷
+	bool CheckTime(); // ´…‘åŽ÷
+	void PenaltyTime(int penalty_time); // ´…‘åŽ÷
+	void SwitchTimer(bool enable_flag); // ´…‘åŽ÷
+	void PrintTime(); // ´…‘åŽ÷
 
 private:
-	Timer();
-	Timer(const Timer & t) {}
-	~Timer() {}
+	Timer(); // ´…‘åŽ÷
+	Timer(const Timer & t) {} // ´…‘åŽ÷
+	~Timer() {} // ´…‘åŽ÷
 
 	int remaining_time_;
 	time_t old_time_, now_time_;

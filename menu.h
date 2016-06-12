@@ -7,12 +7,12 @@
 class Menu
 {
 public:
-	Menu(IQuizFloor *changer);
-	Menu(IQuizFloor *changer, Quiz *quiz);
-	virtual ~Menu();
-	virtual void Finitialize();
-	virtual bool Update();
-	virtual void Print();
+	Menu(IQuizFloor *changer); // ´…‘åŽ÷
+	Menu(IQuizFloor *changer, Quiz *quiz); // ´…‘åŽ÷
+	virtual ~Menu(); // ´…‘åŽ÷
+	virtual void Finitialize(); // ´…‘åŽ÷
+	virtual bool Update(); // ´…‘åŽ÷
+	virtual void Print(); // ´…‘åŽ÷
 
 protected:
 	IQuizFloor* iqf_;

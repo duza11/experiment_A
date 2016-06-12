@@ -38,12 +38,12 @@ using namespace std;
 #define KEY_ENTER 0x0d
 
 // 文字色指定
-void SetColor(int col);
+void SetColor(int col); // 清水大樹
 // 文字色と背景色指定
-void SetColor(int fg, int bg);
+void SetColor(int fg, int bg); // 清水大樹
 // カーソル位置指定
-void SetCursorPosition(int x, int y);
+void SetCursorPosition(int x, int y); // 清水大樹
 // カーソルを表示設定 TRUE=表示,FALSE=非表示
-void SetCursorDisplay(BOOL bVisible);
-
-void SetBufferSize(int x, int y);
+void SetCursorDisplay(BOOL bVisible); // 清水大樹
+// スクリーンバッファのサイズ変更
+void SetBufferSize(int x, int y); // 清水大樹

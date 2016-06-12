@@ -8,10 +8,10 @@
 class ItemMenu : Menu
 {
 public:
-	ItemMenu(IQuizFloor* changer, Quiz *quiz);
-	void Finitialize() override;
-	bool Update() override;
-	void Print() override;
+	ItemMenu(IQuizFloor* changer, Quiz *quiz); // ´…‘åŽ÷
+	void Finitialize() override; // ´…‘åŽ÷
+	bool Update() override; // ´…‘åŽ÷
+	void Print() override; // ´…‘åŽ÷
 
 private:
 	int now_select_ = kFiftyFifty;

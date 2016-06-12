@@ -18,17 +18,17 @@
 class QuizFloor : public IQuizFloor
 {
 public:
-	QuizFloor();
-	~QuizFloor();
-	int QuizFloorMain();
-	void TypingMain();
-	void QuizMain();
-	void UpdateQuizMenu();
-	void CheckAnswer(int option_num);
-	void SwitchMenu(MenuEnum);
-	void PrintQuiz();
-	void PrintGoalMessage();
-	void SetQuizArray(string file_name, vector<Quiz> &quiz_array);
+	QuizFloor(); // ‚’J½—C
+	int QuizFloorMain(); // –kì—Tˆê
+	void TypingMain(); // –kì—Tˆê
+	void QuizMain(); // –kì—Tˆê
+	void UpdateQuizMenu(); // ´…‘å÷
+	void CheckAnswer(int option_num) override; // ´…‘å÷
+	void set_message(string message) override; // ´…‘å÷
+	void SwitchMenu(MenuEnum) override; // ´…‘å÷
+	void PrintQuiz(); // ‚’J½—C
+	void PrintGoalMessage(); // ´…‘å÷
+	void SetQuizArray(string file_name, vector<Quiz> &quiz_array); // ‚’J½—C
 
 private:
 	int mistake_ = 0;
@@ -39,4 +39,7 @@ private:
 	MenuEnum next_menu_;
 	random_device rnd;
 	Quiz *quiz_;
+	pair<int, int> text_position_;
+	TextBox *text_box_;
+	string message_;
 };

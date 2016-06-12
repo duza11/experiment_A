@@ -27,6 +27,7 @@ bool AnswerMenu::Update()
 		else if (c == KEY_BACK)
 		{
 			iqf_->SwitchMenu(kBaseMenu);
+			iqf_->set_message("");
 		}
 		else if (c == KEY_ARROW)
 		{
@@ -34,10 +35,12 @@ bool AnswerMenu::Update()
 			if (c == KEY_UP)
 			{
 				now_select_ = (now_select_ + QUIZ_OPTION_SIZE - 1) % QUIZ_OPTION_SIZE;
+				iqf_->set_message("");
 			}
 			else if (c == KEY_DOWN)
 			{
 				now_select_ = (now_select_ + 1) % QUIZ_OPTION_SIZE;
+				iqf_->set_message("");
 			}
 		}
 		return true;

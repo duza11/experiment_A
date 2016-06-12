@@ -6,10 +6,10 @@ ItemMenu::ItemMenu(IQuizFloor* changer, Quiz *quiz) : Menu(changer, quiz)
 	this->quiz_ = quiz;
 	this->position_ = { ITEM_MENU_OPTION_X , ITEM_MENU_OPTION_Y };
 	this->box_position_ = { ITEM_MENU_BOX_X , ITEM_MENU_BOX_Y };
-	this->explain_position_ = { 40 , 17 };
-	this->explain_box_position_ = { 38 , 16 };
+	this->explain_position_ = { ITEM_EXPLAIN_X , ITEM_EXPLAIN_Y };
+	this->explain_box_position_ = { ITEM_EXPLAIN_BOX_X , ITEM_EXPLAIN_BOX_Y };
 	text_box_ = new TextBox(box_position_, ITEM_MENU_BOX_WIDTH, ITEM_MENU_BOX_HEIGHT);
-	explain_box_ = new TextBox(explain_box_position_, 24, 8);
+	explain_box_ = new TextBox(explain_box_position_, ITEM_EXPLAIN_WIDTH, ITEM_EXPLAIN_HEIGHT);
 }
 
 void ItemMenu::Finitialize()
@@ -32,6 +32,7 @@ bool ItemMenu::Update()
 		else if (c == KEY_BACK)
 		{
 			iqf_->SwitchMenu(kBaseMenu);
+			iqf_->set_message("");
 		}
 		else if (c == KEY_ARROW)
 		{
@@ -39,10 +40,12 @@ bool ItemMenu::Update()
 			if (c == KEY_UP)
 			{
 				now_select_ = (now_select_ + kItemKind - 1) % kItemKind;
+				iqf_->set_message("");
 			}
 			else if (c == KEY_DOWN)
 			{
 				now_select_ = (now_select_ + 1) % kItemKind;
+				iqf_->set_message("");
 			}
 		}
 		return true;

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -22,25 +23,39 @@ using namespace std;
 #define QUIZ_DATA_SIZE ((QUIZ_OPTION_SIZE * 2) + 2) // CVSにおけるクイズ1問のデータ数
 /*基本メニュー関連*/
 #define BASE_MENU_BOX_X 0
-#define BASE_MENU_BOX_Y 20
+#define BASE_MENU_BOX_Y 22
 #define BASE_MENU_OPTION_X (BASE_MENU_BOX_X + 3)
 #define BASE_MENU_OPTION_Y (BASE_MENU_BOX_Y + 1)
 #define BASE_MENU_BOX_WIDTH 16
 #define BASE_MENU_BOX_HEIGHT 4
 /*回答メニュー関連*/
 #define ANSWER_MENU_BOX_X 10
-#define ANSWER_MENU_BOX_Y 16
+#define ANSWER_MENU_BOX_Y 18
 #define ANSWER_MENU_OPTION_X (ANSWER_MENU_BOX_X + 3)
 #define ANSWER_MENU_OPTION_Y (ANSWER_MENU_BOX_Y + 1)
 #define ANSWER_MENU_BOX_WIDTH 40
 #define ANSWER_MENU_BOX_HEIGHT 8
 /*アイテムメニュー関連*/
 #define ITEM_MENU_BOX_X 10
-#define ITEM_MENU_BOX_Y 20
+#define ITEM_MENU_BOX_Y 22
 #define ITEM_MENU_OPTION_X (ITEM_MENU_BOX_X + 3)
 #define ITEM_MENU_OPTION_Y (ITEM_MENU_BOX_Y + 1)
 #define ITEM_MENU_BOX_WIDTH 30
 #define ITEM_MENU_BOX_HEIGHT 4
+#define ITEM_EXPLAIN_BOX_X 38
+#define ITEM_EXPLAIN_BOX_Y 18
+#define ITEM_EXPLAIN_X (ITEM_EXPLAIN_BOX_X + 2)
+#define ITEM_EXPLAIN_Y (ITEM_EXPLAIN_BOX_Y + 1)
+#define ITEM_EXPLAIN_WIDTH 24
+#define ITEM_EXPLAIN_HEIGHT 8
+
+/*メッセージボックス関連*/
+#define MESSAGE_BOX_X 0
+#define MESSAGE_BOX_Y 26
+#define MESSAGE_BOX_WIDTH 44
+#define MESSAGE_BOX_HEIGHT 3
+#define MESSAGE_X (MESSAGE_BOX_X + 2)
+#define MESSAGE_Y (MESSAGE_BOX_Y + 1)
 
 //アイテム用の列挙型
 typedef enum
@@ -59,3 +74,5 @@ typedef struct
 	bool answer_type[QUIZ_OPTION_SIZE];
 	bool enable_flag[QUIZ_OPTION_SIZE];
 } Quiz;
+
+void SplitString(string & input_str, vector<string> & str_array, int length); // 北川裕一
