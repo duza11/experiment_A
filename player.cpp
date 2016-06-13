@@ -161,7 +161,7 @@ void Player::PrintItemStatus(pair<int, int> position)
 			SetColor(COL_RED, COL_BLACK);
 		}
 		SetCursorPosition(position.first, position.second + i);
-		cout << this->item_[i].item_name << "*" << this->item_[i].item_count;
+		cout << this->item_[i].item_name << "×" << this->item_[i].item_count;
 		SetColor(COL_WHITE, COL_BLACK);
 	}
 }
