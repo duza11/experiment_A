@@ -4,7 +4,7 @@ void SplitString(string & input_str, vector<string> & str_array, int length)
 {
 	int byte_size;
 	int length_temp = 0;
-	int now_select = 0;
+	int point = 0;
 
 	char *locale = setlocale(LC_ALL, NULL);
 	setlocale(LC_CTYPE, "jpn");
@@ -13,15 +13,15 @@ void SplitString(string & input_str, vector<string> & str_array, int length)
 	{
 		byte_size = mblen(&input_str[i], MB_CUR_MAX);
 		length_temp += byte_size;
-		if (length_temp == length || length_temp == length + 1 || i == input_str.size() - 1 || (i == input_str.size() - 2 && byte_size == 2))
+		if (length_temp > length - 1 || i == input_str.size() - 1 || (i == input_str.size() - 2 && byte_size == 2))
 		{
-			if (length_temp == length + 1)
+			if (length_temp > length)
 			{
 				length_temp -= byte_size;
 				byte_size = 0;
 			}
-			str_array.push_back(input_str.substr(now_select, length_temp));
-			now_select += length_temp;
+			str_array.push_back(input_str.substr(point, length_temp));
+			point += length_temp;
 			length_temp = 0;
 		}
 	}

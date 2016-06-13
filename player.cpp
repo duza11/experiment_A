@@ -77,10 +77,9 @@ Player::Player()
 	}
 	this->item_[kFiftyFifty].item_name = "フィフティ・フィフティ";
 	this->item_[kStopTimer].item_name = "タイムストッパー";
-	string temp;
 
-	SplitString(temp = "選択肢を3つ消します 残りの選択肢が3つ以下の場合は正解になります", this->item_[kFiftyFifty].item_explain, (ITEM_EXPLAIN_WIDTH - 4));
-	SplitString(temp = "このクイズに正解するまで時間経過で残り時間が減りません ペナルティは発生します", this->item_[kStopTimer].item_explain, (ITEM_EXPLAIN_WIDTH - 4));
+	SplitString((string)"選択肢を3つ消します 残りの選択肢が3つ以下の場合は正解になります", this->item_[kFiftyFifty].item_explain, (ITEM_EXPLAIN_WIDTH - 4));
+	SplitString((string)"このクイズに正解するまで時間経過で残り時間が減りません ペナルティは発生します", this->item_[kStopTimer].item_explain, (ITEM_EXPLAIN_WIDTH - 4));
 	this->now_position_ = { PLAYER_X , PLAYER_Y };
 	this->next_position_ = { PLAYER_NEXT_X , PLAYER_NEXT_Y };
 	this->now_floor_ = 1;
@@ -159,7 +158,7 @@ void Player::PrintItemStatus(pair<int, int> position)
 		}
 		else
 		{
-			SetColor(COL_GRAY, COL_BLACK);
+			SetColor(COL_RED, COL_BLACK);
 		}
 		SetCursorPosition(position.first, position.second + i);
 		cout << this->item_[i].item_name << "*" << this->item_[i].item_count;
