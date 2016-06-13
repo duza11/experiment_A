@@ -14,6 +14,7 @@ class Player
 public:
 	// プレイヤーのインスタンスの取得
 	static Player &GetInstance(); // 清水大樹
+	void Initialize();
 	//プレイヤーの現在位置を取得
 	pair<int, int> get_now_position(); // 清水大樹
 	//プレイヤーの移動先位置を取得

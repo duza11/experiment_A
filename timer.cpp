@@ -6,10 +6,19 @@ Timer & Timer::GetInstance()
 	return timer;
 }
 
+void Timer::Initialize()
+{
+	this->remaining_time_ = REMAINING_TIME;
+	time(&this->old_time_);
+	time(&this->now_time_);
+	this->enable_flag_ = true;
+	this->changed_flag_ = true;
+}
+
 bool Timer::CheckTime()
 {
 	time(&this->now_time_);
-	if (old_time_ != this->now_time_)
+	if (this->old_time_ != this->now_time_)
 	{
 		if (this->enable_flag_)
 		{
@@ -45,9 +54,4 @@ void Timer::PrintTime()
 
 Timer::Timer()
 {
-	this->remaining_time_ = REMAINING_TIME;
-	time(&this->old_time_);
-	time(&this->now_time_);
-	this->enable_flag_ = true;
-	this->changed_flag_ = true;
 }

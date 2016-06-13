@@ -7,6 +7,7 @@
 class Timer {
 public:
 	static Timer& GetInstance(); // ´…‘åŽ÷
+	void Initialize();
 	bool CheckTime(); // ´…‘åŽ÷
 	void PenaltyTime(int penalty_time); // ´…‘åŽ÷
 	void SwitchTimer(bool enable_flag); // ´…‘åŽ÷

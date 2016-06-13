@@ -39,30 +39,91 @@ void PrintTutorial() // 高谷誠佑
 	system("cls");
 }
 
+bool CheckContinue()
+{
+	pair<int, int> continue_position = { 48, 13 };
+	bool changed_flag = true;
+	TextBox *continue_box = new TextBox(continue_position, 24, 5);
+	int now_select = 0;
+	while (true)
+	{
+		if (changed_flag)
+		{
+			continue_box->Print();
+			SetCursorPosition(51, 14);
+			cout << "リトライしますか?";
+			SetCursorPosition(51, 16);
+			cout << " はい      いいえ";
+			SetCursorPosition(51 + now_select, 16);
+			cout << ">";
+			changed_flag = false;
+		}
+		if (_kbhit)
+		{
+			int c = _getch();
+			if (c == KEY_ENTER)
+			{
+				if (now_select)
+				{
+					return false;
+				}
+				return true;
+			}
+			else if (c == 0x00 || c == 0xe0)
+			{
+				c = _getch();
+				if (c == KEY_RIGHT)
+				{
+					now_select = (!now_select) * 10;
+					changed_flag = true;
+				}
+				else if (c == KEY_LEFT)
+				{
+					now_select = (!now_select) * 10;
+					changed_flag = true;
+				}
+			}
+		}
+	}
+}
+
 int main() // 全員
 {
-	system("cls");	// 画面を消去
-	SetBufferSize(120, 30); // スクリーンバッファのサイズを120×30に変更
-	SetCursorDisplay(FALSE);	// カーソルの非表示化
-	PrintTutorial(); // チュートリアルを表示する関数
-	ItemFloor itf;	// 1Fのインスタンス化
-	QuizFloor qf;	// 2F以降ののインスタンス化
-
-	itf.ItemFloorMain();	// 1Fのゲーム進行を管理する関数
-	Timer::GetInstance();	// タイマーの初期化
-	qf.QuizFloorMain();	// 2F以降のゲーム進行を管理する関数
-
-	system("cls");
-	if (Player::GetInstance().get_now_floor() == 9)	//プレイヤーが現在9階にいるか判定
+	while (true)
 	{
-		cout << "GAME CLEAR";	// 9階であればGAME CLEAR
-	}
-	else
-	{
-		cout << "GAME OVER";	// 9階以外(未満)であればGAME OVER
-	}
+		system("cls");	// 画面を消去
+		SetBufferSize(120, 30); // スクリーンバッファのサイズを120×30に変更
+		SetCursorDisplay(FALSE);	// カーソルの非表示化
+		PrintTutorial(); // チュートリアルを表示する関数
+		ItemFloor itf;	// 1Fのインスタンス化
+		QuizFloor qf;	// 2F以降ののインスタンス化
 
-	_getch();	// 入力待ち
+		Player::GetInstance().Initialize();
+		itf.ItemFloorMain();	// 1Fのゲーム進行を管理する関数
+		Timer::GetInstance().Initialize();
+		qf.QuizFloorMain();	// 2F以降のゲーム進行を管理する関数
+
+		system("cls");
+		if (Player::GetInstance().get_now_floor() == 9)	//プレイヤーが現在9階にいるか判定
+		{
+			cout << "GAME CLEAR";	// 9階であればGAME CLEAR
+		}
+		else
+		{
+			cout << "GAME OVER";	// 9階以外(未満)であればGAME OVER
+		}
+
+		SetCursorPosition(MESSAGE_X, MESSAGE_Y);
+		cout << "次に進む[ENTER]";
+		while (_getch() != KEY_ENTER)
+		{
+			Sleep(0);
+		}
+		if (!CheckContinue())
+		{
+			break;
+		}
+	}
 
 	return 0;
 }

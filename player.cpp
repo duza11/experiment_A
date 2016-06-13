@@ -6,6 +6,25 @@ Player & Player::GetInstance()
 	return player;
 }
 
+void Player::Initialize()
+{
+	for (int i = 0; i < kItemKind; i++)
+	{
+		this->item_[i].item_count = 0;
+		this->item_[i].enable_flag = true;
+	}
+	this->item_[kFiftyFifty].item_name = "フィフティ・フィフティ";
+	this->item_[kStopTimer].item_name = "タイムストッパー";
+
+	this->item_[kFiftyFifty].item_explain.clear();
+	this->item_[kStopTimer].item_explain.clear();
+	SplitString((string)"選択肢を3つ消します 残りの選択肢が3つ以下の場合は正解になります", this->item_[kFiftyFifty].item_explain, (ITEM_EXPLAIN_WIDTH - 4));
+	SplitString((string)"このクイズに正解するまで時間経過で残り時間が減りません ペナルティは発生します", this->item_[kStopTimer].item_explain, (ITEM_EXPLAIN_WIDTH - 4));
+	this->now_position_ = { PLAYER_X , PLAYER_Y };
+	this->next_position_ = { PLAYER_NEXT_X , PLAYER_NEXT_Y };
+	this->now_floor_ = 1;
+}
+
 pair<int, int> Player::get_now_position()
 {
 	return this->now_position_;
@@ -70,19 +89,6 @@ void Player::UseItem(int item_num, Quiz &quiz, IQuizFloor *iqf)
 
 Player::Player()
 {
-	for (int i = 0; i < kItemKind; i++)
-	{
-		this->item_[i].item_count = 0;
-		this->item_[i].enable_flag = true;
-	}
-	this->item_[kFiftyFifty].item_name = "フィフティ・フィフティ";
-	this->item_[kStopTimer].item_name = "タイムストッパー";
-
-	SplitString((string)"選択肢を3つ消します 残りの選択肢が3つ以下の場合は正解になります", this->item_[kFiftyFifty].item_explain, (ITEM_EXPLAIN_WIDTH - 4));
-	SplitString((string)"このクイズに正解するまで時間経過で残り時間が減りません ペナルティは発生します", this->item_[kStopTimer].item_explain, (ITEM_EXPLAIN_WIDTH - 4));
-	this->now_position_ = { PLAYER_X , PLAYER_Y };
-	this->next_position_ = { PLAYER_NEXT_X , PLAYER_NEXT_Y };
-	this->now_floor_ = 1;
 }
 
 void Player::UseFiftyFity(Quiz & quiz, IQuizFloor *iqf)
