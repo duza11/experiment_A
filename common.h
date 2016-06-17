@@ -75,4 +75,12 @@ typedef struct
 	bool enable_flag[QUIZ_OPTION_SIZE];
 } Quiz;
 
+typedef struct
+{
+	string player_name;
+	int score;
+	string time;
+	string grade;
+} Ranking;
+
 void SplitString(string & input_str, vector<string> & str_array, int length); // –kì—Tˆê

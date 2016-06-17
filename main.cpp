@@ -1,3 +1,6 @@
+#include <fstream>
+#include <iostream>
+#include <sstream> //文字ストリーム
 #include "item_floor.h"
 #include "quiz_floor.h"
 #include "timer.h"
@@ -15,37 +18,100 @@
 
 void PrintTitle()
 {
-	char title[10][20] = {
-		{ 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0 },
-		{ 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0 },
-		{ 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0 },
-		{ 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-	};
-
-	for (int y = 0; y < sizeof(title) / sizeof(title[0]); y++)
-	{
-		for (int x = 0; x < sizeof(title[0]) / sizeof(char); x++)
+	char title[6][10][20] = {
 		{
-			if (title[y][x])
+			{ 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0 },
+			{ 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0 },
+			{ 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0 },
+			{ 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		},
+		{
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		},
+		{
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1 },
+			{ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		},
+		{
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		},
+		{
+			{ 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		},
+		{
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0 },
+			{ 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0 },
+			{ 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		} };
+	for (int s = 0; s < sizeof(title) / sizeof(title[0]); s++)
+	{
+		for (int y = 0; y < sizeof(title[0]) / sizeof(title[0][0]); y++)
+		{
+			SetCursorPosition(s * 20, y);
+			for (int x = 0; x < sizeof(title[0][0]) / sizeof(char); x++)
 			{
-				SetColor(COL_WHITE, COL_YELLOW);
+				if (title[s][y][x])
+				{
+					SetColor(COL_WHITE, COL_YELLOW);
+				}
+				else
+				{
+					SetColor(COL_WHITE, COL_BLACK);
+				}
+				cout << " ";
 			}
-			else
-			{
-				SetColor(COL_WHITE, COL_BLACK);
-			}
-			cout << " ";
 		}
-		cout << "\n";
 	}
-	_getch();
 }
+
 
 void PrintTutorial() // 高谷誠佑
 {
@@ -76,20 +142,20 @@ void PrintTutorial() // 高谷誠佑
 
 bool CheckContinue()
 {
-	pair<int, int> continue_position = { 48, 13 };
+	pair<int, int> continue_position = { 48, 20 };
 	bool changed_flag = true;
-	TextBox *continue_box = new TextBox(continue_position, 24, 5);
+	TextBox *continue_box = new TextBox(continue_position, 24, 4);
 	int now_select = 0;
 	while (true)
 	{
 		if (changed_flag)
 		{
 			continue_box->Print();
-			SetCursorPosition(51, 14);
-			cout << "リトライしますか?";
-			SetCursorPosition(51, 16);
-			cout << " はい      いいえ";
-			SetCursorPosition(51 + now_select, 16);
+			SetCursorPosition(51, 21);
+			cout << "プレイする";
+			SetCursorPosition(51, 22);
+			cout << "終了する";
+			SetCursorPosition(50, 21 + now_select);
 			cout << ">";
 			changed_flag = false;
 		}
@@ -98,6 +164,7 @@ bool CheckContinue()
 			int c = _getch();
 			if (c == KEY_ENTER)
 			{
+				system("cls");
 				if (now_select)
 				{
 					return false;
@@ -107,18 +174,91 @@ bool CheckContinue()
 			else if (c == 0x00 || c == 0xe0)
 			{
 				c = _getch();
-				if (c == KEY_RIGHT)
+				if (c == KEY_UP || c == KEY_DOWN)
 				{
-					now_select = (!now_select) * 10;
-					changed_flag = true;
-				}
-				else if (c == KEY_LEFT)
-				{
-					now_select = (!now_select) * 10;
+					now_select = !now_select;
 					changed_flag = true;
 				}
 			}
 		}
+	}
+}
+
+void PrintResult()
+{
+	cout << "残り時間：" << Timer::GetInstance().get_remaining_time() / 60 << "分" << Timer::GetInstance().get_remaining_time() % 60 << "秒\t"
+		<< "スコア：" << Timer::GetInstance().get_remaining_time() * 100;
+}
+
+void PrintRanking()
+{
+	Ranking ranking;
+	vector<Ranking> ranking_array;
+	ifstream ifs("csv/ranking.csv");
+
+	if (!ifs) {
+		return;
+	}
+
+	string str;
+
+	while (getline(ifs, str)) {
+
+		int data_count = 0;
+		string token;
+		istringstream stream(str);
+
+		while (getline(stream, token, ','))
+		{
+			switch (data_count % 4)
+			{
+			case 0:
+				ranking.player_name = token;
+				break;
+			case 1:
+				ranking.score = stoi(token);
+				break;
+			case 2:
+				ranking.time = token;
+				break;
+			case 3:
+				ranking.grade = token;
+				ranking_array.push_back(ranking);
+				break;
+			}
+			data_count++;
+		}
+	}
+	for (auto itr = ranking_array.begin(); itr != ranking_array.end(); itr++)
+	{
+		if (Timer::GetInstance().get_remaining_time() > (*itr).score)
+		{
+			string input_name;
+			cout << "\n名前を入力してください:";
+			cin >> input_name;
+			ranking.player_name = input_name;
+			ranking.score = Timer::GetInstance().get_remaining_time();
+			ranking.time = to_string(Timer::GetInstance().get_remaining_time() / 60) + "：" + to_string(Timer::GetInstance().get_remaining_time() % 60);
+			ranking.grade = "S";
+			ranking_array.insert(itr, ranking);
+			
+			ofstream ofs("csv/ranking.csv");
+			for (int i = 0; i < 10; i++)
+			{
+				ofs << ranking_array[i].player_name << ","
+					<< ranking_array[i].score << ","
+					<< ranking_array[i].time << ","
+					<< ranking_array[i].grade << endl;
+			}
+			break;
+		}
+	}
+	for (auto itr = ranking_array.begin(); itr != ranking_array.end() - 1; itr++)
+	{
+		cout << (*itr).player_name << "\t"
+			<< (*itr).score << "\t"
+			<< (*itr).time << "\t"
+			<< (*itr).grade << "\n";
 	}
 }
 
@@ -130,6 +270,10 @@ int main() // 全員
 		SetBufferSize(120, 30); // スクリーンバッファのサイズを120×30に変更
 		SetCursorDisplay(FALSE);	// カーソルの非表示化
 		PrintTitle();
+		if (!CheckContinue())
+		{
+			break;
+		}
 		PrintTutorial(); // チュートリアルを表示する関数
 		ItemFloor itf;	// 1Fのインスタンス化
 		QuizFloor qf;	// 2F以降ののインスタンス化
@@ -148,16 +292,13 @@ int main() // 全員
 		{
 			cout << "GAME OVER";	// 9階以外(未満)であればGAME OVER
 		}
+		PrintRanking();
 
 		SetCursorPosition(MESSAGE_X, MESSAGE_Y);
-		cout << "次に進む[ENTER]";
+		cout << "タイトルに戻る[ENTER]";
 		while (_getch() != KEY_ENTER)
 		{
 			Sleep(0);
-		}
-		if (!CheckContinue())
-		{
-			break;
 		}
 	}
 

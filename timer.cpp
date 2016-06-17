@@ -52,6 +52,11 @@ void Timer::PrintTime()
 	cout << "Žc‚èŽžŠÔF" << this->remaining_time_ / 60 << "•ª" << this->remaining_time_ % 60 << "•b";
 }
 
+int Timer::get_remaining_time()
+{
+	return this->remaining_time_;
+}
+
 Timer::Timer()
 {
 }

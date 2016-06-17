@@ -12,6 +12,7 @@ public:
 	void PenaltyTime(int penalty_time); // ´…‘åŽ÷
 	void SwitchTimer(bool enable_flag); // ´…‘åŽ÷
 	void PrintTime(); // ´…‘åŽ÷
+	int get_remaining_time();
 
 private:
 	Timer(); // ´…‘åŽ÷
