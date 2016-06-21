@@ -11,14 +11,90 @@
 // タイピングとクイズの問題はCSVファイルから読み込むため
 // 提出用のファイルで実行するとエラーが発生するかもしれません
 
-/*仕様の変更点*/
-// 簡単なクイズの追加
-// タイピングミスでのペナルティを1秒→5秒に変更
-// クイズミスでのペナルティを30秒→20秒に変更
+int remaining_time;
+int score;
+string grade;
+
+void PrintRanking()
+{
+	Ranking ranking;
+	vector<Ranking> ranking_array;
+	ifstream ifs("csv/ranking.csv");
+
+
+	if (!ifs) {
+		return;
+	}
+
+	string str;
+
+	while (getline(ifs, str)) {
+
+		int data_count = 0;
+		string token;
+		istringstream stream(str);
+
+		while (getline(stream, token, ','))
+		{
+			switch (data_count % 4)
+			{
+			case 0:
+				ranking.player_name = token;
+				break;
+			case 1:
+				ranking.score = stoi(token);
+				break;
+			case 2:
+				ranking.time = token;
+				break;
+			case 3:
+				ranking.grade = token;
+				ranking_array.push_back(ranking);
+				break;
+			}
+			data_count++;
+		}
+	}
+
+	pair<int, int> position = { RANKING_BOX_X, RANKING_BOX_Y };
+	TextBox *tb = new TextBox(position, RANKING_BOX_WiDTH, RANKING_BOX_HEIGHT);
+	tb->Print();
+	SetCursorPosition(RANKING_CONTENT_X, RANKING_CONTENT_Y);
+	cout << "順位";
+	SetCursorPosition(RANKING_CONTENT_X + 5, RANKING_CONTENT_Y);
+	cout << "名前";
+	SetCursorPosition(RANKING_CONTENT_X + 30, RANKING_CONTENT_Y);
+	cout << "スコア";
+	SetCursorPosition(RANKING_CONTENT_X + 40, RANKING_CONTENT_Y);
+	cout << "残り時間";
+	SetCursorPosition(RANKING_CONTENT_X + 50, RANKING_CONTENT_Y);
+	cout << "評価";
+	for (int i = 0; i < 10; i++)
+	{
+		SetCursorPosition(RANKING_CONTENT_X, RANKING_CONTENT_Y + 2 + i);
+		cout << i + 1;
+		SetCursorPosition(RANKING_CONTENT_X + 5, RANKING_CONTENT_Y + 2 + i);
+		cout << ranking_array[i].player_name;
+		SetCursorPosition(RANKING_CONTENT_X + 30, RANKING_CONTENT_Y + 2 + i);
+		cout << ranking_array[i].score;
+		SetCursorPosition(RANKING_CONTENT_X + 40, RANKING_CONTENT_Y + 2 + i);
+		cout << ranking_array[i].time;
+		SetCursorPosition(RANKING_CONTENT_X + 50, RANKING_CONTENT_Y + 2 + i);
+		cout << ranking_array[i].grade;
+	}
+	SetCursorPosition(73, RANKING_CONTENT_Y + 13);
+	cout << "戻る[BACKSPACE]";
+	while (_getch() != KEY_BACK)
+	{
+		Sleep(0);
+	}
+	tb->Finitialize();
+	delete tb;
+}
 
 void PrintTitle()
 {
-	char title[6][10][20] = {
+	char title[TITLE_CHARACTER_SIZE][TITLE_CHARACTER_HEIGHT][TITLE_CHARACTER_WIDTH] = {
 		{
 			{ 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 			{ 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0 },
@@ -95,7 +171,7 @@ void PrintTitle()
 	{
 		for (int y = 0; y < sizeof(title[0]) / sizeof(title[0][0]); y++)
 		{
-			SetCursorPosition(s * 20, y);
+			SetCursorPosition(s * TITLE_CHARACTER_WIDTH, y);
 			for (int x = 0; x < sizeof(title[0][0]) / sizeof(char); x++)
 			{
 				if (title[s][y][x])
@@ -140,11 +216,18 @@ void PrintTutorial() // 高谷誠佑
 	system("cls");
 }
 
-bool CheckContinue()
+void PrintStartMenu()
 {
-	pair<int, int> continue_position = { 48, 20 };
+	enum MyEnum
+	{
+		kStart,
+		kRanking,
+		kQuit,
+		kStartMenuNum,
+	};
+	pair<int, int> position = { START_MENU_BOX_X, START_MENU_BOX_Y };
 	bool changed_flag = true;
-	TextBox *continue_box = new TextBox(continue_position, 24, 4);
+	TextBox *continue_box = new TextBox(position, START_MENU_BOX_WIDTH, START_MENU_BOX_HEIGHT);
 	int now_select = 0;
 	while (true)
 	{
@@ -152,9 +235,11 @@ bool CheckContinue()
 		{
 			continue_box->Print();
 			SetCursorPosition(51, 21);
-			cout << "プレイする";
+			cout << "プレイ";
 			SetCursorPosition(51, 22);
-			cout << "終了する";
+			cout << "ランキング";
+			SetCursorPosition(51, 23);
+			cout << "終了";
 			SetCursorPosition(50, 21 + now_select);
 			cout << ">";
 			changed_flag = false;
@@ -164,19 +249,33 @@ bool CheckContinue()
 			int c = _getch();
 			if (c == KEY_ENTER)
 			{
-				system("cls");
-				if (now_select)
+				if (now_select == kStart)
 				{
-					return false;
+					system("cls");
+					return;
 				}
-				return true;
+				else if (now_select == kRanking)
+				{
+					now_select = kStart;
+					PrintRanking();
+					changed_flag = true;
+				}
+				else if (now_select == kQuit)
+				{
+					exit(0);
+				}
 			}
-			else if (c == 0x00 || c == 0xe0)
+			else if (c == 0x00 || c == KEY_ARROW)
 			{
 				c = _getch();
-				if (c == KEY_UP || c == KEY_DOWN)
+				if (c == KEY_UP)
 				{
-					now_select = !now_select;
+					now_select = (now_select + kStartMenuNum - 1) % kStartMenuNum;
+					changed_flag = true;
+				}
+				else if (c == KEY_DOWN)
+				{
+					now_select = (now_select + 1) % kStartMenuNum;
 					changed_flag = true;
 				}
 			}
@@ -186,15 +285,52 @@ bool CheckContinue()
 
 void PrintResult()
 {
-	cout << "残り時間：" << Timer::GetInstance().get_remaining_time() / 60 << "分" << Timer::GetInstance().get_remaining_time() % 60 << "秒\t"
-		<< "スコア：" << Timer::GetInstance().get_remaining_time() * 100;
+	remaining_time = Timer::GetInstance().get_remaining_time();
+	int time_score = remaining_time * 100;
+	score = time_score;
+	if (Player::GetInstance().get_no_item_flag())
+	{
+		score += 3000;
+	}
+	if (score >= 45000)
+	{
+		grade = "S";
+	}
+	else if (score >= 40000)
+	{
+		grade = "A";
+	}
+	else if (score >= 35000)
+	{
+		grade = "B";
+	}
+	else
+	{
+		grade = "C";
+	}
+	cout << "残り時間：" << remaining_time / 60 << "分" << remaining_time % 60 << "秒\t\t スコア + " << time_score << "\n";
+	if (Player::GetInstance().get_no_item_flag())
+	{
+		cout << "アイテム未使用ボーナス\t\t スコア + 3000\n";
+	}
+	cout << "スコア：" << score << "\n";
+	cout << "評価：" << grade << "\n\n";
+	SetCursorPosition(MESSAGE_X, MESSAGE_Y);
+	cout << "次に進む[ENTER]";
+	while (_getch() != KEY_ENTER)
+	{
+		Sleep(0);
+	}
+	system("cls");
 }
 
-void PrintRanking()
+void CheckRanking()
 {
+	int ranking_count;
 	Ranking ranking;
 	vector<Ranking> ranking_array;
 	ifstream ifs("csv/ranking.csv");
+
 
 	if (!ifs) {
 		return;
@@ -231,15 +367,33 @@ void PrintRanking()
 	}
 	for (auto itr = ranking_array.begin(); itr != ranking_array.end(); itr++)
 	{
-		if (Timer::GetInstance().get_remaining_time() > (*itr).score)
+		if (score > (*itr).score)
 		{
+			ranking_count = itr - ranking_array.begin() + 1;
 			string input_name;
-			cout << "\n名前を入力してください:";
-			cin >> input_name;
+			while (true)
+			{
+				SetCursorPosition(0, 0);
+				cout << ranking_count << "位にランクインしました\n";
+				cout << "名前を入力してください(半角文字は20文字，全角文字は10文字まで)\n\n\n";
+				cin >> input_name;
+				system("cls");
+				if (input_name.size() > 20)
+				{
+					SetCursorPosition(0, 3);
+					SetColor(COL_RED);
+					cout << "名前が長過ぎます\n";
+					input_name.clear();
+					SetColor(COL_WHITE);
+				}
+				else {
+					break;
+				}
+			}
 			ranking.player_name = input_name;
-			ranking.score = Timer::GetInstance().get_remaining_time();
-			ranking.time = to_string(Timer::GetInstance().get_remaining_time() / 60) + "：" + to_string(Timer::GetInstance().get_remaining_time() % 60);
-			ranking.grade = "S";
+			ranking.score = score;
+			ranking.time = to_string(remaining_time / 60) + "分" + to_string(remaining_time % 60) + "秒";
+			ranking.grade = grade;
 			ranking_array.insert(itr, ranking);
 			
 			ofstream ofs("csv/ranking.csv");
@@ -253,12 +407,34 @@ void PrintRanking()
 			break;
 		}
 	}
-	for (auto itr = ranking_array.begin(); itr != ranking_array.end() - 1; itr++)
+	system("cls");
+	SetCursorPosition(0, 0);
+	cout << "順位";
+	SetCursorPosition(5, 0);
+	cout << "名前";
+	SetCursorPosition(30, 0);
+	cout << "スコア";
+	SetCursorPosition(40, 0);
+	cout << "残り時間";
+	SetCursorPosition(50, 0);
+	cout << "評価";
+	for (int i = 0; i < 10; i++)
 	{
-		cout << (*itr).player_name << "\t"
-			<< (*itr).score << "\t"
-			<< (*itr).time << "\t"
-			<< (*itr).grade << "\n";
+		if (i == ranking_count - 1)
+		{
+			SetColor(COL_GREEN);
+		}
+		SetCursorPosition(0, 2 + i);
+		cout << i + 1;
+		SetCursorPosition(5, 2 + i);
+		cout << ranking_array[i].player_name;
+		SetCursorPosition(30, 2 + i);
+		cout << ranking_array[i].score;
+		SetCursorPosition(40, 2 + i);
+		cout << ranking_array[i].time;
+		SetCursorPosition(50, 2 + i);
+		cout << ranking_array[i].grade;
+		SetColor(COL_WHITE);
 	}
 }
 
@@ -266,14 +442,14 @@ int main() // 全員
 {
 	while (true)
 	{
+		remaining_time = 0;
+		score = 0;
+		grade.clear();
 		system("cls");	// 画面を消去
 		SetBufferSize(120, 30); // スクリーンバッファのサイズを120×30に変更
 		SetCursorDisplay(FALSE);	// カーソルの非表示化
 		PrintTitle();
-		if (!CheckContinue())
-		{
-			break;
-		}
+		PrintStartMenu();
 		PrintTutorial(); // チュートリアルを表示する関数
 		ItemFloor itf;	// 1Fのインスタンス化
 		QuizFloor qf;	// 2F以降ののインスタンス化
@@ -284,15 +460,23 @@ int main() // 全員
 		qf.QuizFloorMain();	// 2F以降のゲーム進行を管理する関数
 
 		system("cls");
-		if (Player::GetInstance().get_now_floor() == 9)	//プレイヤーが現在9階にいるか判定
+		if (Player::GetInstance().get_now_floor() == FLOOR_SIZE)	//プレイヤーが現在9階にいるか判定
 		{
 			cout << "GAME CLEAR";	// 9階であればGAME CLEAR
+			SetCursorPosition(MESSAGE_X, MESSAGE_Y);
+			cout << "次に進む[ENTER]";
+			while (_getch() != KEY_ENTER)
+			{
+				Sleep(0);
+			}
+			system("cls");
+			PrintResult();
+			CheckRanking();
 		}
 		else
 		{
 			cout << "GAME OVER";	// 9階以外(未満)であればGAME OVER
 		}
-		PrintRanking();
 
 		SetCursorPosition(MESSAGE_X, MESSAGE_Y);
 		cout << "タイトルに戻る[ENTER]";

@@ -23,6 +23,7 @@ void Player::Initialize()
 	this->now_position_ = { PLAYER_X , PLAYER_Y };
 	this->next_position_ = { PLAYER_NEXT_X , PLAYER_NEXT_Y };
 	this->now_floor_ = 1;
+	this->no_item_flag_ = true;
 }
 
 pair<int, int> Player::get_now_position()
@@ -84,6 +85,7 @@ void Player::UseItem(int item_num, Quiz &quiz, IQuizFloor *iqf)
 		iqf->set_message(item_[item_num].item_name + "を使用しました");
 		this->item_[item_num].enable_flag = false;
 		this->item_[item_num].item_count--;
+		this->no_item_flag_ = false;
 	}
 }
 
@@ -179,4 +181,9 @@ void Player::PrintItemExplain(int item_num, pair<int, int> position)
 		SetCursorPosition(position.first, position.second + i);
 		cout << item_[item_num].item_explain[i];
 	}
+}
+
+bool Player::get_no_item_flag()
+{
+	return this->no_item_flag_;
 }

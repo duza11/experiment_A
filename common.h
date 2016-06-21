@@ -5,6 +5,20 @@
 
 using namespace std;
 
+/*スタート画面関連*/
+#define TITLE_CHARACTER_WIDTH 20
+#define TITLE_CHARACTER_HEIGHT 10
+#define TITLE_CHARACTER_SIZE 6
+#define START_MENU_BOX_X 48
+#define START_MENU_BOX_Y 20
+#define START_MENU_BOX_WIDTH 24
+#define START_MENU_BOX_HEIGHT 5
+#define RANKING_BOX_X 30
+#define RANKING_BOX_Y 13
+#define RANKING_BOX_WiDTH 60
+#define RANKING_BOX_HEIGHT 16
+#define RANKING_CONTENT_X (RANKING_BOX_X + 2)
+#define RANKING_CONTENT_Y (RANKING_BOX_Y + 1)
 /*1F関連*/
 #define WALL -1	// 壁
 #define ITEM_FLOOR_WIDTH 3 // 1Fのダンジョンの横幅
@@ -48,7 +62,6 @@ using namespace std;
 #define ITEM_EXPLAIN_Y (ITEM_EXPLAIN_BOX_Y + 1)
 #define ITEM_EXPLAIN_WIDTH 24
 #define ITEM_EXPLAIN_HEIGHT 8
-
 /*メッセージボックス関連*/
 #define MESSAGE_BOX_X 0
 #define MESSAGE_BOX_Y 26
@@ -56,6 +69,8 @@ using namespace std;
 #define MESSAGE_BOX_HEIGHT 3
 #define MESSAGE_X (MESSAGE_BOX_X + 2)
 #define MESSAGE_Y (MESSAGE_BOX_Y + 1)
+
+#define FLOOR_SIZE (QUIZ_FLOOR_SIZE + 2)
 
 //アイテム用の列挙型
 typedef enum
