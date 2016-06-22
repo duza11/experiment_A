@@ -251,6 +251,7 @@ void PrintStartMenu()
 			{
 				if (now_select == kStart)
 				{
+					delete continue_box;
 					system("cls");
 					return;
 				}
@@ -371,7 +372,8 @@ void CheckRanking()
 		{
 			ranking_count = itr - ranking_array.begin() + 1;
 			string input_name;
-			while (true)
+			bool name_checked_flag = false;
+			while (!name_checked_flag)
 			{
 				SetCursorPosition(0, 0);
 				cout << ranking_count << "位にランクインしました\n\n";
@@ -396,7 +398,28 @@ void CheckRanking()
 					SetColor(COL_WHITE);
 				}
 				else {
-					break;
+					for (auto itr = input_name.begin(); itr != input_name.end(); itr++)
+					{
+						bool em = false;
+						if (!(((itr != input_name.end() -1) && (em = (*itr == -127) && *(itr + 1) == 0x40)) || *itr == KEY_SPACE))
+						{
+							name_checked_flag = true;
+							break;
+						}
+						else if ((em  && itr == (input_name.end() - 2)) || itr == (input_name.end() - 1))
+						{
+							SetCursorPosition(0, 5);
+							SetColor(COL_RED);
+							cout << "名前をスペースのみにすることはできません\n";
+							input_name.clear();
+							SetColor(COL_WHITE);
+							break;
+						}
+						if (em)
+						{
+							itr++;
+						}
+					}
 				}
 			}
 			ranking.player_name = input_name;
