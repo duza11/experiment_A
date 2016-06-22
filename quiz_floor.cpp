@@ -282,6 +282,7 @@ void QuizFloor::SetQuizArray(string file_name, vector<Quiz> &quiz_array)
 			quiz.answer_type[i] = quiz.answer_type[ran_num];
 			quiz.quiz_opt[ran_num] = quiz_opt_temp;
 			quiz.answer_type[ran_num] = answer_type_temp;
+			quiz.enable_flag[i] = true;
 		}
 		quiz_array.push_back(quiz);
 	}

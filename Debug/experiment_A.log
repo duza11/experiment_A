@@ -1,20 +1,3 @@
-﻿  main.cpp
-c:\users\admin\source\repos\experiment_a\main.cpp(247): warning C4551: function call missing argument list
-  Generating Code...
-  Compiling...
-  timer.cpp
-  text_box.cpp
-  quiz_floor.cpp
+﻿  quiz_floor.cpp
 c:\users\admin\source\repos\experiment_a\quiz_floor.cpp(270): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
-  player.cpp
-c:\users\admin\source\repos\experiment_a\player.cpp(179): warning C4018: '<': signed/unsigned mismatch
-  menu.cpp
-  item_menu.cpp
-  item_floor.cpp
-  i_quiz_floor.cpp
-  common.cpp
-c:\users\admin\source\repos\experiment_a\common.cpp(12): warning C4018: '<': signed/unsigned mismatch
-  base_menu.cpp
-  answer_menu.cpp
-  Generating Code...
   experiment_A.vcxproj -> C:\Users\Admin\Source\Repos\experiment_A\Debug\experiment_A.exe

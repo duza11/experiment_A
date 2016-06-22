@@ -374,13 +374,22 @@ void CheckRanking()
 			while (true)
 			{
 				SetCursorPosition(0, 0);
-				cout << ranking_count << "位にランクインしました\n";
-				cout << "名前を入力してください(半角文字は20文字，全角文字は10文字まで)\n\n\n";
-				cin >> input_name;
+				cout << ranking_count << "位にランクインしました\n\n";
+				cout << "名前を入力してください(半角文字は20文字，全角文字は10文字まで)\n";
+				cout << ">";
+				getline(cin, input_name);
 				system("cls");
-				if (input_name.size() > 20)
+				if (input_name.empty() || input_name.size() == 0)
 				{
-					SetCursorPosition(0, 3);
+					SetCursorPosition(0, 5);
+					SetColor(COL_RED);
+					cout << "名前が短過ぎます\n";
+					input_name.clear();
+					SetColor(COL_WHITE);
+				}
+				else if (input_name.size() > 20)
+				{
+					SetCursorPosition(0, 5);
 					SetColor(COL_RED);
 					cout << "名前が長過ぎます\n";
 					input_name.clear();
