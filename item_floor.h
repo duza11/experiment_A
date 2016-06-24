@@ -29,7 +29,6 @@ private:
 	bool goal_flag_;
 	pair<int, int> item_position_;
 	random_device rnd;
-	pair<int, int> text_position_;
 	TextBox *text_box_;
 	string message_;
 };

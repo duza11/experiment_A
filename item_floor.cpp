@@ -26,8 +26,7 @@ ItemFloor::ItemFloor()
 	this->goal_flag_ = false; // ゴール判定フラグをfalseにする
 	this->item_position_ = { 70, 8 }; // アイテム情報描画座標を(70, 8)にする
 	this->changed_flag_ = true; // 画面更新判定フラグをtrueにする
-	this->text_position_ = { MESSAGE_BOX_X, MESSAGE_BOX_Y };
-	this->text_box_ = new TextBox(text_position_, MESSAGE_BOX_WIDTH, MESSAGE_BOX_HEIGHT);
+	this->text_box_ = new TextBox({ MESSAGE_BOX_X, MESSAGE_BOX_Y }, MESSAGE_BOX_WIDTH, MESSAGE_BOX_HEIGHT);
 }
 
 int ItemFloor::ItemFloorMain() // 1Fのゲーム進行を管理する関数

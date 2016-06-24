@@ -56,8 +56,7 @@ void PrintRanking()
 		}
 	}
 
-	pair<int, int> position = { RANKING_BOX_X, RANKING_BOX_Y };
-	TextBox *tb = new TextBox(position, RANKING_BOX_WiDTH, RANKING_BOX_HEIGHT);
+	TextBox *tb = new TextBox({ RANKING_BOX_X, RANKING_BOX_Y }, RANKING_BOX_WIDTH, RANKING_BOX_HEIGHT);
 	tb->Print();
 	SetCursorPosition(RANKING_CONTENT_X, RANKING_CONTENT_Y);
 	cout << "順位";
@@ -171,7 +170,7 @@ void PrintTitle()
 	{
 		for (int y = 0; y < sizeof(title[0]) / sizeof(title[0][0]); y++)
 		{
-			SetCursorPosition(s * TITLE_CHARACTER_WIDTH, y);
+			SetCursorPosition(s * TITLE_CHARACTER_WIDTH, y + 2);
 			for (int x = 0; x < sizeof(title[0][0]) / sizeof(char); x++)
 			{
 				if (title[s][y][x])
@@ -193,7 +192,7 @@ void PrintTutorial() // 高谷誠佑
 {
 	int input_key;
 	int sleep_time = 15;
-	string tutorial_message = "説明をスキップする場合はエンターキーを押してください...\n\n\n【ルール説明】\n\n1階でアイテムを収集し、2階から8階までのタイピング＆クイズに挑戦します。\n\nまず1階でアイテムを収集します。\n初めに3つの扉から一つを選び、中にアイテムがあれば取得します。次にまた3つの扉から一つを選び、中にアイテムがあれば取得します。これを繰り返して5つの部屋を探索し終えると2階に上がります。\n\n2階からはタイピングとクイズに挑戦してもらいます。\n2階に到達すると10分の制限時間が開始し、画面上部にアルファベットの文が出現するので、その文をスペースなども含めてタイピングしてもらいます。\nタイピングミスをすると制限時間が5秒マイナスされます。\nタイピングを終えるとクイズの問題文と選択肢が現れ、アイテムを使用するか、解答するかを選択出来ます。\n答えが間違っていた場合、制限時間が20秒マイナスされます。\n答えが合っていた場合、次の階に進み、次のアルファベットの文が出現するので、タイピングをしてもらいます。これを8階まで繰り返します。クイズの問題は階を進むごとに難しくなります\n\n9階に到達した時点でタイマーが停止し、時間が残っていたらゲームクリアです。\nタイマーが0になったらゲームオーバーになります。\n\n\n\n";
+	string tutorial_message = "説明をスキップする場合はエンターキーを押してください...\n\n\n【ルール説明】\n\n1階でアイテムを収集し、2階から8階までのタイピング＆クイズに挑戦します。\n\nまず1階でアイテムを収集します。\n初めに前方の3つの部屋から一つを選び、中にアイテムがあれば取得します。次にまた前方の3つの部屋から一つを選び、中にアイテムがあれば取得します。これを繰り返して5つの部屋を探索し終えると2階に上がります。\n\n2階からはタイピングとクイズに挑戦してもらいます。\n2階に到達すると10分の制限時間が開始し、画面上部にアルファベットの文が出現するので、その文をスペースなども含めてタイピングしてもらいます。\nタイピングミスをすると残り時間が5秒マイナスされます。\nタイピングを終えるとクイズの問題文と選択肢が現れ、アイテムを使用するか、解答するかを選択出来ます。\n答えが間違っていた場合、残り時間が20秒マイナスされます。\n答えが合っていた場合、次の階に進み、次のアルファベットの文が出現するので、再びタイピングをしてもらいます。これを8階まで繰り返します。クイズの問題は階を進むごとに難しくなります\n\n9階に到達した時点で制限時間のタイマーが停止し、残り時間が0でなければゲームクリアです。\n残り時間が0になったらゲームオーバーになります。\n\n\n\n";
 
 	SetColor(COL_WHITE, COL_BLACK);
 	for (auto itr = tutorial_message.begin(); itr != tutorial_message.end(); itr++) {
@@ -208,11 +207,15 @@ void PrintTutorial() // 高谷誠佑
 		}
 		cout << *itr;
 	}
+	TextBox *tb = new TextBox({MESSAGE_BOX_X, MESSAGE_BOX_Y}, MESSAGE_BOX_WIDTH, MESSAGE_BOX_HEIGHT);
+	tb->Print();
+	SetCursorPosition(MESSAGE_X, MESSAGE_Y);
 	cout << "次に進む[ENTER]";
 	while ((input_key = _getch()) != KEY_ENTER)
 	{
 		Sleep(0);
 	}
+	delete tb;
 	system("cls");
 }
 
@@ -225,9 +228,8 @@ void PrintStartMenu()
 		kQuit,
 		kStartMenuNum,
 	};
-	pair<int, int> position = { START_MENU_BOX_X, START_MENU_BOX_Y };
 	bool changed_flag = true;
-	TextBox *continue_box = new TextBox(position, START_MENU_BOX_WIDTH, START_MENU_BOX_HEIGHT);
+	TextBox *continue_box = new TextBox({ START_MENU_BOX_X, START_MENU_BOX_Y }, START_MENU_BOX_WIDTH, START_MENU_BOX_HEIGHT);
 	int now_select = 0;
 	while (true)
 	{
