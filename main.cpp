@@ -329,7 +329,7 @@ void PrintResult()
 
 void CheckRanking()
 {
-	int ranking_count;
+	int ranking_count = -1;
 	Ranking ranking;
 	vector<Ranking> ranking_array;
 	ifstream ifs("csv/ranking.csv");

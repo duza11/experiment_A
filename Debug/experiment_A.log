@@ -1,3 +1,3 @@
-﻿  main.cpp
-c:\users\admin\source\repos\experiment_a\main.cpp(249): warning C4551: function call missing argument list
+﻿  quiz_floor.cpp
+c:\users\admin\source\repos\experiment_a\quiz_floor.cpp(270): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
   experiment_A.vcxproj -> C:\Users\Admin\Source\Repos\experiment_A\Debug\experiment_A.exe
