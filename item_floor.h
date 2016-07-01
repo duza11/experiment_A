@@ -7,6 +7,13 @@
 #include "console_util.h"
 #include "common.h"
 
+typedef struct
+{
+	int room_status;
+	int item_status;
+	int item_get_flag;
+} Room;
+
 class ItemFloor
 {
 public:
@@ -18,12 +25,6 @@ public:
 	bool CheckGoal(); // ´…‘å÷
 
 private:
-	typedef struct
-	{
-		int room_status;
-		int item_status;
-		int item_get_flag;
-	} Room;
 	Room room_[ITEM_FLOOR_WIDTH][ITEM_FLOOR_HEIGT];
 	bool changed_flag_;
 	bool goal_flag_;

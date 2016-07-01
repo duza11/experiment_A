@@ -188,7 +188,7 @@ void PrintTitle()
 }
 
 
-void PrintTutorial() // 高谷誠佑
+void PrintExplain() // 高谷誠佑
 {
 	int input_key;
 	int sleep_time = 15;
@@ -246,7 +246,7 @@ void PrintStartMenu()
 			cout << ">";
 			changed_flag = false;
 		}
-		if (_kbhit)
+		if (_kbhit())
 		{
 			int c = _getch();
 			if (c == KEY_ENTER)
@@ -290,20 +290,21 @@ void PrintResult()
 {
 	remaining_time = Timer::GetInstance().get_remaining_time();
 	int time_score = remaining_time * 100;
-	score = time_score;
+	int typing_score = Player::GetInstance().get_typing_counter() * 50;
+	score = time_score + typing_score;
 	if (Player::GetInstance().get_no_item_flag())
 	{
 		score += 3000;
 	}
-	if (score >= 45000)
+	if (score >= 65000)
 	{
 		grade = "S";
 	}
-	else if (score >= 40000)
+	else if (score >= 57000)
 	{
 		grade = "A";
 	}
-	else if (score >= 35000)
+	else if (score >= 49000)
 	{
 		grade = "B";
 	}
@@ -311,12 +312,13 @@ void PrintResult()
 	{
 		grade = "C";
 	}
-	cout << "残り時間：" << remaining_time / 60 << "分" << remaining_time % 60 << "秒\t\t スコア + " << time_score << "\n";
+	cout << "残り時間：" << remaining_time / 60 << "分" << remaining_time % 60 << "秒\t\tスコア + " << time_score << "\n";
+	cout << "タイピングボーナス\t\tスコア + " << typing_score << "\n";
 	if (Player::GetInstance().get_no_item_flag())
 	{
-		cout << "アイテム未使用ボーナス\t\t スコア + 3000\n";
+		cout << "アイテム未使用ボーナス\t\tスコア + 3000\n";
 	}
-	cout << "スコア：" << score << "\n";
+	cout << "\nスコア：" << score << "\n";
 	cout << "評価：" << grade << "\n\n";
 	SetCursorPosition(MESSAGE_X, MESSAGE_Y);
 	cout << "次に進む[ENTER]";
@@ -484,7 +486,7 @@ int main() // 全員
 		SetCursorDisplay(FALSE);	// カーソルの非表示化
 		PrintTitle();
 		PrintStartMenu();
-		PrintTutorial(); // チュートリアルを表示する関数
+		PrintExplain(); // チュートリアルを表示する関数
 		ItemFloor itf;	// 1Fのインスタンス化
 		QuizFloor qf;	// 2F以降ののインスタンス化
 

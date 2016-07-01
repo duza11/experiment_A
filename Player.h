@@ -44,6 +44,10 @@ public:
 	//アイテム無使用フラグを取得
 	bool get_no_item_flag();
 
+	void AddTypingCounter();
+
+	int get_typing_counter();
+
 private:
 	//プレイヤー情報の初期化
 	Player(); // 清水大樹
@@ -69,4 +73,5 @@ private:
 	int now_floor_; //現在の階
 	Item item_[kItemKind]; //アイテム構造体
 	bool no_item_flag_;
+	int typing_counter_;
 };

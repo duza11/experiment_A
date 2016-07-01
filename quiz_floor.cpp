@@ -54,6 +54,7 @@ void QuizFloor::TypingMain()
 			{
 				input_str.push_back(*itr);
 				itr++;
+				Player::GetInstance().AddTypingCounter();
 				this->message_.clear();
 			}
 			else
@@ -71,7 +72,9 @@ void QuizFloor::TypingMain()
 			SetCursorPosition(0, 0);
 			cout << "次の文章をタイピングしてください\n";
 			cout << "1回タイピングミスするごとにペナルティとして残り時間が-5されます\n\n\n\n\n\n";
+			SetColor(COL_WHITE, COL_DARK_RED);
 			cout << typing_str << "\n\n";
+			SetColor(COL_WHITE, COL_BLACK);
 			cout << input_str;
 			SetColor(COL_WHITE, COL_CYAN);
 			cout << " ";

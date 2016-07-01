@@ -24,6 +24,7 @@ void Player::Initialize()
 	this->next_position_ = { PLAYER_NEXT_X , PLAYER_NEXT_Y };
 	this->now_floor_ = 1;
 	this->no_item_flag_ = true;
+	this->typing_counter_ = 0;
 }
 
 pair<int, int> Player::get_now_position()
@@ -130,6 +131,16 @@ void Player::UseFiftyFity(Quiz & quiz, IQuizFloor *iqf)
 void Player::UseStopTimer()
 {
 	Timer::GetInstance().SwitchTimer(false);
+}
+
+void Player::AddTypingCounter()
+{
+	typing_counter_++;
+}
+
+int Player::get_typing_counter()
+{
+	return this->typing_counter_;
 }
 
 void Player::GoUpstairs()
