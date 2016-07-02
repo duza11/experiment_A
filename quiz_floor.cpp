@@ -9,6 +9,7 @@ QuizFloor::QuizFloor()
 	quiz_array_ = {easy_quiz_array[0], easy_quiz_array[1], easy_quiz_array[2], hard_quiz_array[0], hard_quiz_array[1], hard_quiz_array[2], hard_quiz_array[3]};
 	this->text_position_ = { MESSAGE_BOX_X, MESSAGE_BOX_Y };
 	this->text_box_ = new TextBox(text_position_, MESSAGE_BOX_WIDTH, MESSAGE_BOX_HEIGHT);
+	Timer::GetInstance().Initialize();
 }
 
 int QuizFloor::QuizFloorMain()

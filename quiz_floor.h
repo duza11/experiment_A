@@ -19,7 +19,7 @@ class QuizFloor : public IQuizFloor
 {
 public:
 	QuizFloor(); // ‚’J½—C
-	int QuizFloorMain(); // –kì—Tˆê
+	virtual int QuizFloorMain(); // –kì—Tˆê
 	void TypingMain(); // –kì—Tˆê
 	void QuizMain(); // –kì—Tˆê
 	void UpdateQuizMenu(); // ´…‘å÷
@@ -30,7 +30,7 @@ public:
 	void PrintGoalMessage(); // ´…‘å÷
 	void SetQuizArray(string file_name, vector<Quiz> &quiz_array); // ‚’J½—C
 
-private:
+protected:
 	int mistake_ = 0;
 	vector<Quiz> quiz_array_;
 	bool goal_flag_;

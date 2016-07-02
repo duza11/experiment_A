@@ -2,10 +2,11 @@
 
 ItemFloor::ItemFloor()
 {
+	Player::GetInstance().Initialize();
 	// 1F内の部屋の初期化
-	for (int y = 0; y < ITEM_FLOOR_HEIGT; y++) {
+	for (int y = 0; y < ITEM_FLOOR_HEIGHT; y++) {
 		for (int x = 0; x < ITEM_FLOOR_WIDTH; x++) {
-			if (y == 0 || y == ITEM_FLOOR_HEIGT - 1)
+			if (y == 0 || y == ITEM_FLOOR_HEIGHT - 1)
 			{
 				room_[x][y] = { 0, -1, true };	// y = ITEM_FLOOR_HEIGHT(スタート位置),y = 0(ゴール位置)ではアイテムなし,アイテム所得フラグをtrueにする
 			}
@@ -88,7 +89,7 @@ void ItemFloor::Update(pair<int, int> now_position, pair<int, int> next_position
 {
 	for (int x = 0; x < ITEM_FLOOR_WIDTH; x++)
 	{
-		for (int y = 0; y < ITEM_FLOOR_HEIGT; y++)
+		for (int y = 0; y < ITEM_FLOOR_HEIGHT; y++)
 		{
 			if (x == now_position.first && y == now_position.second)
 			{
@@ -124,7 +125,7 @@ void ItemFloor::Print()
 {
 
 	SetCursorPosition(0, 0);
-	for (int y = 0; y < ITEM_FLOOR_HEIGT; y++) // PrintLineを利用してダンジョンを出力
+	for (int y = 0; y < ITEM_FLOOR_HEIGHT; y++) // PrintLineを利用してダンジョンを出力
 	{
 		PrintLine(y, false);
 		PrintLine(y, true);
@@ -178,7 +179,7 @@ void ItemFloor::PrintLine(int y, bool print_value_flag)
 			{
 				bg = COL_DARK_RED; // yが0(ゴール地点)ならば背景色を赤にする
 			}
-			else if (y == ITEM_FLOOR_HEIGT - 1)
+			else if (y == ITEM_FLOOR_HEIGHT - 1)
 			{
 				bg = COL_DARK_BLUE; // yがITEM_FLOOR_HEIGT-1(スタート地点)ならば背景色を青にする
 			}

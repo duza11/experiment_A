@@ -24,8 +24,8 @@ public:
 	void PrintLine(int y, bool print_value_flag); // 池田マイク
 	bool CheckGoal(); // 清水大樹
 
-private:
-	Room room_[ITEM_FLOOR_WIDTH][ITEM_FLOOR_HEIGT];
+protected:
+	Room room_[ITEM_FLOOR_WIDTH][ITEM_FLOOR_HEIGHT];
 	bool changed_flag_;
 	bool goal_flag_;
 	pair<int, int> item_position_;

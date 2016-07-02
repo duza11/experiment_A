@@ -12,7 +12,7 @@ using namespace std;
 #define START_MENU_BOX_X 48
 #define START_MENU_BOX_Y 20
 #define START_MENU_BOX_WIDTH 24
-#define START_MENU_BOX_HEIGHT 5
+#define START_MENU_BOX_HEIGHT 6
 #define RANKING_BOX_X 30
 #define RANKING_BOX_Y 13
 #define RANKING_BOX_WIDTH 60
@@ -22,10 +22,10 @@ using namespace std;
 /*1F関連*/
 #define WALL -1	// 壁
 #define ITEM_FLOOR_WIDTH 3 // 1Fのダンジョンの横幅
-#define ITEM_FLOOR_HEIGT 7 // 1Fのダンジョンの縦幅
+#define ITEM_FLOOR_HEIGHT 7 // 1Fのダンジョンの縦幅
 #define CELL_WIDTH 8 // セル表示幅
 #define PLAYER_X (ITEM_FLOOR_WIDTH / 2) // プレイヤーの初期X座標
-#define PLAYER_Y ITEM_FLOOR_HEIGT - 1 // プレイヤーの初期Y座標
+#define PLAYER_Y ITEM_FLOOR_HEIGHT - 1 // プレイヤーの初期Y座標
 #define PLAYER_NEXT_X PLAYER_X // プレイヤーの次の初期X座標
 #define PLAYER_NEXT_Y (PLAYER_Y - 1) // プレイヤーの次の初期Y座標
 /*タイマー関連*/
