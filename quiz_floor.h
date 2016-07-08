@@ -19,7 +19,7 @@ class QuizFloor : public IQuizFloor
 {
 public:
 	QuizFloor(); // ‚’J½—C
-	virtual int QuizFloorMain(); // –kì—Tˆê
+	virtual void QuizFloorMain(); // –kì—Tˆê
 	void TypingMain(); // –kì—Tˆê
 	void QuizMain(); // –kì—Tˆê
 	void UpdateQuizMenu(); // ´…‘å÷

@@ -6,7 +6,7 @@ class TutorialQuizFloor : public QuizFloor
 {
 public:
 	TutorialQuizFloor();
-	int QuizFloorMain() override;
+	void QuizFloorMain() override;
 private:
 
 };

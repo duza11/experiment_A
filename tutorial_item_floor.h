@@ -5,4 +5,5 @@ class TutorialItemFloor : public ItemFloor
 {
 public:
 	TutorialItemFloor();
+	void Print() override;
 };

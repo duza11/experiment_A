@@ -30,7 +30,7 @@ ItemFloor::ItemFloor()
 	this->text_box_ = new TextBox({ MESSAGE_BOX_X, MESSAGE_BOX_Y }, MESSAGE_BOX_WIDTH, MESSAGE_BOX_HEIGHT);
 }
 
-int ItemFloor::ItemFloorMain() // 1Fのゲーム進行を管理する関数
+void ItemFloor::ItemFloorMain() // 1Fのゲーム進行を管理する関数
 {
 	while (!this->goal_flag_) // ゴール判定フラグがfalseである限り繰り返す
 	{
@@ -82,7 +82,6 @@ int ItemFloor::ItemFloorMain() // 1Fのゲーム進行を管理する関数
 	Player::GetInstance().GoUpstairs(); // プレイヤーの階を1つ進める
 	delete text_box_;
 	system("cls"); // 画面を消去する
-	return 0;
 }
 
 void ItemFloor::Update(pair<int, int> now_position, pair<int, int> next_position)
@@ -123,7 +122,6 @@ void ItemFloor::Update(pair<int, int> now_position, pair<int, int> next_position
 
 void ItemFloor::Print()
 {
-
 	SetCursorPosition(0, 0);
 	for (int y = 0; y < ITEM_FLOOR_HEIGHT; y++) // PrintLineを利用してダンジョンを出力
 	{

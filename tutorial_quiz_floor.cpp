@@ -4,7 +4,7 @@ TutorialQuizFloor::TutorialQuizFloor()
 {
 }
 
-int TutorialQuizFloor::QuizFloorMain()
+void TutorialQuizFloor::QuizFloorMain()
 {
 	Quiz quiz;
 	quiz.typing_str = "typing test";
@@ -22,10 +22,7 @@ int TutorialQuizFloor::QuizFloorMain()
 		}
 	}
 	this->quiz_ = &quiz;
-	Player::GetInstance().PrintNowFloor();
 	TypingMain();
-	Player::GetInstance().PrintNowFloor();
 	QuizMain();
 	delete text_box_;
-	return 0;
 }

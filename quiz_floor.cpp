@@ -12,7 +12,7 @@ QuizFloor::QuizFloor()
 	Timer::GetInstance().Initialize();
 }
 
-int QuizFloor::QuizFloorMain()
+void QuizFloor::QuizFloorMain()
 {
 	for (auto itr = quiz_array_.begin(); itr < quiz_array_.begin() + QUIZ_FLOOR_SIZE; itr++)
 	{
@@ -31,7 +31,6 @@ int QuizFloor::QuizFloorMain()
 		}
 	}
 	delete text_box_;
-	return 0;
 }
 
 void QuizFloor::TypingMain()

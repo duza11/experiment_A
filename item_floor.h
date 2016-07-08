@@ -18,9 +18,9 @@ class ItemFloor
 {
 public:
 	ItemFloor(); // 池田マイク
-	int ItemFloorMain(); // 池田マイク
+	void ItemFloorMain(); // 池田マイク
 	void Update(pair<int, int> p_pos, pair<int, int> np_pos); // 清水大樹
-	void Print(); // 池田マイク
+	virtual void Print(); // 池田マイク
 	void PrintLine(int y, bool print_value_flag); // 池田マイク
 	bool CheckGoal(); // 清水大樹
 
