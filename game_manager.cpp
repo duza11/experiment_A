@@ -184,6 +184,7 @@ void GameManager::PrintResult()
 	remaining_time_ = Timer::GetInstance().get_remaining_time();
 	int time_score = remaining_time_ * 100;
 	int typing_score = Player::GetInstance().get_typing_counter() * 50;
+	bool secret_flag = false;
 	score_ = time_score + typing_score;
 	if (Player::GetInstance().get_no_item_flag())
 	{
@@ -192,10 +193,12 @@ void GameManager::PrintResult()
 	if (score_ >= 65000)
 	{
 		grade_ = "S";
+		secret_flag = true;
 	}
 	else if (score_ >= 57000)
 	{
 		grade_ = "A";
+		secret_flag = true;
 	}
 	else if (score_ >= 49000)
 	{
@@ -215,6 +218,12 @@ void GameManager::PrintResult()
 	cout << "評価：" << grade_ << "\n\n";
 	SetCursorPosition(MESSAGE_X, MESSAGE_Y);
 	cout << "次に進む[ENTER]";
+
+	if (secret_flag) {
+		SetCursorPosition(0, 8);
+		cout << "タイピングの文字列はクイズの問題文のローマ字の逆読みでした";
+	}
+
 	while (_getch() != KEY_ENTER)
 	{
 		Sleep(0);

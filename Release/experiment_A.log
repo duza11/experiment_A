@@ -1,8 +1,8 @@
-﻿  quiz_floor.cpp
-quiz_floor.cpp(270): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
-  Generating code
-  2 of 647 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+﻿  game_manager.cpp
+  コード生成しています。
+  2 of 671 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    51 functions had inline decision re-evaluated but remain unchanged
-  Finished generating code
+    46 functions had inline decision re-evaluated but remain unchanged
+  コード生成が終了しました。
   experiment_A.vcxproj -> C:\Users\Admin\Source\Repos\experiment_A\Release\experiment_A.exe
+  experiment_A.vcxproj -> C:\Users\Admin\Source\Repos\experiment_A\Release\experiment_A.pdb (Full PDB)
