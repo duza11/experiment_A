@@ -220,8 +220,8 @@ void GameManager::PrintResult()
 	cout << "次に進む[ENTER]";
 
 	if (secret_flag) {
-		SetCursorPosition(0, 8);
-		cout << "タイピングの文字列はクイズの問題文のローマ字の逆読みでした";
+		SetCursorPosition(0, 10);
+		cout << "ネタバレ：タイピングの文字列はクイズの問題文のローマ字の逆読みでした";
 	}
 
 	while (_getch() != KEY_ENTER)

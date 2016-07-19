@@ -47,7 +47,7 @@ using namespace std;
 #define ANSWER_MENU_BOX_Y 18
 #define ANSWER_MENU_OPTION_X (ANSWER_MENU_BOX_X + 3)
 #define ANSWER_MENU_OPTION_Y (ANSWER_MENU_BOX_Y + 1)
-#define ANSWER_MENU_BOX_WIDTH 40
+#define ANSWER_MENU_BOX_WIDTH 46
 #define ANSWER_MENU_BOX_HEIGHT 8
 /*アイテムメニュー関連*/
 #define ITEM_MENU_BOX_X 10
