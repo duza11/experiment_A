@@ -497,6 +497,7 @@ void GameManager::CheckRanking()
 void GameManager::StartGame()
 {
 	system("cls");
+	PrintExplain();
 	ItemFloor itf;
 	itf.ItemFloorMain();
 	QuizFloor qf;
